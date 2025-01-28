@@ -39,10 +39,10 @@ void unitDice() {
 
     // Test Printing Dice Values
     outFile << "Test Printing Dice Values:\n";
-    /*outFile << "Dice values printed: ";
+    outFile << "Dice values printed: ";
     d1.print(outFile);
-    outFile << endl;*/
-    outFile << "Dice values printed: " << d1 << endl;
+    outFile << endl;
+    //outFile << "Dice values printed: " << d1 << endl;
 
     // Test Destructor
     outFile << "Test Destructor:\n";
