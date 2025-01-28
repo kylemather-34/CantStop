@@ -5,7 +5,7 @@
 #include "Player.h"
 
 // Constructor
-Player::Player(const string& playerName, ECcolor playerColor)
+Player::Player(const string playerName, ECcolor playerColor)
     : playerName(playerName), playerColor(playerColor), playerScore(0), scoreboard() {}
 
 Player::~Player() = default;

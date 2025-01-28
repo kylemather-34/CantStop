@@ -9,4 +9,6 @@ add_executable(AdvanceC__ main.cpp
         Player.h
         Player.cpp
         enums.h
-        enums.cpp)
+        enums.cpp
+        unitTests.h
+        unitTests.cpp)
