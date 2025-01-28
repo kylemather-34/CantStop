@@ -7,4 +7,6 @@ add_executable(AdvanceC__ main.cpp
         Dice.h
         Dice.cpp
         Player.h
-        Player.cpp)
+        Player.cpp
+        enums.h
+        enums.cpp)
