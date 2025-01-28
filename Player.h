@@ -6,30 +6,38 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "tools.hpp"
+#include "enums.h"
 #include <string>
+#include <array>
 
 class Player {
     private:
-      enum Ecolor { RED, BLUE, GREEN };
-
-      string playerName;
-      int columPlayerCaptured;
-      int scoreboard {};
-      ECOLOR color;
+        string playerName; // Player name, e.g. RedWolf or RubyMan
+        ECcolor playerColor; // Player color from ECcolor enum
+        int colsCaptured; // Number of columns captures
+        array<int, 3> scoreboard; // Array of 3 integers for columns captured
     public:
-        Player(playerName, color);
+        // Constructor
+        Player(const string playerName&, ECcolor playerColor);
+
+        // Destructor
         ~Player();
+
+        // Print function
         ostream& print(ostream&);
-        Ecolor getColor();
-        bool wonColumn(colNum);
 
+        // Accessor for color
+        ECcolor getColor() const;
 
+        // Accessor for score
+        int getScore() const;
 
-
-
-
-
-
+        // Function to register a captured column
+        bool wonColumn(int colNum);
 };
-inline ostream& operator <<(ostream&,Player&) ;
+
+// Overload the << operator for Player
+inline ostream& operator<<(ostream& os,Player& player) {
+    return player.print(os);
+}
 #endif //PLAYER_H
