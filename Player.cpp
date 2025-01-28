@@ -5,18 +5,18 @@
 #include "Player.h"
 
 // Constructor
-Player::Player(const string playerName&, ECcolor playerColor)
-    : playerName(playerName), playerColor(playerColor), colsCaptured(0), scoreboard() {}
+Player::Player(const string& playerName, ECcolor playerColor)
+    : playerName(playerName), playerColor(playerColor), playerScore(0), scoreboard() {}
 
-Player::~Player() {}
+Player::~Player() = default;
 
 // Print function
 ostream& Player::print(ostream& os) {
     os << "Player Name: " << playerName << endl;
-    os << "Color: " << ECcolorNames[(int)playerColor] << endl; // Use ECcolorNames array
-    os << "Score: " << colsCaptured << endl;
+    os << "Color: " << ECcolorNames[static_cast<int>(playerColor)] << endl; // Use ECcolorNames array
+    os << "Score: " << score << endl;
     os << "Columns Captured: ";
-    for (int y = 0; y < colsCaptured; ++y) {
+    for (int y = 0; y < playerScore; ++y) {
         os << scoreboard[y] << " ";
     }
     os << endl;
@@ -24,13 +24,21 @@ ostream& Player::print(ostream& os) {
 }
 
 // Accessor for color
-ECcolor Player::getColor() const {
+ECcolor Player::color() const {
     return playerColor;
 }
 
 // Accessor for score
-int Player::getScore() const {
-    return colsCaptured;
+int Player::score() const {
+    return playerScore;
 }
 
 // Function to register a captured column
+bool Player::wonColumn(int colNum) {
+    if (playerScore < 3) {
+        scoreboard[playerScore] = colNum; // Store the column number
+        ++playerScore; // Increment the score
+        return playerScore == 3; // Return true if 3 columns are captured
+    }
+    return false;
+}

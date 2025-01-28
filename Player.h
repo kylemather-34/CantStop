@@ -14,11 +14,11 @@ class Player {
     private:
         string playerName; // Player name, e.g. RedWolf or RubyMan
         ECcolor playerColor; // Player color from ECcolor enum
-        int colsCaptured; // Number of columns captures
+        int playerScore; // Number of columns captures
         array<int, 3> scoreboard; // Array of 3 integers for columns captured
     public:
         // Constructor
-        Player(const string playerName&, ECcolor playerColor);
+        explicit Player(const string playerName&, ECcolor playerColor);
 
         // Destructor
         ~Player();
@@ -27,10 +27,10 @@ class Player {
         ostream& print(ostream&);
 
         // Accessor for color
-        ECcolor getColor() const;
+        [[nodiscard]] ECcolor color() const;
 
         // Accessor for score
-        int getScore() const;
+        [[nodiscard]] int score() const;
 
         // Function to register a captured column
         bool wonColumn(int colNum);
