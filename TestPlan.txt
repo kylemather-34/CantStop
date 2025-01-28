@@ -1,0 +1,8 @@
+TEST PLAN:
+
+In order to meet requirements, we want to ensure that all the requirements are met;
+namely that the dice can produce numbers randomly from 1..6. Lastly,
+we must ensure that the destructor works for the die. The test for all numbers from 1..6
+involves running the program several times and outputting the die values to a text file and
+checking that all values were met and inside the proper range. The destructor, if successful,
+will not produce any errors upon running the program.

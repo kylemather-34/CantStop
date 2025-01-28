@@ -1,0 +1,48 @@
+2 1 1 5 5 1 Test Initialization:
+Expected nDice: 5, Actual nDice: 5
+Test Rolling Dice:
+Dice values: 4 3 1 1 1 
+Test Printing Dice Values:
+Dice values printed: 4 3 1 1 1 
+Test Destructor:
+No explicit output; check for memory leaks.
+Test Initialization:
+Expected nDice: 5, Actual nDice: 5
+Test Rolling Dice:
+Dice values: 4 1 1 4 2 
+Test Printing Dice Values:
+Dice values printed: 4 1 1 4 2 
+Test Destructor:
+No explicit output; check for memory leaks.
+Test Initialization:
+Expected nDice: 6, Actual nDice: 6
+Test Rolling Dice:
+Dice values: 4 4 2 2 4 4 
+Test Printing Dice Values:
+Dice values printed: 4 4 2 2 4 4 
+Test Destructor:
+No explicit output; check for memory leaks.
+Test Initialization:
+Expected nDice: 6, Actual nDice: 6
+Test Rolling Dice:
+Dice values: 3 2 5 4 3 1 
+Test Printing Dice Values:
+Dice values printed: 3 2 5 4 3 1 
+Test Destructor:
+No explicit output; check for memory leaks.
+Test Initialization:
+Expected nDice: 6, Actual nDice: 6
+Test Rolling Dice:
+Dice values: 1 5 4 4 5 2 
+Test Printing Dice Values:
+Dice values printed: 1 5 4 4 5 2 
+Test Destructor:
+No explicit output; check for memory leaks.
+Test Initialization:
+Expected nDice: 6, Actual nDice: 6
+Test Rolling Dice:
+Dice values: 6 5 3 6 5 3 
+Test Printing Dice Values:
+Dice values printed: 6 5 3 6 5 3 
+Test Destructor:
+No explicit output; check for memory leaks.
