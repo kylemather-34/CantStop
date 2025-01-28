@@ -21,6 +21,7 @@ class Player {
         ~Player();
         ostream& print(ostream&);
         Ecolor getColor();
+        bool wonColumn(colNum);
 
 
 
@@ -30,4 +31,5 @@ class Player {
 
 
 };
+inline ostream& operator <<(ostream&,Player&) ;
 #endif //PLAYER_H
