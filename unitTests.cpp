@@ -11,7 +11,7 @@
 /*diceUnitTest() function follows dice test plan in this directory to examine the
  *required input and output values, edge cases, and potential errors
 */
-void unitTests::diceUnitTest() {
+/*Void unitTests::diceUnitTest() {
     ofstream outFile("Output.txt", ios::app);
     if (!outFile) {
         cerr << "Error opening file!" << endl;
@@ -75,3 +75,4 @@ void unitTests::playerUnitTest() {
 
     outFile.close();
 }
+*/

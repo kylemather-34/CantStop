@@ -10,36 +10,26 @@
 #include <string>
 #include <array>
 
-using namespace std;
-
 class Player {
-    private:
-        string playerName; // Player name, e.g. RedWolf or RubyMan
-        ECcolor playerColor; // Player color from ECcolor enum
-        int playerScore; // Number of columns captures
-        array<int, 3> scoreboard; // Array of 3 integers for columns captured
-    public:
-        // Constructor
-        explicit Player(const string playerName, ECcolor playerColor);
+private:
 
-        // Destructor
-        ~Player();
+    string playerName;
+    ECcolor playerColor;
+    int playerScore;
+    array<int, 3> scoreboard;
+public:
+    explicit Player(const string playerName, ECcolor color);
+    ~Player();
+    void print() const;
+    ostream& print(ostream&) const;
+    ECcolor color() const;
 
-        // Print function
-        ostream& print(ostream&);
+    [[nodiscard]] int score() const;
 
-        // Accessor for color
-        ECcolor color() const;
+    bool wonColumn(int colNum);
 
-        // Accessor for score
-        [[nodiscard]] int score() const;
-
-        // Function to register a captured column
-        bool wonColumn(int colNum);
 };
 
-// Overload the << operator for Player
-inline ostream& operator<<(ostream& os,Player& player) {
-    return player.print(os);
-}
+ostream& operator<<(ostream&, const Player&);
 #endif //PLAYER_H
+
