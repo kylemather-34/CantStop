@@ -52,7 +52,7 @@ void unitTests::diceUnitTest() {
     // Closing output file
     outFile.close();
 }
-
+/*
 ofstream operator<<(const ofstream & lhs, ECcolor rhs);
 
 void unitTests::playerUnitTest() {
@@ -75,3 +75,4 @@ void unitTests::playerUnitTest() {
 
     outFile.close();
 }
+*/

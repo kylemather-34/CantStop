@@ -14,3 +14,31 @@ Dice values: 2 2 6 3 5 3
 Test Printing Dice Values:
 Dice values printed: 2 2 6 3 5 3 Test Destructor:
 No explicit output; check for memory leaks.
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 1 6 5 6 5 1 
+Test Printing Dice Values:
+Dice values printed: 1 6 5 6 5 1 
+Test Destructor:
+No explicit output; check for memory leaks.
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 4 3 6 5 4 1 
+Test Printing Dice Values:
+Dice values printed: 4 3 6 5 4 1 
+Test Destructor:
+No explicit output; check for memory leaks.
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 6 5 4 1 6 5 
+Test Printing Dice Values:
+Dice values printed: 6 5 4 1 6 5 
+Test Destructor:
+No explicit output; check for memory leaks.
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 3 2 5 6 5 5 
+Test Printing Dice Values:
+Dice values printed: 3 2 5 6 5 5 
+Test Destructor:
+No explicit output; check for memory leaks.

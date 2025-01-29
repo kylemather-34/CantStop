@@ -5,7 +5,6 @@
 
 #include "enums.h"
 
-// Definition of the string array
 const string ECcolorNames[] = {
     "white", "orange", "yellow", "green", "blue", "error"
 };
