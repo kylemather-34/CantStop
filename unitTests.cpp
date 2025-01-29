@@ -52,8 +52,8 @@ void unitTests::diceUnitTest() {
     // Closing output file
     outFile.close();
 }
-/*
-ofstream operator<<(const ofstream & lhs, ECcolor rhs);
+
+// ofstream operator<<(const ofstream & lhs, ECcolor rhs);
 
 void unitTests::playerUnitTest() {
     ofstream outFile("Output.txt", ios::app);
@@ -65,9 +65,7 @@ void unitTests::playerUnitTest() {
     outFile << "Test Initialization: Player\n";
 
     Player player("Test Player", ECcolor::white);
-    outFile << "Player Color: ";
-    outFile << player.color() << endl;
-    outFile << player.score() << endl;
+    outFile << player;
     outFile << "Testing winColumn() function:" << endl;
     for (int y = 1; y <=3; ++y) {
         outFile << player.wonColumn(1) << endl;
@@ -75,4 +73,3 @@ void unitTests::playerUnitTest() {
 
     outFile.close();
 }
-*/
