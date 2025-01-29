@@ -2,7 +2,7 @@
 // Project: Player  File: unitTests.h
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
-/*
+
 #ifndef UNITTESTS_H
 #define UNITTESTS_H
 
@@ -17,4 +17,3 @@ class unitTests {
 };
 
 #endif //UNITTESTS_H
-*/
