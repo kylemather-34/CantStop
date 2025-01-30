@@ -11,7 +11,6 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
     srand(time(nullptr));
-    banner();   //Prints names, date, and class
     unitTests test;
     test.diceUnitTest();
 
@@ -19,7 +18,17 @@ int main(int argc, char* argv[]) {
     test2.playerUnitTest();
 
     Player player1("John", ECcolor::blue);  // Correct: Pass ECcolor::Red instead of an integer
-    cout << player1;  // Print player details using the print method
+
+    if (ifstream infile("output.txt"); infile) {
+        string line;
+        while (getline(infile, line)) {
+            cout << line << endl;
+        }
+        infile.close();
+    } else {
+        cerr << "Error opening output.txt" << endl;
+    }
+
     bye();  //Designates program termination
     return 0;
 }
