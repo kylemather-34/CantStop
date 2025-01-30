@@ -1,9 +1,10 @@
 # ninja log v6
 611	648	1738089083952484910	AdvanceC__	a45f3ad552db1ce6
-24	873	7597976021246027	CMakeFiles/AdvanceC__.dir/Dice.cpp.obj	2a79f1fc63548aa1
-13	1533	7597984616452543	CMakeFiles/AdvanceC__.dir/main.cpp.obj	ab5f758a88aa9c47
-1534	1812	7597984631656406	AdvanceC__.exe	78e2010c02c4e011
-76	1025	7598101692400095	CMakeFiles/AdvanceC__.dir/enums.cpp.obj	6fd0432f49df3feb
-37	1048	7598101692023391	CMakeFiles/AdvanceC__.dir/Dice.cpp.obj	2a79f1fc63548aa1
-11	1501	7598101691765726	CMakeFiles/AdvanceC__.dir/main.cpp.obj	ab5f758a88aa9c47
-20	1484	7598102351978339	CMakeFiles/AdvanceC__.dir/unitTests.cpp.obj	2574de720823762d
+29	1084	7599625104231776	CMakeFiles/AdvanceC__.dir/Dice.cpp.obj	2a79f1fc63548aa1
+110	1795	7599625105048295	CMakeFiles/AdvanceC__.dir/unitTests.cpp.obj	2574de720823762d
+48	1677	7599625104431057	CMakeFiles/AdvanceC__.dir/Player.cpp.obj	eb823b6a1f08062e
+15	1418	7599626483498864	CMakeFiles/AdvanceC__.dir/main.cpp.obj	ab5f758a88aa9c47
+1549	1865	7599625462215046	AdvanceC__.exe	5e9300860a1b784c
+77	1096	7599625104724118	CMakeFiles/AdvanceC__.dir/enums.cpp.obj	6fd0432f49df3feb
+12	1421	7599627639122828	CMakeFiles/AdvanceC__.dir/tools.cpp.obj	57e9873ba96483ba
+1422	1648	7599627653219828	AdvanceC__.exe	a3a2c9dcbfc70e29

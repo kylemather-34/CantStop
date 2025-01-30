@@ -11,4 +11,5 @@ add_executable(AdvanceC__ main.cpp
         enums.h
         enums.cpp
         unitTests.h
-        unitTests.cpp)
+        unitTests.cpp
+        tools.cpp)

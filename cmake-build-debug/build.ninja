@@ -79,6 +79,12 @@ build CMakeFiles/AdvanceC__.dir/unitTests.cpp.obj: CXX_COMPILER__AdvanceC___unsc
   OBJECT_DIR = CMakeFiles\AdvanceC__.dir
   OBJECT_FILE_DIR = CMakeFiles\AdvanceC__.dir
 
+build CMakeFiles/AdvanceC__.dir/tools.cpp.obj: CXX_COMPILER__AdvanceC___unscanned_Debug C$:/Users/Kyle/CLionProjects/CantStop/tools.cpp || cmake_object_order_depends_target_AdvanceC__
+  DEP_FILE = CMakeFiles\AdvanceC__.dir\tools.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\AdvanceC__.dir
+  OBJECT_FILE_DIR = CMakeFiles\AdvanceC__.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target AdvanceC__
@@ -87,7 +93,7 @@ build CMakeFiles/AdvanceC__.dir/unitTests.cpp.obj: CXX_COMPILER__AdvanceC___unsc
 #############################################
 # Link the executable AdvanceC__.exe
 
-build AdvanceC__.exe: CXX_EXECUTABLE_LINKER__AdvanceC___Debug CMakeFiles/AdvanceC__.dir/main.cpp.obj CMakeFiles/AdvanceC__.dir/Dice.cpp.obj CMakeFiles/AdvanceC__.dir/Player.cpp.obj CMakeFiles/AdvanceC__.dir/enums.cpp.obj CMakeFiles/AdvanceC__.dir/unitTests.cpp.obj
+build AdvanceC__.exe: CXX_EXECUTABLE_LINKER__AdvanceC___Debug CMakeFiles/AdvanceC__.dir/main.cpp.obj CMakeFiles/AdvanceC__.dir/Dice.cpp.obj CMakeFiles/AdvanceC__.dir/Player.cpp.obj CMakeFiles/AdvanceC__.dir/enums.cpp.obj CMakeFiles/AdvanceC__.dir/unitTests.cpp.obj CMakeFiles/AdvanceC__.dir/tools.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\AdvanceC__.dir
