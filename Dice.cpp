@@ -26,7 +26,7 @@ const int* Dice::roll () {
 }
 
 //Print function
-ostream& Dice::print(ostream& os) {
+ostream& Dice::print(ostream& os) const {
     // Printing each value in rVal into designated area
     for (int y = 0; y < nDice; y++) {
         os << rVal[y] << " ";
@@ -35,6 +35,6 @@ ostream& Dice::print(ostream& os) {
 }
 
 //Output operator
-ostream& operator <<(ostream& os, Dice& d) {
+ostream& operator<<(ostream& os, const Dice& d) {
     return d.print(os);
 }
