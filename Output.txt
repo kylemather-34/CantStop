@@ -42,3 +42,26 @@ Test Printing Dice Values:
 Dice values printed: 3 2 5 6 5 5 
 Test Destructor:
 No explicit output; check for memory leaks.
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 2 2 5 5 3 6 
+Test Printing Dice Values:
+Dice values printed: 2 2 5 5 3 6 
+Test Destructor:
+No explicit output; check for memory leaks.
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 4 3 2 4 1 6 
+Test Printing Dice Values:
+Dice values printed: 4 3 2 4 1 6 
+Test Destructor:
+No explicit output; check for memory leaks.
+Test Initialization: Player
+Player Name: Test Player
+Color: white
+Score: 0
+Columns Captured: 
+Testing winColumn() function:
+0
+0
+1

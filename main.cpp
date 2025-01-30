@@ -16,6 +16,9 @@ int main(int argc, char* argv[]) {
     unitTests test;
     test.diceUnitTest();
 
+    unitTests test2;
+    test2.playerUnitTest();
+
     Player player1("John", ECcolor::blue);  // Correct: Pass ECcolor::Red instead of an integer
     cout << player1;  // Print player details using the print method
     bye();  //Designates program termination
