@@ -38,12 +38,6 @@ bool Player::wonColumn(int colNum) {
     return false;
 }
 
-/*void Player::print() const {
-    std::cout << "Player: " << playerName
-              << ", Color: " << ECcolorNames[static_cast<int>(playerColor)]
-              << ", Score: " << playerScore << std::endl;
-}*/
-
 ostream& operator<<(ostream& os, const Player& player) {
     return player.print(os);
 }
