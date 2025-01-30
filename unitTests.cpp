@@ -64,7 +64,7 @@ void unitTests::playerUnitTest() {
         return;
     }
 
-    outFile << "Test Initialization: Player\n";
+    outFile << "\nTest Initialization: Player\n";
 
     Player player("Test Player", ECcolor::white);
     outFile << player;
