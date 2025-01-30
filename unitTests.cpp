@@ -3,6 +3,7 @@
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
 
+#include "tools.hpp"
 #include "unitTests.h"
 #include "enums.h"
 #include "Dice.h"
@@ -18,6 +19,7 @@ void unitTests::diceUnitTest() {
         return;
     }
 
+    fbanner(outFile);
     // Test Initialization
     outFile << "Test Initialization: Dice\n";
     Dice d1(6);

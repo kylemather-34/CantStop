@@ -1,8 +1,14 @@
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Thu Jan 30 2025	13:36:48
+----------------------------------------------------------------
 Test Initialization: Dice
 Test Rolling Dice:
-Dice values: 6 3 5 4 3 6 
+Dice values: 5 4 2 2 1 1 
 Test Printing Dice Values:
-Dice values printed: 6 3 5 4 3 6 
+Dice values printed: 5 4 2 2 1 1 
 Test Destructor:
 No explicit output; check for memory leaks.
 Test Initialization: Player

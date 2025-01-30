@@ -20,6 +20,7 @@ int main(int argc, char* argv[]) {
 
     Player player1("John", ECcolor::blue);  // Correct: Pass ECcolor::Red instead of an integer
     cout << player1;  // Print player details using the print method
+    cout << "output.txt" << endl;
     bye();  //Designates program termination
     return 0;
 }
