@@ -6,12 +6,11 @@
 #include "Player.h"
 #include "tools.hpp"
 #include "unitTests.h"
-#include "tools.Cpp"
 
 using namespace std;
 
 
-int main() {
+int main(int argc, char* argv[]) {
     srand(time(nullptr));
     banner();   //Prints names, date, and class
     unitTests test;
