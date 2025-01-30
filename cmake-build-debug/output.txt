@@ -20,4 +20,3 @@ Columns Captured:
 Testing winColumn() function:
 0
 0
-1
