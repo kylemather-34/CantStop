@@ -9,7 +9,6 @@
 
 using namespace std;
 
-
 int main(int argc, char* argv[]) {
     srand(time(nullptr));
     banner();   //Prints names, date, and class
