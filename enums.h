@@ -8,6 +8,7 @@
 #include <string>
 using namespace std;
 
+//Enum class to define colors used for various game purposes
 enum class ECcolor {
     white, orange, yellow, green, blue, error
 };

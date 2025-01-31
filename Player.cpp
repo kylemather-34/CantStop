@@ -4,40 +4,53 @@
 //======================================================
 #include "Player.h"
 
+
+// Constructor: Initializes a Player object with a name, color,
+// score set to 0, and an empty scoreboard
 Player::Player(const string playerName, ECcolor playerColor)
     : playerName(playerName), playerColor(playerColor), playerScore(0), scoreboard(){}
 
+// Destructor, uses default behavior
 Player::~Player() = default;
 
+
+// Function to print player details to the output stream
 ostream& Player::print(ostream& os) const{
     os << "Player Name: " << playerName << endl;
     os << "Color: " << ECcolorNames[static_cast<int>(playerColor)] << endl;
     os << "Score: " << playerScore << endl;
     os << "Columns Captured: ";
-    for (int y = 0; y < playerScore; ++y) {
+    for (int y = 0; y < playerScore; ++y) { // Loop to test both logic points work for captured column
         os << scoreboard[y] << " ";
     }
     os << endl;
     return os;
 }
 
+
+// Getter function retrieves player color
 ECcolor Player::color() const {
     return playerColor;
 }
 
+
+// Getter function retrieves player score
 int Player::score() const {
     return playerScore;
 }
 
+
+// Records a won column and updates the players score
 bool Player::wonColumn(int colNum) {
-    if (playerScore < 3) {
+    if (playerScore < 3) { // Ensure only up to 3 columns are recorded
         scoreboard[playerScore] = colNum;
         ++playerScore;
         return playerScore == 3;
     }
-    return false;
+    return false; // No change is already at max score
 }
 
+// Overloaded output stream operator to print Player details
 ostream& operator<<(ostream& os, const Player& player) {
     return player.print(os);
 }

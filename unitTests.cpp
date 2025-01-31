@@ -51,8 +51,10 @@ void unitTests::diceUnitTest() {
     outFile.close();
 }
 
-// ofstream operator<<(const ofstream & lhs, ECcolor rhs);
 
+/*playerUnitTest() function tests Player class functionality
+ *It initalizes a Player object, prints details, and tests column wins.
+ */
 void unitTests::playerUnitTest() {
     ofstream outFile("Output.txt", ios::app);
     if (!outFile) {
