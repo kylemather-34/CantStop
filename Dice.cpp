@@ -4,8 +4,6 @@
 //======================================================
 #include "Dice.h"
 
-using namespace std;
-
 //Constructor
 Dice::Dice(int n) : nDice(n) {
     rVal = new int[nDice];

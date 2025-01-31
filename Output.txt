@@ -1,0 +1,106 @@
+
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 5 1 1 6 2 2 
+Test Printing Dice Values:
+Dice values printed: 5 1 1 6 2 2 
+Test Destructor:
+No explicit output; check for memory leaks.
+Test Initialization: Player
+Player Name: Test Player
+Color: white
+Score: 0
+Columns Captured: 
+Testing winColumn() function:
+0
+0
+1
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Thu Jan 30 2025	18:22:41
+----------------------------------------------------------------
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 4 6 2 1 6 3 
+Dice values printed: 4 6 2 1 6 3 
+Test Destructor:
+No explicit output; check for memory leaks.
+
+Test Initialization: Player
+Player Name: Test Player
+Color: white
+Score: 0
+Columns Captured: 
+Testing winColumn() function:
+0
+0
+1
+
+
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Fri Jan 31 2025	14:01:18
+----------------------------------------------------------------
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 5 5 3 5 3 1 
+Dice values printed: 5 5 3 5 3 1 
+Test Destructor:
+No explicit output; check for memory leaks.
+
+Test Initialization: Player
+Player Name: Test Player
+Color: white
+Score: 0
+Columns Captured: 
+Testing winColumn() function:
+0
+0
+1
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Fri Jan 31 2025	17:47:28
+----------------------------------------------------------------
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 2 6 5 5 1 2 
+Dice values printed: 2 6 5 5 1 2 
+Test Destructor:
+No explicit output; check for memory leaks.
+
+Test Initialization: Player
+Player Name: Test Player
+Color: white
+Score: 0
+Columns Captured: 
+Testing winColumn() function:
+0
+0
+1
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Fri Jan 31 2025	17:49:37
+----------------------------------------------------------------
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 5 4 1 6 4 3 
+Dice values printed: 5 4 1 6 4 3 
+Test Destructor:
+No explicit output; check for memory leaks.
+
+Test Initialization: Player
+Player Name: Test Player
+Color: white
+Score: 0
+Columns Captured: 
+Testing winColumn() function:
+0
+0
+1
