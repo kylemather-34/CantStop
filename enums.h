@@ -5,8 +5,7 @@
 
 #ifndef ENUMS_H
 #define ENUMS_H
-#include <string>
-using namespace std;
+#include "tools.hpp"
 
 //Enum class to define colors used for various game purposes
 enum class ECcolor {

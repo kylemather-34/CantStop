@@ -4,7 +4,6 @@
 //======================================================
 #include "Player.h"
 
-
 // Constructor: Initializes a Player object with a name, color,
 // score set to 0, and an empty scoreboard
 Player::Player(const string playerName, ECcolor playerColor)
@@ -12,7 +11,6 @@ Player::Player(const string playerName, ECcolor playerColor)
 
 // Destructor, uses default behavior
 Player::~Player() = default;
-
 
 // Function to print player details to the output stream
 ostream& Player::print(ostream& os) const{
@@ -27,18 +25,15 @@ ostream& Player::print(ostream& os) const{
     return os;
 }
 
-
 // Getter function retrieves player color
 ECcolor Player::color() const {
     return playerColor;
 }
 
-
 // Getter function retrieves player score
 int Player::score() const {
     return playerScore;
 }
-
 
 // Records a won column and updates the players score
 bool Player::wonColumn(int colNum) {

@@ -7,27 +7,21 @@
 #define PLAYER_H
 #include "tools.hpp"
 #include "enums.h"
-#include <string>
-#include <array>
 
 class Player {
-private:
-
-    string playerName;
-    ECcolor playerColor;
-    int playerScore;
-    array<int, 3> scoreboard;
-public:
-    explicit Player(const string playerName, ECcolor color);
-    ~Player();
-    void print() const;
-    ostream& print(ostream&) const;
-    ECcolor color() const;
-
-    [[nodiscard]] int score() const;
-
-    bool wonColumn(int colNum);
-
+    private:
+        string playerName;
+        ECcolor playerColor;
+        int playerScore;
+        array<int, 3> scoreboard;
+    public:
+        explicit Player(const string playerName, ECcolor color);
+        ~Player();
+        void print() const;
+        ostream& print(ostream&) const;
+        ECcolor color() const;
+        [[nodiscard]] int score() const;
+        bool wonColumn(int colNum);
 };
 
 ostream& operator<<(ostream&, const Player&);

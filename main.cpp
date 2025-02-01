@@ -1,5 +1,5 @@
 //======================================================
-// Project: Dice  File: Dice.cpp
+// Project: Dice  File: main.cpp
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
 #include "Dice.h"
@@ -16,8 +16,6 @@ int main(int argc, char* argv[]) {
 
     unitTests test2;
     test2.playerUnitTest();
-
-    Player player1("John", ECcolor::blue);  // Correct: Pass ECcolor::Red instead of an integer
 
     if (ifstream infile("output.txt"); infile) {
         string line;

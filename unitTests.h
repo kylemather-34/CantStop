@@ -5,10 +5,7 @@
 
 #ifndef UNITTESTS_H
 #define UNITTESTS_H
-
-#include <iostream>
-#include <fstream>
-using namespace std;
+#include "tools.hpp"
 
 class unitTests {
     public:

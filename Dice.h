@@ -17,7 +17,6 @@ class Dice {
         const int* roll(); // Function for "rolling" the dice
         ostream& print(ostream&) const; // Print function
 
-
 };
 ostream& operator<<(ostream&, const Dice&);
 #endif //DICE_H
