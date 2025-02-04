@@ -18,9 +18,9 @@ class Column {
     public:
         Column(int a);
         ~Column();
-        ColState state() const;
-        char getColorChar(ECcolor ccolor) const;
-        ostream& print(ostream&) const;
+        [[nodiscard]] ColState state() const;
+        [[nodiscard]] char getColorChar(ECcolor color) const;
+        ostream& print(ostream& os) const;
         bool startTower(Player* player);
         bool move();
         void stop(Player* player);

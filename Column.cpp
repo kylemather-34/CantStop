@@ -19,7 +19,7 @@ ColState Column::state() const {
     return colState;
 }
 
-ostream& Column::print(ostream& os) const {
+ostream &Column::print(ostream& os) const {
     // Convert column state to a string
     std::string stateStr;
     switch (colState) {
@@ -29,7 +29,7 @@ ostream& Column::print(ostream& os) const {
     }
 
     // Print column number and state
-    cout << columnNumber << "  " << stateStr << "   ";
+    std::cout << columnNumber << "  " << stateStr << "   ";
 
     // Print the column's marker positions
     for (int pos = 1; pos <= 7; ++pos) { // Assuming positions are between 1 and 7
@@ -47,10 +47,11 @@ ostream& Column::print(ostream& os) const {
             }
         }
 
-        cout << square << "  ";
+        os << square << "  ";
     }
 
-    cout << endl;
+    os << endl;
+    return os;
 }
 
 // Helper function to get color character
@@ -64,3 +65,4 @@ char getColorChar(ECcolor color) {
         default: return '-';
     }
 }
+
