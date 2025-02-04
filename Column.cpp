@@ -66,3 +66,11 @@ char getColorChar(ECcolor color) {
     }
 }
 
+bool Column::startTower(Player *player) {
+    ECcolor playerColor = (*player).color();
+
+    int playerPos = static_cast<int>(playerColor);
+
+    int towerPos = markerPositions[static_cast<int>(ECcolor::orange)];
+
+}
