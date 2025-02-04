@@ -21,7 +21,7 @@ class Column {
         [[nodiscard]] ColState state() const;
         [[nodiscard]] char getColorChar(ECcolor color) const;
         ostream& print(ostream& os) const;
-        bool startTower(Player* player);
+        bool startTower(const Player* player);
         bool move();
         void stop(Player* player);
         void bust();

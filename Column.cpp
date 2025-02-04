@@ -66,11 +66,37 @@ char getColorChar(ECcolor color) {
     }
 }
 
-bool Column::startTower(Player *player) {
+bool Column::startTower(const Player *player) {
     ECcolor playerColor = (*player).color();
 
+    // Finds player position off of color
     int playerPos = static_cast<int>(playerColor);
-
+    // Finds the current tower position
     int towerPos = markerPositions[static_cast<int>(ECcolor::orange)];
+    // If current tower position is greater than 0, returns false
+    if (towerPos > 0) { return false; }
 
+    // If it gets passed that, we will continue with creating a new tower
+    int newTowerPos;
+    if (playerPos == 0) {
+        newTowerPos = 1;
+    } else {
+        newTowerPos = playerPos + 1;
+    }
+    markerPositions[static_cast<int>(ECcolor::white)] = newTowerPos;
+
+    if (newTowerPos >= 7) {
+        colState = ColState::pending;
+    }
+
+    markerPositions[static_cast<int>(playerColor)] = newTowerPos;
+
+    return true;
+}
+
+bool Column::move() {
+/* Thinking about maybe making a variable that marks who is the current player.
+ * That way when someone calls it we can make sure that the person calling it is the one that
+ * just created the tower. That's if I am understanding that correctly.
+ */
 }
