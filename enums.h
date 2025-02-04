@@ -9,8 +9,13 @@
 
 //Enum class to define colors used for various game purposes
 enum class ECcolor {
-    white, orange, yellow, green, blue, error
+    white, orange, yellow, green, blue, error, Count
 };
 
+enum class ColState {
+    available, pending, captured, error
+};
+
+extern const string ColNames[];
 extern const string ECcolorNames[];
 #endif //ENUMS_H

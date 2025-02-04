@@ -129,6 +129,30 @@ AdvanceC__/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvanceC__.dir/build.make CMakeFiles/AdvanceC__.dir/build
 .PHONY : AdvanceC__/fast
 
+Column.o: Column.cpp.o
+.PHONY : Column.o
+
+# target to build an object file
+Column.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvanceC__.dir/build.make CMakeFiles/AdvanceC__.dir/Column.cpp.o
+.PHONY : Column.cpp.o
+
+Column.i: Column.cpp.i
+.PHONY : Column.i
+
+# target to preprocess a source file
+Column.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvanceC__.dir/build.make CMakeFiles/AdvanceC__.dir/Column.cpp.i
+.PHONY : Column.cpp.i
+
+Column.s: Column.cpp.s
+.PHONY : Column.s
+
+# target to generate assembly for a file
+Column.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvanceC__.dir/build.make CMakeFiles/AdvanceC__.dir/Column.cpp.s
+.PHONY : Column.cpp.s
+
 Dice.o: Dice.cpp.o
 .PHONY : Dice.o
 
@@ -282,6 +306,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... AdvanceC__"
+	@echo "... Column.o"
+	@echo "... Column.i"
+	@echo "... Column.s"
 	@echo "... Dice.o"
 	@echo "... Dice.i"
 	@echo "... Dice.s"

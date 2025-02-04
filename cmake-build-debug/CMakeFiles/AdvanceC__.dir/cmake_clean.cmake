@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "AdvanceC__"
   "AdvanceC__.pdb"
+  "CMakeFiles/AdvanceC__.dir/Column.cpp.o"
+  "CMakeFiles/AdvanceC__.dir/Column.cpp.o.d"
   "CMakeFiles/AdvanceC__.dir/Dice.cpp.o"
   "CMakeFiles/AdvanceC__.dir/Dice.cpp.o.d"
   "CMakeFiles/AdvanceC__.dir/Player.cpp.o"

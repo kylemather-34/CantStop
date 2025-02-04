@@ -17,7 +17,6 @@ class Player {
     public:
         explicit Player(const string playerName, ECcolor color);
         ~Player();
-        void print() const;
         ostream& print(ostream&) const;
         ECcolor color() const;
         [[nodiscard]] int score() const;

@@ -13,4 +13,6 @@ add_executable(AdvanceC__ main.cpp
         unitTests.h
         unitTests.cpp
         tools.cpp
-        )
+        Column.h
+        Column.cpp
+)

@@ -9,3 +9,7 @@
 const string ECcolorNames[] = {
     "white", "orange", "yellow", "green", "blue", "error"
 };
+
+const string ColNames[] = {
+    "available", "pending", "captured", "error"
+};

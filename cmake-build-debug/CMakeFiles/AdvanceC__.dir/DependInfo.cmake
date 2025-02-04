@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/ryanlang/CLionProjects/CantStop/Column.cpp" "CMakeFiles/AdvanceC__.dir/Column.cpp.o" "gcc" "CMakeFiles/AdvanceC__.dir/Column.cpp.o.d"
   "/Users/ryanlang/CLionProjects/CantStop/Dice.cpp" "CMakeFiles/AdvanceC__.dir/Dice.cpp.o" "gcc" "CMakeFiles/AdvanceC__.dir/Dice.cpp.o.d"
   "/Users/ryanlang/CLionProjects/CantStop/Player.cpp" "CMakeFiles/AdvanceC__.dir/Player.cpp.o" "gcc" "CMakeFiles/AdvanceC__.dir/Player.cpp.o.d"
   "/Users/ryanlang/CLionProjects/CantStop/enums.cpp" "CMakeFiles/AdvanceC__.dir/enums.cpp.o" "gcc" "CMakeFiles/AdvanceC__.dir/enums.cpp.o.d"
