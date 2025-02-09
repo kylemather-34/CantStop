@@ -126,3 +126,23 @@ bool Column::move() {
 
     return true;
 }
+
+
+void Column::stop(Player* player) {
+    // Get the player's color
+    ECcolor playerColor = player->color();
+
+    // Replace the tower with the player's color
+    markerPositions[static_cast<int>(playerColor)] = markerPositions[static_cast<int>(ECcolor::white)];
+    markerPositions[static_cast<int>(ECcolor::white)] = 0;  // Remove tower
+
+    // If the column state is pending, change it to captured and call wonColumn()
+    if (colState == ColState::pending) {
+        colState = ColState::captured;
+        player->wonColumn(columnNumber);  // Notify the player that they won the column
+    }
+}
+
+void Column::bust() {
+    // Currently a stub function with an empty body, will be implemented later
+}

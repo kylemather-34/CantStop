@@ -1,8 +1,1 @@
-Test Initialization:
-Expected nDice: 5, Actual nDice: 5
-Test Rolling Dice:
-Dice values: 1 4 3 3 2 
-Test Printing Dice Values:
-Dice values printed: 1 4 3 3 2 
-Test Destructor:
-No explicit output; check for memory leaks.
+

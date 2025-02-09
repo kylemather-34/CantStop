@@ -106,16 +106,16 @@ void unitTests::columnUnitTest() {
     }
     outFile << endl;
 
-    // Test column bust
-    column.bust();
-    outFile << "Column marker positions after bust: ";
+    // Test stop function
+    column.stop(&player);  // Stop the player's turn and apply changes
+    outFile << "Column marker positions after stop: ";
     for (int y = 0; y < static_cast<int>(ECcolor::Count); ++y) {
         outFile << positions[y] << " ";
     }
     outFile << endl;
 
     // Test column print function
-    outFile << "Printing column state:\n";
+    outFile << "Printing column state after stop:\n";
     std::ostringstream os;
     column.print(os);
     outFile << os.str() << endl;
