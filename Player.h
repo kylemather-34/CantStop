@@ -7,6 +7,7 @@
 #define PLAYER_H
 #include "tools.hpp"
 #include "enums.h"
+#include <array>
 
 class Player {
     private:
@@ -17,6 +18,7 @@ class Player {
     public:
         explicit Player(const string playerName, ECcolor color);
         ~Player();
+        void print() const;
         ostream& print(ostream&) const;
         ECcolor color() const;
         [[nodiscard]] int score() const;

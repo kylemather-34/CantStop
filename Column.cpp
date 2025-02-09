@@ -55,7 +55,7 @@ ostream &Column::print(ostream& os) const {
 }
 
 // Helper function to get color character
-char getColorChar(ECcolor color) {
+char Column::getColorChar(ECcolor color) const {
     switch (color) {
         case ECcolor::white: return 'W';
         case ECcolor::orange: return 'O';
