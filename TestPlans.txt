@@ -7,7 +7,7 @@ involves running the program several times and outputting the die values to a te
 checking that all values were met and inside the proper range. The destructor, if successful,
 will not produce any errors upon running the program.
 
------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
 
 TEST PLAN - Player:
 
@@ -20,3 +20,17 @@ with all the proper data members.
 The plan is to create a test Player, call the color() and score() functions and print them to
 Output.txt. We will also call the wonColumn() function three times, two of which should return false
 and the last should return true.
+
+------------------------------------------------------------------------------------------------------
+
+TEST PLAN - Column:
+In order to meet requirements for Column, we must ensure the following:
+1. The constructor initializes the column correctly.
+2. The state() function returns the correct state of the column.
+3. The startTower() function places a tower in a column.
+4. The move() function moves a tower within the column.
+5. The stop() function ends a player's turn and updates the column correctly.
+6. The print() function displays the correct column state.
+The getMarkerPositions() function returns the correct marker positions in the column.
+The plan is to create a test Column, call all of these functions on it, and print it to both the
+console and Output.txt

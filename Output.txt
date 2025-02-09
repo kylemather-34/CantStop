@@ -87,3 +87,36 @@ Testing winColumn() function:
 0
 0
 1
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Sun Feb  9 2025	15:22:50
+----------------------------------------------------------------
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 6 1 6 6 1 1 
+Dice values printed: 6 1 6 6 1 1 
+Test Destructor:
+No explicit output; check for memory leaks.
+
+Test Initialization: Player
+Player Name: Test Player
+Color: white
+Score: 0
+Columns Captured: 
+Testing winColumn() function:
+0
+0
+1
+
+Test Initialization: Column
+Column state: Available
+Starting tower on column 5: 1
+Column marker positions after startTower: 5 0 0 0 5 0 
+Moving tower on column 5: 1
+Column marker positions after move: 6 0 0 0 5 0 
+Column marker positions after stop: 0 0 0 0 6 0 
+Printing column state after stop:
+------  ------  ------  ------  ------  -----B  ------  
+
