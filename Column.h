@@ -19,8 +19,10 @@ class Column {
         Column(int a);
         ~Column();
         [[nodiscard]] ColState state() const;
-        [[nodiscard]] char getColorChar(ECcolor color) const;
+        string colStateToString(ColState state);
         ostream& print(ostream& os) const;
+        [[nodiscard]] char getColorChar(ECcolor color) const;
+        [[nodiscard]] const int* getMarkerPositions() const;
         bool startTower(const Player* player);
         bool move();
         void stop(Player* player);

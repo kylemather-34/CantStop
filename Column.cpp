@@ -19,9 +19,19 @@ ColState Column::state() const {
     return colState;
 }
 
+string Column::colStateToString(ColState state) {
+    switch (state) {
+        case ColState::captured: return "Captured";
+        case ColState::pending: return "Pending";
+        case ColState::available: return "Available";
+        default: return "Unknown";
+    }
+}
+
+
 ostream &Column::print(ostream& os) const {
     // Convert column state to a string
-    std::string stateStr;
+    string stateStr;
     switch (colState) {
         case ColState::captured: stateStr = "Captured"; break;
         case ColState::pending: stateStr = "Pending"; break;
@@ -66,6 +76,10 @@ char Column::getColorChar(ECcolor color) const {
     }
 }
 
+const int* Column::getMarkerPositions() const {
+    return markerPositions;
+}
+
 bool Column::startTower(const Player *player) {
     ECcolor playerColor = (*player).color();
 
@@ -95,8 +109,20 @@ bool Column::startTower(const Player *player) {
 }
 
 bool Column::move() {
-/* Thinking about maybe making a variable that marks who is the current player.
- * That way when someone calls it we can make sure that the person calling it is the one that
- * just created the tower. That's if I am understanding that correctly.
- */
+    int& towerPos = markerPositions[static_cast<int>(ECcolor::white)];
+
+    // Check if there is a tower to move
+    if (towerPos == 0) {
+        return false; // No tower present, move is illegal
+    }
+
+    // Advance the tower one position
+    towerPos++;
+
+    // Check if the column is captured
+    if (towerPos >= 7) {
+        colState = ColState::pending;
+    }
+
+    return true;
 }

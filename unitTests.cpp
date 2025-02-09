@@ -8,6 +8,7 @@
 #include "enums.h"
 #include "Dice.h"
 #include "Player.h"
+#include "Column.h"
 
 /*diceUnitTest() function follows dice test plan in this directory to examine the
  *required input and output values, edge cases, and potential errors
@@ -70,6 +71,54 @@ void unitTests::playerUnitTest() {
     for (int y = 1; y <=3; ++y) {
         outFile << player.wonColumn(1) << endl;
     }
+
+    outFile.close();
+}
+
+void unitTests::columnUnitTest() {
+    ofstream outFile("Output.txt", ios::app);
+    if (!outFile) {
+        cerr << "Error opening file!" << endl;
+        return;
+    }
+
+    outFile << "\nTest Initialization: Column\n";
+
+    // Test valid column creation
+    Column column(5);
+    outFile  << "Column state: " << column.colStateToString(column.state()) << endl;
+
+    // Test starting tower on column
+    Player player("Test Player", ECcolor::blue);
+    outFile << "Starting tower on column 5: " << column.startTower(&player) << endl;
+    outFile << "Column marker positions after startTower: ";
+    const int* positions = column.getMarkerPositions();
+    for (int y = 0; y < static_cast<int>(ECcolor::Count); ++y) {
+        outFile << positions[y] << " ";
+    }
+    outFile << endl;
+
+    // Test move function
+    outFile << "Moving tower on column 5: " << column.move() << endl;
+    outFile << "Column marker positions after move: ";
+    for (int y = 0; y < static_cast<int>(ECcolor::Count); ++y) {
+        outFile << positions[y] << " ";
+    }
+    outFile << endl;
+
+    // Test column bust
+    column.bust();
+    outFile << "Column marker positions after bust: ";
+    for (int y = 0; y < static_cast<int>(ECcolor::Count); ++y) {
+        outFile << positions[y] << " ";
+    }
+    outFile << endl;
+
+    // Test column print function
+    outFile << "Printing column state:\n";
+    std::ostringstream os;
+    column.print(os);
+    outFile << os.str() << endl;
 
     outFile.close();
 }
