@@ -14,7 +14,7 @@ class Player {
         string playerName;
         ECcolor playerColor;
         int playerScore;
-        array<int, 3> scoreboard;
+        int scoreboard[3]{};
     public:
         explicit Player(const string playerName, ECcolor color);
         ~Player();

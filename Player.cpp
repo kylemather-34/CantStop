@@ -7,7 +7,9 @@
 // Constructor: Initializes a Player object with a name, color,
 // score set to 0, and an empty scoreboard
 Player::Player(const string playerName, ECcolor playerColor)
-    : playerName(playerName), playerColor(playerColor), playerScore(0), scoreboard(){}
+    : playerName(playerName), playerColor(playerColor), playerScore(0) {
+        for (int &y : scoreboard) y = 0; // Initialize scoreboard to 0
+    }
 
 // Destructor, uses default behavior
 Player::~Player() = default;
