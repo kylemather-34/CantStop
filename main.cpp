@@ -2,8 +2,6 @@
 // Project: Dice  File: main.cpp
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
-#include "Dice.h"
-#include "Player.h"
 #include "tools.hpp"
 #include "unitTests.h"
 
