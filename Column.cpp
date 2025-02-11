@@ -2,7 +2,7 @@
 // Project: Dice  File: Column.cpp
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
-#include "Column.h"
+#include "Column.hpp"
 
 Column::Column(int a) : columnNumber(a), colState(ColState::available){
     for (int &pos : markerPositions) {

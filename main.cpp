@@ -3,7 +3,7 @@
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
 #include "tools.hpp"
-#include "unitTests.h"
+#include "unitTests.hpp"
 
 using namespace std;
 

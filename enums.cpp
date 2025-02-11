@@ -3,7 +3,7 @@
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
 
-#include "enums.h"
+#include "enums.hpp"
 
 //String array for ECColor enum class
 const string ECcolorNames[] = {

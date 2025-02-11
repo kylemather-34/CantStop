@@ -2,7 +2,7 @@
 // Project: Player  File: Player.cpp
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
-#include "Player.h"
+#include "Player.hpp"
 
 // Constructor: Initializes a Player object with a name, color,
 // score set to 0, and an empty scoreboard

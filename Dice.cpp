@@ -2,7 +2,7 @@
 // Project: Dice  File: Dice.cpp
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
-#include "Dice.h"
+#include "Dice.hpp"
 
 //Constructor
 Dice::Dice(int n) : nDice(n) {

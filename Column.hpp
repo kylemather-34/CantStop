@@ -5,8 +5,8 @@
 #ifndef COLUMN_H
 #define COLUMN_H
 
-#include "enums.h"
-#include "Player.h"
+#include "enums.hpp"
+#include "Player.hpp"
 #include "tools.hpp"
 
 class Column {

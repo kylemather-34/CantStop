@@ -4,15 +4,15 @@ project(AdvanceC__)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(AdvanceC__ main.cpp
-        Dice.h
+        Dice.hpp
         Dice.cpp
-        Player.h
+        Player.hpp
         Player.cpp
-        enums.h
+        enums.hpp
         enums.cpp
-        unitTests.h
+        unitTests.hpp
         unitTests.cpp
         tools.cpp
-        Column.h
+        Column.hpp
         Column.cpp
 )

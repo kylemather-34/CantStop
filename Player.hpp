@@ -6,7 +6,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "tools.hpp"
-#include "enums.h"
+#include "enums.hpp"
 
 class Player {
     private:

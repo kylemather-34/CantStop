@@ -4,11 +4,11 @@
 //======================================================
 
 #include "tools.hpp"
-#include "unitTests.h"
-#include "enums.h"
-#include "Dice.h"
-#include "Player.h"
-#include "Column.h"
+#include "unitTests.hpp"
+#include "enums.hpp"
+#include "Dice.hpp"
+#include "Player.hpp"
+#include "Column.hpp"
 
 /*diceUnitTest() function follows dice test plan in this directory to examine the
  *required input and output values, edge cases, and potential errors
