@@ -7,8 +7,6 @@
 #define PLAYER_H
 #include "tools.hpp"
 #include "enums.h"
-#include <array>
-
 class Player {
     private:
         string playerName;
