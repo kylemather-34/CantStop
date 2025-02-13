@@ -15,4 +15,6 @@ add_executable(AdvanceC__ main.cpp
         tools.cpp
         Column.hpp
         Column.cpp
+        Game.h
+        Game.cpp
 )

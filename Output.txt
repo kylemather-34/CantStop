@@ -124,6 +124,39 @@ Printing column state after stop:
 ----------------------------------------------------------------
 	Ryan Lang, Kyle Mather
 	CSCI 4526 Spring 2025
+	Tue Feb 11 2025	12:33:41
+----------------------------------------------------------------
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 6 6 3 3 5 3 
+Dice values printed: 6 6 3 3 5 3 
+Test Destructor:
+No explicit output; check for memory leaks.
+
+Test Initialization: Player
+Player Name: Test Player
+Color: white
+Score: 0
+Columns Captured: 
+Testing winColumn() function:
+0
+0
+1
+
+Test Initialization: Column
+Column state: Available
+Starting tower on column 5: 1
+Column marker positions after startTower: 5 0 0 0 5 0 
+Moving tower on column 5: 1
+Column marker positions after move: 6 0 0 0 5 0 
+Column marker positions after stop: 0 0 0 0 6 0 
+Printing column state after stop:
+------  ------  ------  ------  ------  -----B  ------  
+
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
 	Tue Feb 11 2025	12:39:15
 ----------------------------------------------------------------
 Test Initialization: Dice

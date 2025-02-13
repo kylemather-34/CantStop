@@ -22,6 +22,8 @@ int main(int argc, char* argv[]) {
     unitTests test3;
     test3.columnUnitTest();
 
+    unitTests::testGame();
+
     if (ifstream infile("output.txt"); infile) {
         string line;
         while (getline(infile, line)) {

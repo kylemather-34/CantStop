@@ -12,6 +12,7 @@ class unitTests {
         static void diceUnitTest(); // Declaration of the diceUnitTest function
         static void playerUnitTest();
         static void columnUnitTest();
+        static void testGame();
 };
 
 #endif //UNITTESTS_H

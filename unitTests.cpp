@@ -9,6 +9,7 @@
 #include "Dice.hpp"
 #include "Player.hpp"
 #include "Column.hpp"
+#include "Game.h"
 
 /*diceUnitTest() function follows dice test plan in this directory to examine the
  *required input and output values, edge cases, and potential errors
@@ -116,8 +117,78 @@ void unitTests::columnUnitTest() {
 
     // Test column print function
     outFile << "Printing column state after stop:\n";
-    std::ostringstream os;
+    ostringstream os;
     column.print(os);
+    outFile << os.str() << endl;
+
+    outFile.close();
+}
+
+void unitTests::testGame() {
+    ofstream outFile("Output.txt", ios::app);
+    if (!outFile) {
+        cerr << "Error opening file!" << endl;
+        return;
+    }
+
+    outFile << "\nTest Initialization: Game\n";
+
+    Game game;  // Create a game instance
+
+    outFile << "\nTesting Dice Rolling:\n";
+    for (int y = 0; y < 4; ++y) {
+        outFile << "Die " << (y+1) << " rolled: " << game.getDice()[y].roll() << endl;
+    }
+
+    // Test player initialization
+    outFile << "\nTesting Player Initialization:\n";
+    outFile << "Player 1: ";
+    game.getPlayerOne().print();
+    outFile << "Player 2: ";
+    game.getPlayerTwo().print();
+
+    // Test column initialization
+    outFile << "\nTesting Column Initialization:\n";
+    outFile << "Column 1 (length 2) created.\n";
+    outFile << "Column 2 (length 7) created.\n";
+
+    // Test placing a tower in column 7
+    outFile << "\nTesting Tower Placement on Column 7:\n";
+    Column& col = game.getColumnTwo();
+    outFile << "Starting tower on column 7: " << col.startTower(&game.getPlayerOne()) << endl;
+
+    // Test column marker positions after tower start
+    outFile << "Column marker positions after startTower: ";
+    const int* positions = col.getMarkerPositions();
+    for (int y = 0; y < static_cast<int>(ECcolor::Count); ++y) {
+        outFile << positions[y] << " ";
+    }
+    outFile << endl;
+
+    // Test moving tower
+    outFile << "\nTesting Tower Move on Column 7:\n";
+    outFile << "Moving tower: " << col.move() << endl;
+
+    outFile << "Column marker positions after move: ";
+    for (int y = 0; y < static_cast<int>(ECcolor::Count); ++y) {
+        outFile << positions[y] << " ";
+    }
+    outFile << endl;
+
+    // Test stopping the column
+    outFile << "\nTesting Column Stop:\n";
+    col.stop(&game.getPlayerOne());
+
+    outFile << "Column marker positions after stop: ";
+    for (int y = 0; y < static_cast<int>(ECcolor::Count); ++y) {
+        outFile << positions[y] << " ";
+    }
+    outFile << endl;
+
+    // Test column print function
+    outFile << "\nPrinting Column 7 State After Stop:\n";
+    ostringstream os;
+    col.print(os);
     outFile << os.str() << endl;
 
     outFile.close();
