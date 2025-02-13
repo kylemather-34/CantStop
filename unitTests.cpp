@@ -143,9 +143,9 @@ void unitTests::testGame() {
     // Test player initialization
     outFile << "\nTesting Player Initialization:\n";
     outFile << "Player 1: ";
-    game.getPlayerOne().print();
+    game.getPlayerOne().print(outFile);
     outFile << "Player 2: ";
-    game.getPlayerTwo().print();
+    game.getPlayerTwo().print(outFile);
 
     // Test column initialization
     outFile << "\nTesting Column Initialization:\n";
