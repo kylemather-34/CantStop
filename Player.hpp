@@ -10,17 +10,17 @@
 
 class Player {
     private:
-        string playerName;
-        ECcolor playerColor;
-        int playerScore;
-        int scoreboard[3]{};
+        string pName;
+        ECcolor pColor;
+        int pScore;
+        int pScoreboard[3]{};
     public:
-        explicit Player(const string playerName, ECcolor color);
+        explicit Player(const string pName, ECcolor color);
         ~Player();
         void print() const;
         ostream& print(ostream&) const;
         ECcolor color() const;
-        [[nodiscard]] int score() const;
+        int score() const;
         bool wonColumn(int colNum);
 };
 

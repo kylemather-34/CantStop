@@ -186,3 +186,23 @@ Column marker positions after stop: 0 0 0 0 6 0
 Printing column state after stop:
 ------  ------  ------  ------  ------  -----B  ------  
 
+
+Test Initialization: Game
+
+Testing Dice Rolling:
+Die 1 rolled: 0x60000061c010
+
+Test Initialization: Game
+
+Testing Dice Rolling:
+Die 1 rolled: 0x600000718010
+
+Test Initialization: Game
+
+Testing Dice Rolling:
+Die 1 rolled: 0x60000265c040
+
+Test Initialization: Game
+
+Testing Dice Rolling:
+Die 1 rolled: 0x600002238010

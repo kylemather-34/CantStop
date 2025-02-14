@@ -94,7 +94,7 @@ void unitTests::columnUnitTest() {
     outFile << "Starting tower on column 5: " << column.startTower(&player) << endl;
     outFile << "Column marker positions after startTower: ";
     const int* positions = column.getMarkerPositions();
-    for (int y = 0; y < static_cast<int>(ECcolor::Count); ++y) {
+    for (int y = 0; y < (int)ECcolor::Count; ++y) {
         outFile << positions[y] << " ";
     }
     outFile << endl;
@@ -102,7 +102,7 @@ void unitTests::columnUnitTest() {
     // Test move function
     outFile << "Moving tower on column 5: " << column.move() << endl;
     outFile << "Column marker positions after move: ";
-    for (int y = 0; y < static_cast<int>(ECcolor::Count); ++y) {
+    for (int y = 0; y < (int)ECcolor::Count; ++y) {
         outFile << positions[y] << " ";
     }
     outFile << endl;
@@ -110,7 +110,7 @@ void unitTests::columnUnitTest() {
     // Test stop function
     column.stop(&player);  // Stop the player's turn and apply changes
     outFile << "Column marker positions after stop: ";
-    for (int y = 0; y < static_cast<int>(ECcolor::Count); ++y) {
+    for (int y = 0; y < (int)ECcolor::Count; ++y) {
         outFile << positions[y] << " ";
     }
     outFile << endl;
@@ -160,7 +160,7 @@ void unitTests::testGame() {
     // Test column marker positions after tower start
     outFile << "Column marker positions after startTower: ";
     const int* positions = col.getMarkerPositions();
-    for (int y = 0; y < static_cast<int>(ECcolor::Count); ++y) {
+    for (int y = 0; y < (int)ECcolor::Count; ++y) {
         outFile << positions[y] << " ";
     }
     outFile << endl;
@@ -170,7 +170,7 @@ void unitTests::testGame() {
     outFile << "Moving tower: " << col.move() << endl;
 
     outFile << "Column marker positions after move: ";
-    for (int y = 0; y < static_cast<int>(ECcolor::Count); ++y) {
+    for (int y = 0; y < (int)ECcolor::Count; ++y) {
         outFile << positions[y] << " ";
     }
     outFile << endl;
@@ -180,7 +180,7 @@ void unitTests::testGame() {
     col.stop(&game.getPlayerOne());
 
     outFile << "Column marker positions after stop: ";
-    for (int y = 0; y < static_cast<int>(ECcolor::Count); ++y) {
+    for (int y = 0; y < (int)ECcolor::Count; ++y) {
         outFile << positions[y] << " ";
     }
     outFile << endl;

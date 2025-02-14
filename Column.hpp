@@ -14,15 +14,15 @@ class Column {
         static int columnLength[13];
         const int columnNumber;
         ColState colState;
-        int markerPositions[static_cast<int>(ECcolor::Count)]{};
+        int markerPositions[(int)ECcolor::Count]{};
     public:
         Column(int a);
         ~Column();
-        [[nodiscard]] ColState state() const;
+        ColState state() const;
         string colStateToString(ColState state);
         ostream& print(ostream& os) const;
-        [[nodiscard]] char getColorChar(ECcolor color) const;
-        [[nodiscard]] const int* getMarkerPositions() const;
+        char getColorChar(ECcolor color) const;
+        const int* getMarkerPositions() const;
         bool startTower(const Player* player);
         bool move();
         void stop(Player* player);

@@ -6,9 +6,9 @@
 
 // Constructor: Initializes a Player object with a name, color,
 // score set to 0, and an empty scoreboard
-Player::Player(const string playerName, ECcolor playerColor)
-    : playerName(playerName), playerColor(playerColor), playerScore(0) {
-        for (int &y : scoreboard) y = 0; // Initialize scoreboard to 0
+Player::Player(const string pName, ECcolor pColor)
+    : pName(pName), pColor(pColor), pScore(0) {
+        for (int &y : pScoreboard) y = 0; // Initialize scoreboard to 0
     }
 
 // Destructor, uses default behavior
@@ -16,12 +16,12 @@ Player::~Player() = default;
 
 // Function to print player details to the output stream
 ostream& Player::print(ostream& os) const{
-    os << "Player Name: " << playerName << endl;
-    os << "Color: " << ECcolorNames[static_cast<int>(playerColor)] << endl;
-    os << "Score: " << playerScore << endl;
+    os << "Player Name: " << pName << endl;
+    os << "Color: " << ECcolorNames[(int)pColor] << endl;
+    os << "Score: " << pScore << endl;
     os << "Columns Captured: ";
-    for (int y = 0; y < playerScore; ++y) { // Loop to test both logic points work for captured column
-        os << scoreboard[y] << " ";
+    for (int y = 0; y < pScore; ++y) { // Loop to test both logic points work for captured column
+        os << pScoreboard[y] << " ";
     }
     os << endl;
     return os;
@@ -29,20 +29,20 @@ ostream& Player::print(ostream& os) const{
 
 // Getter function retrieves player color
 ECcolor Player::color() const {
-    return playerColor;
+    return pColor;
 }
 
 // Getter function retrieves player score
 int Player::score() const {
-    return playerScore;
+    return pScore;
 }
 
 // Records a won column and updates the players score
 bool Player::wonColumn(int colNum) {
-    if (playerScore < 3) { // Ensure only up to 3 columns are recorded
-        scoreboard[playerScore] = colNum;
-        ++playerScore;
-        return playerScore == 3;
+    if (pScore < 3) { // Ensure only up to 3 columns are recorded
+        pScoreboard[pScore] = colNum;
+        ++pScore;
+        return pScore == 3;
     }
     return false; // No change is already at max score
 }

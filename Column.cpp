@@ -39,7 +39,7 @@ ostream &Column::print(ostream& os) const {
     }
 
     // Print column number and state
-    std::cout << columnNumber << "  " << stateStr << "   ";
+    cout << columnNumber << "  " << stateStr << "   ";
 
     // Print the column's marker positions
     for (int pos = 1; pos <= 7; ++pos) { // Assuming positions are between 1 and 7
@@ -109,7 +109,7 @@ bool Column::startTower(const Player *player) {
 }
 
 bool Column::move() {
-    int& towerPos = markerPositions[static_cast<int>(ECcolor::white)];
+    int& towerPos = markerPositions[(int)ECcolor::white];
 
     // Check if there is a tower to move
     if (towerPos == 0) {
@@ -133,8 +133,8 @@ void Column::stop(Player* player) {
     ECcolor playerColor = player->color();
 
     // Replace the tower with the player's color
-    markerPositions[static_cast<int>(playerColor)] = markerPositions[static_cast<int>(ECcolor::white)];
-    markerPositions[static_cast<int>(ECcolor::white)] = 0;  // Remove tower
+    markerPositions[(int)playerColor] = markerPositions[(int)ECcolor::white];
+    markerPositions[(int)ECcolor::white] = 0;  // Remove tower
 
     // If the column state is pending, change it to captured and call wonColumn()
     if (colState == ColState::pending) {
