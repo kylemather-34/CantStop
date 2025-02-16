@@ -34,3 +34,48 @@ In order to meet requirements for Column, we must ensure the following:
 The getMarkerPositions() function returns the correct marker positions in the column.
 The plan is to create a test Column, call all of these functions on it, and print it to both the
 console and Output.txt
+
+------------------------------------------------------------------------------------------------------
+
+TEST PLAN - Game:
+In order to meet requirements for the Game module, we must ensure the following:
+
+Constructor Initialization:
+
+Verify that the Game constructor correctly initializes all members, including the Dice, Player objects, and Column objects.
+Check that the fourDice array is allocated properly and contains valid Dice objects.
+Dice Rolling:
+
+Ensure that the roll() function works properly for all dice in the fourDice array.
+The dice should return random values between 1 and 6, and the values should be stored in rVal.
+Player Initialization:
+
+Confirm that the getNewPlayer() function correctly gathers input from the user and assigns a player name and color.
+Validate that the player is initialized with the correct name, color, and score.
+Ensure the player input is case-insensitive and defaults to blue when an invalid color is entered.
+Column Initialization:
+
+Verify that the Column objects cOne and cTwo are created with the correct number of spaces (2 and 7, respectively).
+Ensure that the Column objects correctly initialize their internal state and marker positions.
+Tower Placement:
+
+Test the startTower() function by placing a tower in Column 2 (7-length column) and verify that the column state changes as expected.
+Ensure the getMarkerPositions() function correctly reflects the updated marker positions after a tower is placed.
+Tower Movement:
+
+Confirm that the move() function properly moves a tower within the column.
+Verify that the marker positions update accordingly after the tower is moved.
+Stopping the Column:
+
+Test the stop() function by ending a player's turn and ensure that the column's state is updated correctly.
+Verify that the getMarkerPositions() function returns the correct state after the column is stopped.
+Printing Column State:
+
+Test the print() function to ensure that the column's state is correctly printed.
+The column state should reflect the final state after all actions (startTower, move, stop) have been performed.
+Overall Integration Test:
+
+Integrate all these functionalities in the testGame() function.
+Verify that the printed output, including dice rolls, player initialization, column state, tower placement, movement, and stopping, is correct.
+Ensure that the output is written to both the console and the "Output.txt" file.
+The plan is to create a test Game, call all of these functions, and print the results to both the console and "Output.txt".
