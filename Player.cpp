@@ -4,47 +4,28 @@
 //======================================================
 #include "Player.hpp"
 
-// Constructor: Initializes a Player object with a name, color,
-// score set to 0, and an empty scoreboard
-Player::Player(const string playerName, ECcolor playerColor)
-    : playerName(playerName), playerColor(playerColor), playerScore(0) {
-        for (int &y : scoreboard) y = 0; // Initialize scoreboard to 0
-    }
+// Constructor: Initializes a Player object with a name, color, and a cleared scoreboard
+Player::Player(const string name, ECcolor color)
+    : name(name), color(color) {
+    for (int &y : scoreboard) y = 0; // Initialize scoreboard to 0
+}
 
 // Destructor, uses default behavior
 Player::~Player() = default;
 
-// Function to print player details to the output stream
-ostream& Player::print(ostream& os) const{
-    os << "Player Name: " << playerName << endl;
-    os << "Color: " << ECcolorNames[static_cast<int>(playerColor)] << endl;
-    os << "Score: " << playerScore << endl;
-    os << "Columns Captured: ";
-    for (int y = 0; y < playerScore; ++y) { // Loop to test both logic points work for captured column
+// Function to print player details in a single line
+ostream& Player::print(ostream& os) const {
+    os << name << " [" << ECcolorNames[static_cast<int>(color)]
+       << "] Score: " << score << " Captured: ";
+    for (int y = 0; y < score; ++y) {
         os << scoreboard[y] << " ";
     }
-    os << endl;
     return os;
 }
 
-// Getter function retrieves player color
-ECcolor Player::color() const {
-    return playerColor;
-}
-
-// Getter function retrieves player score
-int Player::score() const {
-    return playerScore;
-}
-
-// Records a won column and updates the players score
+// Records a won column and updates the player's score
 bool Player::wonColumn(int colNum) {
-    if (playerScore < 3) { // Ensure only up to 3 columns are recorded
-        scoreboard[playerScore] = colNum;
-        ++playerScore;
-        return playerScore == 3;
-    }
-    return false; // No change is already at max score
+    return (score < 3) ? (scoreboard[score++] = colNum, score == 3) : false;
 }
 
 // Overloaded output stream operator to print Player details

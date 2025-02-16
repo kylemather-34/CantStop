@@ -1,6 +1,0 @@
-
-Test Initialization: Game
-
-Testing Dice Rolling:
-Die 1 rolled: 0x157956a6f60
-Die 2 rolled: 0x1000b5da875370b6

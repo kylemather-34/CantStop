@@ -3,7 +3,6 @@
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
 
-#include "tools.hpp"
 #include "unitTests.hpp"
 #include "enums.hpp"
 #include "Dice.hpp"

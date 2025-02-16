@@ -10,20 +10,19 @@
 
 class Player {
     private:
-        string playerName;
-        ECcolor playerColor;
-        int playerScore;
+        string name;
+        ECcolor color;
+        int score = 0;
         int scoreboard[3]{};
     public:
-        explicit Player(const string playerName, ECcolor color);
+        explicit Player(const string name, ECcolor color);
         ~Player();
         void print() const;
         ostream& print(ostream&) const;
-        ECcolor color() const;
-        [[nodiscard]] int score() const;
+        ECcolor getColor() const {return color;}
+        int getScore() const {return score;}
         bool wonColumn(int colNum);
 };
 
 ostream& operator<<(ostream&, const Player&);
 #endif //PLAYER_H
-
