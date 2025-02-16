@@ -18,7 +18,7 @@ Dice::~Dice() {
 // Generates a random number in the range of 1 to nDice and returns into array
 const int* Dice::roll () {
     for (int x = 0; x < nDice; x++) {
-        rVal[x] = (rand() % (nDice) + 1);
+        rVal[x] = (rand() % (6) + 1);
     }
     return rVal;
 }

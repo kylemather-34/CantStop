@@ -12,23 +12,13 @@ Game::Game() :
     pOne(getNewPlayer()), pTwo(getNewPlayer()),
     fourDice(nullptr)
 {
-    fourDice = new Dice(4);
-
+    fourDice = new Dice[4];
 }
 
 Game::~Game() {
-    delete fourDice; // Free allocated dice array
+    delete[] fourDice; // Free allocated dice array
 }
 
-// Convert string to ECcolor
-/*ECcolor stringToColor(const string& str) {
-    for (size_t y = 0; y < (size_t)ECcolor::Count; ++y) {
-        if (ECcolorNames[y] == str) {
-            return static_cast<ECcolor>(y);
-        }
-    }
-    return ECcolor::error; // Default if not found
-}*/
 
 /* getNewPlayer function inputs player's data from keyboard
  * and calls the constructor */
@@ -43,38 +33,25 @@ Player Game::getNewPlayer() {
     cout << "Enter letter of color (o. orange, y. yellow, g. green, b. blue): ";
     cin >> colorChar;
 
-    color = charToColor(colorChar);
+    colorChar = tolower(colorChar);
 
-
-    if (color == ECcolor::error) {
-        cout << "Invalid color! Defaulting to white.\n";
-        color = ECcolor::white;
+    switch (colorChar) {
+        case 'o':
+            color = ECcolor::orange;
+            break;
+        case 'y':
+            color = ECcolor::yellow;
+            break;
+        case 'g':
+            color = ECcolor::green;
+            break;
+        case 'b':
+            color = ECcolor::blue;
+            break;
+        default:
+            cout << "Invalid color! Defaulting to blue.\n";
+            color = ECcolor::blue;
     }
 
     return Player(name, color);
-}
-
-// Getter method for the dice array
-Dice* Game::getDice() const {
-    return fourDice;
-}
-
-// Getter method for Player One
-Player& Game::getPlayerOne(){
-    return pOne;
-}
-
-// Getter method for Player Two
-Player& Game::getPlayerTwo(){
-    return pTwo;
-}
-
-// Getter method for Column One
-Column& Game::getColumnOne(){
-    return cOne;
-}
-
-// Getter method for Column Two
-Column& Game::getColumnTwo(){
-    return cTwo;
 }

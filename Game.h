@@ -22,10 +22,10 @@ class Game {
         explicit Game();
         ~Game();
         Player getNewPlayer();
-        Dice* getDice() const;
-        Player& getPlayerOne();
-        Player& getPlayerTwo();
-        Column& getColumnOne();
-        Column& getColumnTwo();
+        Dice* getDice() const {return fourDice;}
+        Player& getPlayerOne() {return pOne;}
+        Player& getPlayerTwo() {return pTwo;}
+        Column& getColumnOne() {return cOne;}
+        Column& getColumnTwo() {return cTwo;}
 };
 #endif //GAME_H

@@ -12,6 +12,7 @@ class Dice {
         int nDice = 0; //# of dice in the set
         int* rVal; // Array we will store rolls in
     public:
+        Dice() : Dice(6) {} // Default to 6-sided dice
         Dice(int n); // Constructing the class
         ~Dice(); // Destructor
         const int* roll(); // Function for "rolling" the dice

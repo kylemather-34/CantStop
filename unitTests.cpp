@@ -63,6 +63,7 @@ void unitTests::playerUnitTest() {
         return;
     }
 
+    fbanner(outFile);
     outFile << "\nTest Initialization: Player\n";
 
     Player player("Test Player", ECcolor::white);
@@ -82,6 +83,7 @@ void unitTests::columnUnitTest() {
         return;
     }
 
+    fbanner(outFile);
     outFile << "\nTest Initialization: Column\n";
 
     // Test valid column creation
@@ -130,13 +132,16 @@ void unitTests::testGame() {
         return;
     }
 
+    fbanner(outFile);
     outFile << "\nTest Initialization: Game\n";
 
     Game game;  // Create a game instance
 
     outFile << "\nTesting Dice Rolling:\n";
     for (int y = 0; y < 4; ++y) {
-        outFile << "Die " << (y+1) << " rolled: " << game.getDice()[y].roll() << endl;
+        outFile << "Die " << (y+1) << " rolled: ";
+        game.getDice()[y].roll();
+        outFile << game.getDice()[y] << endl;
     }
 
     // Test player initialization

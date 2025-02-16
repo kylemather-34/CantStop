@@ -8,6 +8,7 @@
 int main(int argc, char* argv[]) {
     srand(time(nullptr));
 
+    /*
     // Run dice unit test
     unitTests test;
     test.diceUnitTest();
@@ -19,8 +20,9 @@ int main(int argc, char* argv[]) {
     // Run column unit test
     unitTests test3;
     test3.columnUnitTest();
+    */
 
-    // unitTests::testGame();
+    unitTests::testGame();
 
     if (ifstream infile("output.txt"); infile) {
         string line;
