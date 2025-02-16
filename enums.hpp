@@ -16,6 +16,16 @@ enum class ColState {
     available, pending, captured, error
 };
 
+inline ECcolor charToColor(char c) {
+    switch (std::tolower(c)) {
+        case 'o': return ECcolor::orange;
+        case 'y': return ECcolor::yellow;
+        case 'g': return ECcolor::green;
+        case 'b': return ECcolor::blue;
+        default: return ECcolor::error;
+    }
+}
+
 extern const string ColNames[];
 extern const string ECcolorNames[];
 #endif //ENUMS_H

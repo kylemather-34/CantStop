@@ -9,38 +9,42 @@
 // Constructor
 Game::Game() :
     cOne(2), cTwo(7),
-    pOne(getNewPlayer()), pTwo(getNewPlayer())
+    pOne(getNewPlayer()), pTwo(getNewPlayer()),
+    fourDice(nullptr)
 {
     fourDice = new Dice(4);
+
 }
 
 Game::~Game() {
-    delete[] fourDice; // Free allocated dice array
+    delete fourDice; // Free allocated dice array
 }
 
 // Convert string to ECcolor
-ECcolor stringToColor(const std::string& str) {
-    for (size_t y = 0; y < static_cast<size_t>(ECcolor::Count); ++y) {
+/*ECcolor stringToColor(const string& str) {
+    for (size_t y = 0; y < (size_t)ECcolor::Count; ++y) {
         if (ECcolorNames[y] == str) {
             return static_cast<ECcolor>(y);
         }
     }
     return ECcolor::error; // Default if not found
-}
+}*/
 
 /* getNewPlayer function inputs player's data from keyboard
  * and calls the constructor */
 Player Game::getNewPlayer() {
-    string name, colorStr;
+    string name;
+    char colorChar;
     ECcolor color;
 
     cout << "Enter player name: ";
     cin >> name;
+    transform(name.begin(), name.end(), name.begin(), ::tolower);
+    cout << "Enter letter of color (o. orange, y. yellow, g. green, b. blue): ";
+    cin >> colorChar;
 
-    cout << "Enter player color (white, orange, yellow, green, blue): ";
-    cin >> colorStr;
+    color = charToColor(colorChar);
 
-    color = stringToColor(colorStr); // Convert string input to ECcolor
 
     if (color == ECcolor::error) {
         cout << "Invalid color! Defaulting to white.\n";

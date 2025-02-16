@@ -1,0 +1,188 @@
+
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Sat Feb  1 2025	17:52:51
+----------------------------------------------------------------
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 1 4 4 1 6 1 
+Dice values printed: 1 4 4 1 6 1 
+Test Destructor:
+No explicit output; check for memory leaks.
+
+Test Initialization: Player
+Player Name: Test Player
+Color: white
+Score: 0
+Columns Captured: 
+Testing winColumn() function:
+0
+0
+1
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Sat Feb  1 2025	17:55:15
+----------------------------------------------------------------
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 1 3 3 1 1 5 
+Dice values printed: 1 3 3 1 1 5 
+Test Destructor:
+No explicit output; check for memory leaks.
+
+Test Initialization: Player
+Player Name: Test Player
+Color: white
+Score: 0
+Columns Captured: 
+Testing winColumn() function:
+0
+0
+1
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Sat Feb  1 2025	17:57:33
+----------------------------------------------------------------
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 1 3 1 4 6 5 
+Dice values printed: 1 3 1 4 6 5 
+Test Destructor:
+No explicit output; check for memory leaks.
+
+Test Initialization: Player
+Player Name: Test Player
+Color: white
+Score: 0
+Columns Captured: 
+Testing winColumn() function:
+0
+0
+1
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Sat Feb  1 2025	17:59:41
+----------------------------------------------------------------
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 3 6 4 3 6 5 
+Dice values printed: 3 6 4 3 6 5 
+Test Destructor:
+No explicit output; check for memory leaks.
+
+Test Initialization: Player
+Player Name: Test Player
+Color: white
+Score: 0
+Columns Captured: 
+Testing winColumn() function:
+0
+0
+1
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Sun Feb  9 2025	15:22:50
+----------------------------------------------------------------
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 6 1 6 6 1 1 
+Dice values printed: 6 1 6 6 1 1 
+Test Destructor:
+No explicit output; check for memory leaks.
+
+Test Initialization: Player
+Player Name: Test Player
+Color: white
+Score: 0
+Columns Captured: 
+Testing winColumn() function:
+0
+0
+1
+
+Test Initialization: Column
+Column state: Available
+Starting tower on column 5: 1
+Column marker positions after startTower: 5 0 0 0 5 0 
+Moving tower on column 5: 1
+Column marker positions after move: 6 0 0 0 5 0 
+Column marker positions after stop: 0 0 0 0 6 0 
+Printing column state after stop:
+------  ------  ------  ------  ------  -----B  ------  
+
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Tue Feb 11 2025	12:33:41
+----------------------------------------------------------------
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 6 6 3 3 5 3 
+Dice values printed: 6 6 3 3 5 3 
+Test Destructor:
+No explicit output; check for memory leaks.
+
+Test Initialization: Player
+Player Name: Test Player
+Color: white
+Score: 0
+Columns Captured: 
+Testing winColumn() function:
+0
+0
+1
+
+Test Initialization: Column
+Column state: Available
+Starting tower on column 5: 1
+Column marker positions after startTower: 5 0 0 0 5 0 
+Moving tower on column 5: 1
+Column marker positions after move: 6 0 0 0 5 0 
+Column marker positions after stop: 0 0 0 0 6 0 
+Printing column state after stop:
+------  ------  ------  ------  ------  -----B  ------  
+
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Tue Feb 11 2025	12:39:15
+----------------------------------------------------------------
+Test Initialization: Dice
+Test Rolling Dice:
+Dice values: 6 4 6 6 2 4 
+Dice values printed: 6 4 6 6 2 4 
+Test Destructor:
+No explicit output; check for memory leaks.
+
+Test Initialization: Player
+Player Name: Test Player
+Color: white
+Score: 0
+Columns Captured: 
+Testing winColumn() function:
+0
+0
+1
+
+Test Initialization: Column
+Column state: Available
+Starting tower on column 5: 1
+Column marker positions after startTower: 5 0 0 0 5 0 
+Moving tower on column 5: 1
+Column marker positions after move: 6 0 0 0 5 0 
+Column marker positions after stop: 0 0 0 0 6 0 
+Printing column state after stop:
+------  ------  ------  ------  ------  -----B  ------  
+
