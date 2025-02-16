@@ -206,3 +206,53 @@ Test Initialization: Game
 
 Testing Dice Rolling:
 Die 1 rolled: 0x600002238010
+
+Test Initialization: Game
+
+Testing Dice Rolling:
+Die 1 rolled: 0x6000012ec010
+
+Test Initialization: Game
+
+Testing Dice Rolling:
+Die 1 rolled: 0x6000036e0010
+
+Test Initialization: Game
+
+Testing Dice Rolling:
+Die 1 rolled: 0x60000250c010
+
+Test Initialization: Game
+
+Testing Dice Rolling:
+Die 1 rolled: 0x6000016ec010
+
+Test Initialization: Game
+
+Testing Dice Rolling:
+Die 1 rolled: 0x60000093c040
+
+Test Initialization: Game
+
+Testing Dice Rolling:
+Die 1 rolled: 0x600003480010
+
+Test Initialization: Game
+
+Testing Dice Rolling:
+Die 1 rolled: 0x6000010bc010
+
+Test Initialization: Game
+
+Testing Dice Rolling:
+Die 1 rolled: 0x600000d30010
+
+Test Initialization: Game
+
+Testing Dice Rolling:
+Die 1 rolled: 0x6000024bc010
+
+Test Initialization: Game
+
+Testing Dice Rolling:
+Die 1 rolled: 0x600002f8c010

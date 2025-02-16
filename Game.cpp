@@ -9,24 +9,26 @@
 // Constructor
 Game::Game() :
     cOne(2), cTwo(7),
-    pOne(getNewPlayer()), pTwo(getNewPlayer())
+    pOne(getNewPlayer()), pTwo(getNewPlayer()),
+    fourDice(nullptr)
 {
     fourDice = new Dice(4);
+
 }
 
 Game::~Game() {
-    delete[] fourDice; // Free allocated dice array
+    delete fourDice; // Free allocated dice array
 }
 
 // Convert string to ECcolor
-ECcolor stringToColor(const string& str) {
+/*ECcolor stringToColor(const string& str) {
     for (size_t y = 0; y < (size_t)ECcolor::Count; ++y) {
         if (ECcolorNames[y] == str) {
             return static_cast<ECcolor>(y);
         }
     }
     return ECcolor::error; // Default if not found
-}
+}*/
 
 /* getNewPlayer function inputs player's data from keyboard
  * and calls the constructor */
