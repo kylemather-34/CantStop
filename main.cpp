@@ -12,17 +12,20 @@ int main(int argc, char* argv[]) {
     // Run dice unit test
     unitTests test;
     test.diceUnitTest();
-
-    // Run player unit test
-    unitTests test2;
-    test2.playerUnitTest();
-
-    // Run column unit test
-    unitTests test3;
-    test3.columnUnitTest();
     */
 
-    unitTests::testGame();
+    /*
+    // Run player unit test
+    unitTests::playerUnitTest();
+    */
+
+    // Run column unit test
+    unitTests::columnUnitTest();
+
+    /*
+    // Run game unit test
+    // unitTests::testGame();
+    */
 
     if (ifstream infile("output.txt"); infile) {
         string line;
