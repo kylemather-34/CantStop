@@ -13,6 +13,7 @@ class unitTests {
         static void playerUnitTest();
         static void columnUnitTest();
         static void testGame();
+        static void testBoard();
 };
 
 #endif //UNITTESTS_H

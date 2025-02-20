@@ -9,6 +9,7 @@
 #include "Player.hpp"
 #include "Column.hpp"
 #include "Game.h"
+#include "Board.hpp"
 
 /*diceUnitTest() function follows dice test plan in this directory to examine the
  *required input and output values, edge cases, and potential errors
@@ -196,4 +197,19 @@ void unitTests::testGame() {
     outFile << os.str() << endl;
 
     outFile.close();
+}
+
+void unitTests::testBoard() {
+    ofstream outFile("Output.txt", ios::app);
+    if (!outFile) {
+        cerr << "Error opening file!" << endl;
+        return;
+    }
+
+    fbanner(outFile);
+    outFile << "\nTest Initialization: Game\n";
+
+    Board board;
+
+
 }

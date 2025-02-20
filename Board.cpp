@@ -2,7 +2,7 @@
 // Created by Kyle on 2/17/2025.
 //
 
-#include "Board.h"
+#include "Board.hpp"
 
 // Constructor
 Board::Board() {

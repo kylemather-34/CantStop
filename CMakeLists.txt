@@ -17,6 +17,6 @@ add_executable(AdvanceC__ main.cpp
         Column.cpp
         Game.h
         Game.cpp
-        Board.h
+        Board.hpp
         Board.cpp
 )

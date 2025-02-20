@@ -129,6 +129,30 @@ AdvanceC__/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvanceC__.dir/build.make CMakeFiles/AdvanceC__.dir/build
 .PHONY : AdvanceC__/fast
 
+Board.o: Board.cpp.o
+.PHONY : Board.o
+
+# target to build an object file
+Board.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvanceC__.dir/build.make CMakeFiles/AdvanceC__.dir/Board.cpp.o
+.PHONY : Board.cpp.o
+
+Board.i: Board.cpp.i
+.PHONY : Board.i
+
+# target to preprocess a source file
+Board.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvanceC__.dir/build.make CMakeFiles/AdvanceC__.dir/Board.cpp.i
+.PHONY : Board.cpp.i
+
+Board.s: Board.cpp.s
+.PHONY : Board.s
+
+# target to generate assembly for a file
+Board.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvanceC__.dir/build.make CMakeFiles/AdvanceC__.dir/Board.cpp.s
+.PHONY : Board.cpp.s
+
 Column.o: Column.cpp.o
 .PHONY : Column.o
 
@@ -330,6 +354,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... AdvanceC__"
+	@echo "... Board.o"
+	@echo "... Board.i"
+	@echo "... Board.s"
 	@echo "... Column.o"
 	@echo "... Column.i"
 	@echo "... Column.s"
