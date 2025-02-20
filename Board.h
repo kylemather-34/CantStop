@@ -17,7 +17,7 @@ class Board {
     public:
         Board();
         ~Board();
-        void print();
+        void print() const;
         void startTurn(Player* player);
         bool move(int column);
         void stop();

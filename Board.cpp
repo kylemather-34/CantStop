@@ -23,10 +23,10 @@ Board::~Board() {
     }
 }
 
-void Board::print() {
+void Board::print() const {
     for (int y = 2; y <= 12; ++y) {
         cout << "Column " << y << ": ";
-        if (backBone[y]) backBone[y]->print();
+        if (backBone[y]) backBone[y]->print(cout);
         cout << endl;
     }
 }
@@ -34,4 +34,52 @@ void Board::print() {
 ostream& operator<<(std::ostream& os, const Board& board) {
     board.print();
     return os;
+}
+
+void Board::startTurn(Player* player) {
+    currentPlayer = player;
+    countTowers = 0;
+    for (int y = 2; y < 3; ++y) towerCols[y] = -1;
+}
+
+bool Board::move(int column) {
+    if (column < 2 || column > 12 || !backBone[column]) return false;
+
+    // Check if column is captured or pending
+    if (backBone[column]->isCaptured() || backBone[column]->isPending(currentPlayer)) return false;
+
+    // If column has no tower and there are no unused towers, return false
+    bool towerExists = false;
+    for (int i = 0; i < countTowers; ++i) {
+        if (towerCols[i] == column) {
+            towerExists = true;
+            break;
+        }
+    }
+
+    if (!towerExists && countTowers == 3) return false;
+
+    // Place tower if possible
+    if (!towerExists) {
+        towerCols[countTowers++] = column;
+    }
+
+    backBone[column]->move();
+    return true;
+}
+
+// Stop function: finalizes tower positions
+void Board::stop() {
+    for (int i = 0; i < countTowers; ++i) {
+        backBone[towerCols[i]]->stop(currentPlayer);
+    }
+    countTowers = 0;
+}
+
+// Bust function: removes all towers
+void Board::bust() {
+    for (int i = 0; i < countTowers; ++i) {
+        backBone[towerCols[i]]->bust();
+    }
+    countTowers = 0;
 }

@@ -143,6 +143,14 @@ void Column::stop(Player* player) {
     }
 }
 
+bool Column::isCaptured() const {
+    return colState == ColState::captured;
+}
+
+bool Column::isPending(const Player* player) const {
+    return colState == ColState::pending;
+}
+
 void Column::bust() {
     // Currently a stub function with an empty body, will be implemented later
 }

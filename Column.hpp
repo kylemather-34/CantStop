@@ -26,6 +26,8 @@ class Column {
         bool startTower(const Player* player);
         bool move();
         void stop(Player* player);
+        bool isCaptured() const;
+        bool isPending(const Player* player) const;
         void bust();
 };
 
