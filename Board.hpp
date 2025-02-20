@@ -22,6 +22,7 @@ class Board {
         bool move(int column);
         void stop();
         void bust();
+        Column* getColumn(int column);
 };
 
 ostream& operator<<(ostream& os, const Board& board);

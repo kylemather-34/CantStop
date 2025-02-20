@@ -84,3 +84,72 @@ Column marker positions after stop: 0 0 0 0 6 0
 Printing Column 7 State After Stop:
 ------  ------  ------  ------  ------  -----B  ------  
 
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Thu Feb 20 2025	14:15:53
+----------------------------------------------------------------
+
+Test Initialization: Column
+Column state: Available
+Starting tower on column 5: 1
+Column marker positions after startTower: 5 0 0 0 5 0 
+Moving tower on column 5: 1
+Column marker positions after move: 6 0 0 0 5 0 
+Column marker positions after stop: 0 0 0 0 6 0 
+Printing column state after stop:
+------  ------  ------  ------  ------  -----B  ------  
+
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Thu Feb 20 2025	14:17:19
+----------------------------------------------------------------
+
+Test Initialization: Game
+
+Testing Dice Rolling:
+Die 1 rolled: 4 1 6 3 5 1 
+Die 2 rolled: 5 5 5 4 5 5 
+Die 3 rolled: 3 1 2 1 5 6 
+Die 4 rolled: 2 3 3 5 4 5 
+
+Testing Player Initialization:
+Player 1: Player Name: ryan
+Color: blue
+Score: 0
+Columns Captured: 
+Player 2: Player Name: paul
+Color: yellow
+Score: 0
+Columns Captured: 
+
+Testing Board Initialization:
+Column 2 initialized correctly.
+Column 3 initialized correctly.
+Column 4 initialized correctly.
+Column 5 initialized correctly.
+Column 6 initialized correctly.
+Column 7 initialized correctly.
+Column 8 initialized correctly.
+Column 9 initialized correctly.
+Column 10 initialized correctly.
+Column 11 initialized correctly.
+Column 12 initialized correctly.
+
+Testing Tower Placement on Column 7:
+Starting tower on column 7: Success
+Column marker positions after startTower: 5 0 0 0 5 0 
+
+Testing Tower Move on Column 7:
+Moving tower: Success
+Column marker positions after move: 6 0 0 0 5 0 
+
+Testing Column Stop:
+Column marker positions after stop: 0 0 0 0 6 0 
+
+Printing Column 7 State After Stop:
+------  ------  ------  ------  ------  -----B  ------  
+

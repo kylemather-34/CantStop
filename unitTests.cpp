@@ -209,15 +209,14 @@ void unitTests::testBoard() {
     fbanner(outFile);
     outFile << "\nTest Initialization: Game\n";
 
+    // Initialize board and game
     Board board;
-
-    Game game;  // Create a game instance
+    Game game;
 
     outFile << "\nTesting Dice Rolling:\n";
     for (int y = 0; y < 4; ++y) {
-        outFile << "Die " << (y+1) << " rolled: ";
         game.getDice()[y].roll();
-        outFile << game.getDice()[y] << endl;
+        outFile << "Die " << (y + 1) << " rolled: " << game.getDice()[y] << endl;
     }
 
     // Test player initialization
@@ -227,19 +226,26 @@ void unitTests::testBoard() {
     outFile << "Player 2: ";
     game.getPlayerTwo().print(outFile);
 
-    // Test column initialization
-    outFile << "\nTesting Column Initialization:\n";
-    outFile << "Column 1 (length 2) created.\n";
-    outFile << "Column 2 (length 7) created.\n";
+    // Test board initialization
+    outFile << "\nTesting Board Initialization:\n";
+    for (int i = 2; i < 13; ++i) {
+        if (board.getColumn(i) != nullptr) {
+            outFile << "Column " << i << " initialized correctly.\n";
+        } else {
+            outFile << "Column " << i << " initialization failed!\n";
+        }
+    }
 
     // Test placing a tower in column 7
     outFile << "\nTesting Tower Placement on Column 7:\n";
     Column& col = game.getColumnTwo();
-    outFile << "Starting tower on column 7: " << col.startTower(&game.getPlayerOne()) << endl;
+    bool towerPlaced = col.startTower(&game.getPlayerOne());
+    outFile << "Starting tower on column 7: " << (towerPlaced ? "Success" : "Failed") << endl;
 
-    // Test column marker positions after tower start
-    outFile << "Column marker positions after startTower: ";
+    // Get updated marker positions
     const int* positions = col.getMarkerPositions();
+
+    outFile << "Column marker positions after startTower: ";
     for (int y = 0; y < (int)ECcolor::Count; ++y) {
         outFile << positions[y] << " ";
     }
@@ -247,8 +253,10 @@ void unitTests::testBoard() {
 
     // Test moving tower
     outFile << "\nTesting Tower Move on Column 7:\n";
-    outFile << "Moving tower: " << col.move() << endl;
+    bool moved = col.move();
+    outFile << "Moving tower: " << (moved ? "Success" : "Failed") << endl;
 
+    positions = col.getMarkerPositions();  // Refresh positions after move
     outFile << "Column marker positions after move: ";
     for (int y = 0; y < (int)ECcolor::Count; ++y) {
         outFile << positions[y] << " ";
@@ -259,6 +267,7 @@ void unitTests::testBoard() {
     outFile << "\nTesting Column Stop:\n";
     col.stop(&game.getPlayerOne());
 
+    positions = col.getMarkerPositions();  // Refresh positions after stop
     outFile << "Column marker positions after stop: ";
     for (int y = 0; y < (int)ECcolor::Count; ++y) {
         outFile << positions[y] << " ";

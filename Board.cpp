@@ -83,3 +83,8 @@ void Board::bust() {
     }
     countTowers = 0;
 }
+
+Column* Board::getColumn(int column) {
+    if (column < 2 || column > 12) return nullptr; // Ensure valid column range
+    return backBone[column];
+}

@@ -20,12 +20,16 @@ int main(int argc, char* argv[]) {
     */
 
     // Run column unit test
-    unitTests::columnUnitTest();
+    // unitTests::columnUnitTest();
 
     /*
     // Run game unit test
     // unitTests::testGame();
     */
+
+
+    // Run board unit test
+    unitTests::testBoard();
 
     if (ifstream infile("output.txt"); infile) {
         string line;
