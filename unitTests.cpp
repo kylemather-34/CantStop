@@ -207,7 +207,7 @@ void unitTests::testBoard() {
     }
 
     fbanner(outFile);
-    outFile << "\nTest Initialization: Game\n";
+    outFile << "\nTest Initialization: Board\n";
 
     // Initialize board and game
     Board board;
