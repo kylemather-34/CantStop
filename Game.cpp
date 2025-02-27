@@ -64,11 +64,22 @@ void oneTurn(Player& player) {
     while (true) {
 
         // cout << "Its " << player.getName(); Was going to have it so it said
-        // turn it wsa
+        // who's turn it is
         cout << "Pick a choice (Use the # assosciated with the choice): \n 1. roll  2. stop    3. resign" << endl;
         int choice;
         cin >> choice;
-    }
+
+        if (choice == 2) { // Stop
+            board.stop();
+            for (int i = 0; i < 3; i++) {
+                if (player.wonColumn(i)) {
+                    cout << "Column " << i + 1 << " captured!" << endl;
+                }
+            }
+            break;
+        } else if (choice == 1) {
+            
+        }
 
 
 
