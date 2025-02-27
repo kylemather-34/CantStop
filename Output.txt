@@ -1,0 +1,109 @@
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Sat Feb 22 2025	14:33:29
+----------------------------------------------------------------
+
+Test Initialization: Board
+
+Testing Dice Rolling:
+Die 1 rolled: 1 1 4 3 4 6 
+Die 2 rolled: 2 1 4 1 6 6 
+Die 3 rolled: 2 1 6 3 6 4 
+Die 4 rolled: 4 2 3 3 5 1 
+
+Testing Player Initialization:
+Player 1: Player Name: ryan
+Color: blue
+Score: 0
+Columns Captured: 
+Player 2: Player Name: paul
+Color: yellow
+Score: 0
+Columns Captured: 
+
+Testing Board Initialization:
+Column 2 initialized correctly.
+Column 3 initialized correctly.
+Column 4 initialized correctly.
+Column 5 initialized correctly.
+Column 6 initialized correctly.
+Column 7 initialized correctly.
+Column 8 initialized correctly.
+Column 9 initialized correctly.
+Column 10 initialized correctly.
+Column 11 initialized correctly.
+Column 12 initialized correctly.
+
+Testing Tower Placement on Column 7:
+Starting tower on column 7: Success
+Column marker positions after startTower: 5 0 0 0 5 0 
+
+Testing Tower Move on Column 7:
+Moving tower: Success
+Column marker positions after move: 6 0 0 0 5 0 
+
+Testing Column Stop:
+Column marker positions after stop: 0 0 0 0 6 0 
+
+Printing Column 7 State After Stop:
+------  ------  ------  ------  ------  -----B  ------  
+
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Sat Feb 22 2025	14:34:19
+----------------------------------------------------------------
+
+Test Initialization: Board
+
+Testing Dice Rolling:
+Die 1 rolled: 3 3 6 2 3 5 
+Die 2 rolled: 6 1 4 4 5 2 
+Die 3 rolled: 2 3 3 5 4 6 
+Die 4 rolled: 5 1 6 6 6 6 
+
+Testing Player Initialization:
+Player 1: Player Name: ryan
+Color: green
+Score: 0
+Columns Captured: 
+Player 2: Player Name: paul
+Color: orange
+Score: 0
+Columns Captured: 
+
+Testing Board Initialization:
+Column 2 initialized correctly.
+Column 3 initialized correctly.
+Column 4 initialized correctly.
+Column 5 initialized correctly.
+Column 6 initialized correctly.
+Column 7 initialized correctly.
+Column 8 initialized correctly.
+Column 9 initialized correctly.
+Column 10 initialized correctly.
+Column 11 initialized correctly.
+Column 12 initialized correctly.
+
+Testing Tower Placement on Column 7:
+Starting tower on column 7: Success
+Column marker positions after startTower: 4 0 0 4 0 0 
+
+Testing Tower Move on Column 7:
+Moving tower: Success
+Column marker positions after move: 5 0 0 4 0 0 
+
+Testing Column Stop:
+Column marker positions after stop: 0 0 0 5 0 0 
+
+Printing Column 7 State After Stop:
+------  ------  ------  ------  ----G-  ------  ------  
+
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Thu Feb 27 2025	08:19:14

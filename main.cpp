@@ -27,9 +27,13 @@ int main(int argc, char* argv[]) {
     // unitTests::testGame();
     */
 
-
+    /*
     // Run board unit test
     unitTests::testBoard();
+    */
+
+
+
 
     if (ifstream infile("output.txt"); infile) {
         string line;

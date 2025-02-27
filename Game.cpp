@@ -12,6 +12,7 @@ Game::Game() :
     pOne(getNewPlayer()), pTwo(getNewPlayer()),
     fourDice(nullptr)
 {
+    Board board;
     fourDice = new Dice[4];
 }
 
@@ -54,4 +55,22 @@ Player Game::getNewPlayer() {
     }
 
     return Player(name, color);
+}
+
+void oneTurn(Player& player) {
+    Board board;
+    board.startTurn(&player);
+
+    while (true) {
+
+        // cout << "Its " << player.getName(); Was going to have it so it said
+        // turn it wsa
+        cout << "Pick a choice (Use the # assosciated with the choice): \n 1. roll  2. stop    3. resign" << endl;
+        int choice;
+        cin >> choice;
+    }
+
+
+
+
 }
