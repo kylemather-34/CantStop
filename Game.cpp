@@ -57,7 +57,7 @@ Player Game::getNewPlayer() {
     return Player(name, color);
 }
 
-void oneTurn(Player& player) {
+void oneTurn(Player& player, Game& game) {
     Board board;
     board.startTurn(&player);
 
@@ -78,7 +78,10 @@ void oneTurn(Player& player) {
             }
             break;
         } else if (choice == 1) {
-            
+            const int* rollResults = game.getDice()[0].roll();
+            cout << "Rolled Dice: ";
+            for (int i = 0; i < 4; i++) {
+                cout << rollResults[i] << " ";
         }
 
 
