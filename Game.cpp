@@ -14,6 +14,7 @@ Game::Game() :
 {
     Board board;
     fourDice = new Dice[4];
+    oneTurn(pOne);
 }
 
 Game::~Game() {
@@ -57,7 +58,7 @@ Player Game::getNewPlayer() {
     return Player(name, color);
 }
 
-void oneTurn(Player& player, Game& game) {
+void oneTurn(Player& player) {
     Board board;
     board.startTurn(&player);
 
@@ -83,6 +84,49 @@ void oneTurn(Player& player, Game& game) {
             for (int i = 0; i < 4; i++) {
                 cout << rollResults[i] << " ";
         }
+
+        cout << endl;
+
+            // Display dice options with letters
+        char diceLabels[4] = {'A', 'B', 'C', 'D'};
+        cout << "Choose a pair using letters (e.g., AC): ";
+        char first, second;
+        cin >> first >> second;
+
+            // Validate input and determine the two pairs
+        int firstIndex = first - 'A';
+        int secondIndex = second - 'A';
+
+        if (firstIndex < 0 || firstIndex >= 4 || secondIndex < 0 || secondIndex >= 4 || firstIndex == secondIndex) {
+            cout << "Invalid selection. Try again." << endl;
+            continue;
+        }
+
+        int firstPair = rollResults[firstIndex] + rollResults[secondIndex];
+        int remainingIndex1 = 0, remainingIndex2 = 0;
+
+        for (int i = 0; i < 4; i++) {
+            if (i != firstIndex && i != secondIndex) {
+                if (remainingIndex1 == 0) remainingIndex1 = i;
+                else remainingIndex2 = i;
+                }
+            }
+        int secondPair = rollResults[remainingIndex1] + rollResults[remainingIndex2];
+
+            // Move on the board
+        bool move1 = board.move(firstPair);
+        bool move2 = board.move(secondPair);
+        board.print();
+
+        if (!move1 && !move2) { // Bust condition
+            cout << "Bust! No valid moves." << endl;
+            board.bust();
+            break;
+        }
+        } else {
+            cout << "Invalid option. Try again." << endl;
+        }
+    }
 
 
 

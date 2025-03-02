@@ -13,6 +13,7 @@
 
 class Game {
     private:
+        Game* game;
         Dice* fourDice;
         Player pOne;
         Player pTwo;

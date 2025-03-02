@@ -26,11 +26,9 @@ int main(int argc, char* argv[]) {
     // Run game unit test
     // unitTests::testGame();
     */
-
-    /*
+    
     // Run board unit test
     unitTests::testBoard();
-    */
 
 
 
