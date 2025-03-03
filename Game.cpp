@@ -10,11 +10,9 @@
 Game::Game() :
     cOne(2), cTwo(7),
     pOne(getNewPlayer()), pTwo(getNewPlayer()),
-    fourDice(nullptr)
+    fourDice(nullptr), board()
 {
-    Board board;
     fourDice = new Dice[4];
-    oneTurn(pOne);
 }
 
 Game::~Game() {
@@ -58,15 +56,11 @@ Player Game::getNewPlayer() {
     return Player(name, color);
 }
 
-void oneTurn(Player& player) {
-    Board board;
-    board.startTurn(&player);
+void Game::oneTurn(Player player) {
+    board.startTurn(&player);  // Use the game's board instance
 
     while (true) {
-
-        // cout << "Its " << player.getName(); Was going to have it so it said
-        // who's turn it is
-        cout << "Pick a choice (Use the # assosciated with the choice): \n 1. roll  2. stop    3. resign" << endl;
+        cout << "Pick a choice (Use the # associated with the choice): \n 1. roll  2. stop  3. resign" << endl;
         int choice;
         cin >> choice;
 
@@ -79,56 +73,52 @@ void oneTurn(Player& player) {
             }
             break;
         } else if (choice == 1) {
-            const int* rollResults = game.getDice()[0].roll();
+            Dice dice;
+            const int* rollResults = dice.roll();
             cout << "Rolled Dice: ";
             for (int i = 0; i < 4; i++) {
                 cout << rollResults[i] << " ";
-        }
+            }
+            cout << endl;
 
-        cout << endl;
+            char diceLabels[4] = {'A', 'B', 'C', 'D'};
+            cout << "Choose a pair using letters (e.g., AC): ";
+            char first, second;
+            cin >> first >> second;
 
-            // Display dice options with letters
-        char diceLabels[4] = {'A', 'B', 'C', 'D'};
-        cout << "Choose a pair using letters (e.g., AC): ";
-        char first, second;
-        cin >> first >> second;
+            int firstIndex = first - 'A';
+            int secondIndex = second - 'A';
 
-            // Validate input and determine the two pairs
-        int firstIndex = first - 'A';
-        int secondIndex = second - 'A';
+            if (firstIndex < 0 || firstIndex >= 4 || secondIndex < 0 || secondIndex >= 4 || firstIndex == secondIndex) {
+                cout << "Invalid selection. Try again." << endl;
+                continue;
+            }
 
-        if (firstIndex < 0 || firstIndex >= 4 || secondIndex < 0 || secondIndex >= 4 || firstIndex == secondIndex) {
-            cout << "Invalid selection. Try again." << endl;
-            continue;
-        }
+            int firstPair = rollResults[firstIndex] + rollResults[secondIndex];
+            int remainingIndex1 = 0, remainingIndex2 = 0;
 
-        int firstPair = rollResults[firstIndex] + rollResults[secondIndex];
-        int remainingIndex1 = 0, remainingIndex2 = 0;
-
-        for (int i = 0; i < 4; i++) {
-            if (i != firstIndex && i != secondIndex) {
-                if (remainingIndex1 == 0) remainingIndex1 = i;
-                else remainingIndex2 = i;
+            for (int i = 0; i < 4; i++) {
+                if (i != firstIndex && i != secondIndex) {
+                    if (remainingIndex1 == 0) remainingIndex1 = i;
+                    else remainingIndex2 = i;
                 }
             }
-        int secondPair = rollResults[remainingIndex1] + rollResults[remainingIndex2];
+            int secondPair = rollResults[remainingIndex1] + rollResults[remainingIndex2];
 
-            // Move on the board
-        bool move1 = board.move(firstPair);
-        bool move2 = board.move(secondPair);
-        board.print();
+            bool move1 = board.move(firstPair);
+            bool move2 = board.move(secondPair);
+            board.print();
 
-        if (!move1 && !move2) { // Bust condition
-            cout << "Bust! No valid moves." << endl;
-            board.bust();
-            break;
-        }
+            if (!move1 && !move2) { // Bust condition
+                cout << "Bust! No valid moves." << endl;
+                board.bust();
+                break;
+            }
         } else {
             cout << "Invalid option. Try again." << endl;
         }
     }
-
-
-
-
 }
+
+
+

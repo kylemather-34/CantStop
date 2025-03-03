@@ -4,6 +4,8 @@
 //======================================================
 #include "tools.hpp"
 #include "unitTests.hpp"
+#include "Game.h"
+#include "Player.hpp"
 
 int main(int argc, char* argv[]) {
     srand(time(nullptr));
@@ -28,7 +30,15 @@ int main(int argc, char* argv[]) {
     */
     
     // Run board unit test
-    unitTests::testBoard();
+    // unitTests::testBoard();
+
+    Player player1("Ryan", ECcolor::blue);
+
+    Game game;
+
+    game.oneTurn(player1);
+
+
 
 
 

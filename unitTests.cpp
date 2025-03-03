@@ -138,6 +138,7 @@ void unitTests::testGame() {
 
     Game game;  // Create a game instance
 
+
     outFile << "\nTesting Dice Rolling:\n";
     for (int y = 0; y < 4; ++y) {
         outFile << "Die " << (y+1) << " rolled: ";
