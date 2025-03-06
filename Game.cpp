@@ -68,6 +68,7 @@ void Game::oneTurn(Player* pp) {
 
         if (choice == 2) {  // Stop turn
             board.stop();
+            break;
 
             // Check for column captures
             for (int i = 2; i <= 12; i++) {

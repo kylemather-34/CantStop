@@ -35,7 +35,6 @@ int main(int argc, char* argv[]) {
     Player player1("Ryan", ECcolor::blue);
 
     Game game;
-
     game.oneTurn(&player1);
 
 

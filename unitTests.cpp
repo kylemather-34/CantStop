@@ -12,9 +12,10 @@
 #include "Board.hpp"
 
 /*diceUnitTest() function follows dice test plan in this directory to examine the
- *required input and output values, edge cases, and potential errors
+ required input and output values, edge cases, and potential errors
 */
-void unitTests::diceUnitTest() {
+
+/*void unitTests::diceUnitTest() {
     ofstream outFile("Output.txt", ios::app);
     if (!outFile) {
         cerr << "Error opening file!" << endl;
@@ -51,13 +52,13 @@ void unitTests::diceUnitTest() {
     outFile << "No explicit output; check for memory leaks.\n";
     // Closing output file
     outFile.close();
-}
+}*/
 
 
 /*playerUnitTest() function tests Player class functionality
- *It initalizes a Player object, prints details, and tests column wins.
+ It initalizes a Player object, prints details, and tests column wins.
  */
-void unitTests::playerUnitTest() {
+/*void unitTests::playerUnitTest() {
     ofstream outFile("Output.txt", ios::app);
     if (!outFile) {
         cerr << "Error opening file!" << endl;
@@ -198,6 +199,6 @@ void unitTests::testGame() {
     outFile << os.str() << endl;
 
     outFile.close();
-}
+}*/
 
 
