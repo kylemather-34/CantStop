@@ -16,6 +16,7 @@ class Dice {
         Dice(int n); // Constructing the class
         ~Dice(); // Destructor
         const int* roll(); // Function for "rolling" the dice
+        const int* getDice() const { return rVal; }
         ostream& print(ostream&) const; // Print function
 };
 ostream& operator<<(ostream&, const Dice&);
