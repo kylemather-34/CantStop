@@ -25,7 +25,7 @@ class Game {
         explicit Game();
         ~Game();
         Player getNewPlayer();
-        void oneTurn (Player player);
+        void oneTurn (Player* player);
         Dice* getDice() const {return fourDice;}
         Player& getPlayerOne() {return pOne;}
         Player& getPlayerTwo() {return pTwo;}

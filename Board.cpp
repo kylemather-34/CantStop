@@ -76,6 +76,7 @@ void Board::stop() {
     countTowers = 0;
 }
 
+
 // Bust function: removes all towers
 void Board::bust() {
     for (int i = 0; i < countTowers; ++i) {

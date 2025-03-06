@@ -56,35 +56,57 @@ Player Game::getNewPlayer() {
     return Player(name, color);
 }
 
-void Game::oneTurn(Player player) {
-    board.startTurn(&player);  // Use the game's board instance
+void Game::oneTurn(Player* pp) {
+    board.startTurn(pp);  // Start turn for the player
 
     while (true) {
-        cout << "Pick a choice (Use the # associated with the choice): \n 1. roll  2. stop  3. resign" << endl;
+        // Display menu
+        cout << "Pick a choice (Use the # associated with the choice):\n";
+        cout << "1. Roll  2. Stop  3. Resign" << endl;
         int choice;
         cin >> choice;
 
-        if (choice == 2) { // Stop
+        if (choice == 2) {  // Stop turn
             board.stop();
-            for (int i = 0; i < 3; i++) {
-                if (player.wonColumn(i)) {
-                    cout << "Column " << i + 1 << " captured!" << endl;
+
+            // Check for column captures
+            for (int i = 2; i <= 12; i++) {
+                if (pp->wonColumn(i)) {
+                    cout << "Column " << i << " captured!" << endl;
+                    board.getColumn(i)->stop(pp);
                 }
             }
             break;
-        } else if (choice == 1) {
-            Dice dice;
-            const int* rollResults = dice.roll();
+        }
+        else if (choice == 1) {  // Roll dice
+            if (!fourDice) {  // Ensure the dice object exists
+                cout << "Error: Dice not initialized!" << endl;
+                return;
+            }
+
+            fourDice->roll();  // Now it correctly uses the pointer
+            const int* rollResults = fourDice->getDice();  // Get roll values
+
             cout << "Rolled Dice: ";
+            char diceLabels[4] = {'A', 'B', 'C', 'D'};
+
             for (int i = 0; i < 4; i++) {
-                cout << rollResults[i] << " ";
+                cout << diceLabels[i] << ": " << rollResults[i] << "  ";
             }
             cout << endl;
 
-            char diceLabels[4] = {'A', 'B', 'C', 'D'};
+            // Get user selection
+            string input;
             cout << "Choose a pair using letters (e.g., AC): ";
-            char first, second;
-            cin >> first >> second;
+            cin >> input;
+
+            if (input.length() != 2) {
+                cout << "Invalid selection. Enter two letters." << endl;
+                continue;
+            }
+
+            char first = toupper(input[0]);
+            char second = toupper(input[1]);
 
             int firstIndex = first - 'A';
             int secondIndex = second - 'A';
@@ -95,30 +117,42 @@ void Game::oneTurn(Player player) {
             }
 
             int firstPair = rollResults[firstIndex] + rollResults[secondIndex];
-            int remainingIndex1 = 0, remainingIndex2 = 0;
+            int remainingIndex1 = -1, remainingIndex2 = -1;
 
             for (int i = 0; i < 4; i++) {
                 if (i != firstIndex && i != secondIndex) {
-                    if (remainingIndex1 == 0) remainingIndex1 = i;
+                    if (remainingIndex1 == -1) remainingIndex1 = i;
                     else remainingIndex2 = i;
                 }
             }
             int secondPair = rollResults[remainingIndex1] + rollResults[remainingIndex2];
 
+            // Move pieces on the board
             bool move1 = board.move(firstPair);
             bool move2 = board.move(secondPair);
             board.print();
 
-            if (!move1 && !move2) { // Bust condition
+            // Check for column captures
+            for (int i = 2; i <= 12; i++) {
+                if (pp->wonColumn(i)) {
+                    cout << "Column " << i << " captured!" << endl;
+                    board.getColumn(i)->stop(pp);
+                }
+            }
+
+            // Bust condition
+            if (!move1 && !move2) {
                 cout << "Bust! No valid moves." << endl;
                 board.bust();
                 break;
             }
-        } else {
+        }
+        else if (choice == 3) {
+            cout << "Resign option not implemented yet." << endl;
+            break;
+        }
+        else {
             cout << "Invalid option. Try again." << endl;
         }
     }
 }
-
-
-

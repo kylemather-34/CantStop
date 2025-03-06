@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
 
     Game game;
 
-    game.oneTurn(player1);
+    game.oneTurn(&player1);
 
 
 
