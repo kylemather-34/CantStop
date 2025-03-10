@@ -28,7 +28,6 @@ string Column::colStateToString(ColState state) {
     }
 }
 
-
 ostream &Column::print(ostream& os) const {
     // Convert column state to a string
     string stateStr;
@@ -39,7 +38,7 @@ ostream &Column::print(ostream& os) const {
     }
 
     // Print column number and state
-    cout << columnNumber << "  " << stateStr << "   ";
+    os << columnNumber << "  " << stateStr << "   ";
 
     // Print the column's marker positions
     for (int pos = 1; pos <= 7; ++pos) { // Assuming positions are between 1 and 7
@@ -109,15 +108,16 @@ bool Column::startTower(const Player *player) {
 }
 
 bool Column::move() {
-    int& towerPos = markerPositions[(int)ECcolor::white];
+    int& towerPos = markerPositions[static_cast<int>(ECcolor::white)];
 
     // Check if there is a tower to move
     if (towerPos == 0) {
-        return false; // No tower present, move is illegal
+        // No tower exists, so place a new tower at position 1
+        towerPos = 1;
+    } else {
+        // Advance the tower by one position
+        towerPos++;
     }
-
-    // Advance the tower one position
-    towerPos++;
 
     // Check if the column is captured
     if (towerPos >= 7) {
@@ -127,14 +127,13 @@ bool Column::move() {
     return true;
 }
 
-
 void Column::stop(Player* player) {
     // Get the player's color
     ECcolor playerColor = player->color();
 
     // Replace the tower with the player's color
-    markerPositions[(int)playerColor] = markerPositions[(int)ECcolor::white];
-    markerPositions[(int)ECcolor::white] = 0;  // Remove tower
+    markerPositions[static_cast<int>(playerColor)] = markerPositions[static_cast<int>(ECcolor::white)];
+    markerPositions[static_cast<int>(ECcolor::white)] = 0;  // Remove tower
 
     // If the column state is pending, change it to captured and call wonColumn()
     if (colState == ColState::pending) {
@@ -152,5 +151,8 @@ bool Column::isPending(const Player* player) const {
 }
 
 void Column::bust() {
-    // Currently a stub function with an empty body, will be implemented later
+    for (int& pos : markerPositions) {
+        pos = 0; // Reset all marker positions
+    }
+    colState = ColState::available; // Reset column state
 }

@@ -2,6 +2,58 @@
 ----------------------------------------------------------------
 	Ryan Lang, Kyle Mather
 	CSCI 4526 Spring 2025
+	Sat Feb 22 2025	12:04:27
+----------------------------------------------------------------
+
+Test Initialization: Board
+
+Testing Dice Rolling:
+Die 1 rolled: 6 6 6 4 5 5 
+Die 2 rolled: 3 1 4 1 1 2 
+Die 3 rolled: 2 3 2 1 6 1 
+Die 4 rolled: 6 3 2 4 5 2 
+
+Testing Player Initialization:
+Player 1: Player Name: ryan
+Color: orange
+Score: 0
+Columns Captured: 
+Player 2: Player Name: kyle
+Color: yellow
+Score: 0
+Columns Captured: 
+
+Testing Board Initialization:
+Column 2 initialized correctly.
+Column 3 initialized correctly.
+Column 4 initialized correctly.
+Column 5 initialized correctly.
+Column 6 initialized correctly.
+Column 7 initialized correctly.
+Column 8 initialized correctly.
+Column 9 initialized correctly.
+Column 10 initialized correctly.
+Column 11 initialized correctly.
+Column 12 initialized correctly.
+
+Testing Tower Placement on Column 7:
+Starting tower on column 7: Success
+Column marker positions after startTower: 2 2 0 0 0 0 
+
+Testing Tower Move on Column 7:
+Moving tower: Success
+Column marker positions after move: 3 2 0 0 0 0 
+
+Testing Column Stop:
+Column marker positions after stop: 0 3 0 0 0 0 
+
+Printing Column 7 State After Stop:
+------  ------  --O---  ------  ------  ------  ------  
+
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
 	Sat Feb 22 2025	14:33:29
 ----------------------------------------------------------------
 

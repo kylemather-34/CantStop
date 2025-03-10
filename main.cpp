@@ -37,11 +37,6 @@ int main(int argc, char* argv[]) {
     Game game;
     game.oneTurn(&player1);
 
-
-
-
-
-
     if (ifstream infile("output.txt"); infile) {
         string line;
         while (getline(infile, line)) {

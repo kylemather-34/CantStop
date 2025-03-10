@@ -69,15 +69,6 @@ void Game::oneTurn(Player* pp) {
         if (choice == 2) {  // Stop turn
             board.stop();
             break;
-
-            // Check for column captures
-            for (int i = 2; i <= 12; i++) {
-                if (pp->wonColumn(i)) {
-                    cout << "Column " << i << " captured!" << endl;
-                    board.getColumn(i)->stop(pp);
-                }
-            }
-            break;
         }
         else if (choice == 1) {  // Roll dice
             if (!fourDice) {  // Ensure the dice object exists
@@ -85,7 +76,7 @@ void Game::oneTurn(Player* pp) {
                 return;
             }
 
-            fourDice->roll();  // Now it correctly uses the pointer
+            fourDice->roll();  // Roll the dice
             const int* rollResults = fourDice->getDice();  // Get roll values
 
             cout << "Rolled Dice: ";
@@ -96,7 +87,7 @@ void Game::oneTurn(Player* pp) {
             }
             cout << endl;
 
-            // Get user selection
+            // Get user selection for dice pairs
             string input;
             cout << "Choose a pair using letters (e.g., AC): ";
             cin >> input;
@@ -117,35 +108,55 @@ void Game::oneTurn(Player* pp) {
                 continue;
             }
 
-            int firstPair = rollResults[firstIndex] + rollResults[secondIndex];
-            int remainingIndex1 = -1, remainingIndex2 = -1;
+            // Calculate the column numbers based on the selected dice pairs
+            int column1 = rollResults[firstIndex] + rollResults[secondIndex];
+            int column2 = -1;
 
+            // Calculate the second pair
             for (int i = 0; i < 4; i++) {
                 if (i != firstIndex && i != secondIndex) {
-                    if (remainingIndex1 == -1) remainingIndex1 = i;
-                    else remainingIndex2 = i;
-                }
-            }
-            int secondPair = rollResults[remainingIndex1] + rollResults[remainingIndex2];
-
-            // Move pieces on the board
-            bool move1 = board.move(firstPair);
-            bool move2 = board.move(secondPair);
-            board.print();
-
-            // Check for column captures
-            for (int i = 2; i <= 12; i++) {
-                if (pp->wonColumn(i)) {
-                    cout << "Column " << i << " captured!" << endl;
-                    board.getColumn(i)->stop(pp);
+                    if (column2 == -1) {
+                        column2 = rollResults[i];
+                    } else {
+                        column2 += rollResults[i];
+                    }
                 }
             }
 
-            // Bust condition
+            // Check if the columns are valid (between 2 and 12)
+            if (column1 < 2 || column1 > 12 || column2 < 2 || column2 > 12) {
+                cout << "Invalid column numbers. Try again." << endl;
+                continue;
+            }
+
+            // Attempt to move towers
+            bool move1 = board.move(column1);
+            bool move2 = board.move(column2);
+
+            // Check if the player went bust
             if (!move1 && !move2) {
                 cout << "Bust! No valid moves." << endl;
                 board.bust();
                 break;
+            }
+
+            // Print the board after moving
+            board.print();
+
+            // Check for column captures
+            if (move1 && board.getColumn(column1)->isCaptured()) {
+                cout << "Column " << column1 << " captured!" << endl;
+                pp->wonColumn(column1);
+            }
+            if (move2 && board.getColumn(column2)->isCaptured()) {
+                cout << "Column " << column2 << " captured!" << endl;
+                pp->wonColumn(column2);
+            }
+
+            // Check if the player has won
+            if (pp->score() >= 3) {
+                cout << "Player " << pp->getName() << " has won the game!" << endl;
+                return;
             }
         }
         else if (choice == 3) {

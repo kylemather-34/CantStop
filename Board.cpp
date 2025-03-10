@@ -26,7 +26,11 @@ Board::~Board() {
 void Board::print() const {
     for (int y = 2; y <= 12; ++y) {
         cout << "Column " << y << ": ";
-        if (backBone[y]) backBone[y]->print(cout);
+        if (backBone[y]) {
+            backBone[y]->print(cout); // Delegate printing to the Column class
+        } else {
+            cout << "Invalid Column";
+        }
         cout << endl;
     }
 }
@@ -45,10 +49,13 @@ void Board::startTurn(Player* player) {
 bool Board::move(int column) {
     if (column < 2 || column > 12 || !backBone[column]) return false;
 
-    // Check if column is captured or pending
-    if (backBone[column]->isCaptured() || backBone[column]->isPending(currentPlayer)) return false;
+    // Check if the column is already captured
+    if (backBone[column]->isCaptured()) return false;
 
-    // If column has no tower and there are no unused towers, return false
+    // Check if the column is pending for another player
+    if (backBone[column]->isPending(currentPlayer)) return false;
+
+    // Check if a tower is already in this column
     bool towerExists = false;
     for (int i = 0; i < countTowers; ++i) {
         if (towerCols[i] == column) {
@@ -57,15 +64,16 @@ bool Board::move(int column) {
         }
     }
 
+    // If no tower exists and all towers are in use, return false
     if (!towerExists && countTowers == 3) return false;
 
-    // Place tower if possible
+    // Place a new tower if necessary
     if (!towerExists) {
         towerCols[countTowers++] = column;
     }
 
-    backBone[column]->move();
-    return true;
+    // Advance the tower in the column
+    return backBone[column]->move();
 }
 
 // Stop function: finalizes tower positions

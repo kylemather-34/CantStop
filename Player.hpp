@@ -22,6 +22,7 @@ class Player {
         ECcolor color() const;
         [[nodiscard]] int score() const;
         bool wonColumn(int colNum);
+        string getName() {return playerName;}
 };
 
 ostream& operator<<(ostream&, const Player&);
