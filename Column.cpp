@@ -119,9 +119,12 @@ bool Column::move() {
         towerPos++;
     }
 
+    //Check if the column is pending
+    if (towerPos != 0 && towerPos < 7) colState = ColState::pending;
+
     // Check if the column is captured
     if (towerPos >= 7) {
-        colState = ColState::pending;
+        colState = ColState::captured;
     }
 
     return true;

@@ -57,8 +57,8 @@ bool Board::move(int column) {
 
     // Check if a tower is already in this column
     bool towerExists = false;
-    for (int i = 0; i < countTowers; ++i) {
-        if (towerCols[i] == column) {
+    for (int y = 0; y < countTowers; ++y) {
+        if (towerCols[y] == column) {
             towerExists = true;
             break;
         }

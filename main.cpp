@@ -32,10 +32,8 @@ int main(int argc, char* argv[]) {
     // Run board unit test
     // unitTests::testBoard();
 
-    Player player1("Ryan", ECcolor::blue);
-
     Game game;
-    game.oneTurn(&player1);
+    game.oneTurn(&game.getPlayerOne());
 
     if (ifstream infile("output.txt"); infile) {
         string line;
