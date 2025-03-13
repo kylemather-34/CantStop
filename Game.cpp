@@ -32,26 +32,21 @@ Player Game::getNewPlayer() {
     transform(name.begin(), name.end(), name.begin(), ::tolower);
     cout << "Enter letter of color (o. orange, y. yellow, g. green, b. blue): ";
     cin >> colorChar;
-    cout << colorChar;
 
     colorChar = tolower(colorChar);
 
     switch (colorChar) {
         case 'o':
             color = ECcolor::orange;
-            cout << "Color is orange" << endl;
             break;
         case 'y':
             color = ECcolor::yellow;
-        cout << "Color is yellow" << endl;
             break;
         case 'g':
             color = ECcolor::green;
-            cout << "Color is green" << endl;
             break;
         case 'b':
             color = ECcolor::blue;
-            cout << "Color is blue" << endl;
             break;
         default:
             cout << "Invalid color! Defaulting to blue.\n";
@@ -64,7 +59,7 @@ Player Game::getNewPlayer() {
 void Game::oneTurn(Player* pp) {
     board.startTurn(pp);  // Start turn for the player
 
-    cout << "Player " << pp->getName() << " turned on." << endl;
+    cout << "Player " << pp->getName() << " is first." << endl;
 
 
     while (true) {
