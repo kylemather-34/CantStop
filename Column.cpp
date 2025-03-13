@@ -11,6 +11,7 @@ Column::Column(int a) : columnNumber(a), colState(ColState::available){
     if (a < 2 || a > 12) {
         throw out_of_range("Column number must be between 2 and 12.");
     }
+
 }
 
 Column::~Column () = default;
@@ -50,7 +51,7 @@ ostream &Column::print(ostream& os) const {
         }
 
         // Check for player markers in this position
-        for (int i = 0; i < static_cast<int>(ECcolor::Count); ++i) {
+        for (int i = 1; i < static_cast<int>(ECcolor::Count); ++i) {
             if (markerPositions[i] == pos) {
                 square[i + 1] = getColorChar(static_cast<ECcolor>(i));
             }
@@ -82,6 +83,7 @@ const int* Column::getMarkerPositions() const {
 bool Column::startTower(const Player *player) {
     ECcolor playerColor = (*player).color();
 
+
     // Finds player position off of color
     int playerPos = static_cast<int>(playerColor);
     // Finds the current tower position
@@ -102,7 +104,8 @@ bool Column::startTower(const Player *player) {
         colState = ColState::pending;
     }
 
-    markerPositions[static_cast<int>(playerColor)] = newTowerPos;
+   markerPositions[static_cast<int>(playerColor)] = newTowerPos;
+   markerPositions[static_cast<int>(ECcolor::white)] = 0;
 
     return true;
 }

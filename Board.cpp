@@ -69,12 +69,17 @@ bool Board::move(int column) {
 
     // Place a new tower if necessary
     if (!towerExists) {
-        towerCols[countTowers++] = column;
+        // Attempt to start a tower for the current player
+        if (!backBone[column]->startTower(currentPlayer)) {
+            return false; // Tower couldn't be started, return false
+        }
+        towerCols[countTowers++] = column; // Tower placed
     }
 
     // Advance the tower in the column
     return backBone[column]->move();
 }
+
 
 // Stop function: finalizes tower positions
 void Board::stop() {
