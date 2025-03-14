@@ -32,6 +32,7 @@ int main(int argc, char* argv[]) {
     // Run board unit test
     // unitTests::testBoard();
 
+    banner();
     Game game;
     game.oneTurn(&game.getPlayerOne());
 

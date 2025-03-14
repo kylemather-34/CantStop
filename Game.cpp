@@ -5,6 +5,7 @@
 
 #include "Game.h"
 #include "enums.hpp"
+#include "tools.hpp"
 
 // Constructor
 Game::Game() :
