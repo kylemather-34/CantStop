@@ -203,3 +203,133 @@ All outputs should be written to Output.txt.
 Ensure that console logs match expected outputs.
 
 Review failures and debug accordingly.
+
+------------------------------------------------------------------------------------
+
+TEST PLAN - OneTurn()
+
+Objective:
+
+Ensure that the oneTurn() function operates as intended by managing player actions and their respective colors, handling dice rolls, moving columns with accurate labels, and checking for busts if the total exceeds the limit. Additionally, it should provide players with the option to end their turn. Instead of utilizing a unit test class, the entire functionality is now handled directly within the game class, as it controls all aspects of the game.
+
+Test Cases:
+
+1. Board Initialization
+
+Objective: Verify that the Board constructor correctly initializes all column objects.
+
+Expected Outcome:
+
+All columns (2-12) should be initialized correctly.
+
+getColumn(i) != nullptr for valid indices.
+
+2. Dice Rolling
+
+Objective: Ensure that the roll() function generates valid dice values.
+
+Expected Outcome:
+
+Each die in game.getDice() rolls a value between 1 and 6.
+
+Values should be stored and retrievable via operator<<.
+
+Player choses which dice they want to use.
+
+3. Player Initialization
+
+Objective: Verify that Player objects are initialized correctly.
+
+Expected Outcome:
+
+game.getPlayerOne() and game.getPlayerTwo() should have valid attributes.
+
+print() function outputs the correct player details.
+
+4. Column Initialization
+
+Objective: Validate that the Board columns are initialized properly.
+
+Expected Outcome:
+
+Each column should exist and be in the expected initial state.
+
+5. Tower Placement
+
+Objective: Test the startTower() function for a valid column.
+
+Steps:
+
+Call startTower(&game.getPlayerOne()) in Board Move()
+
+Retrieve marker positions with getMarkerPositions().
+
+Expected Outcome:
+
+startTower() should return true if successful.
+
+Column should be marked correctly when towers are printed.
+
+6. Tower Movement
+
+Objective: Ensure that the move() function operates correctly.
+
+Steps:
+
+Call Board move() that then uses column class to move.
+
+Retrieve updated marker positions.
+
+Expected Outcome:
+
+move() should return true if movement occurs.
+
+getMarkerPositions() should update accordingly.
+
+T should be marked next to pending columns.
+
+7. Stopping a Column
+
+Objective: Verify the behavior of stop() function when a column is halted.
+
+Steps:
+
+Select option 2 â€œ2.stopâ€.
+
+Call stop(&game.getPlayerOne()).
+
+Retrieve marker positions after stopping.
+
+Expected Outcome:
+
+Normal Termination (This is just for now).
+
+8. Column Output Verification
+
+Objective: Validate that the print() function accurately displays column states.
+
+Steps:
+
+Print columns and states when player is done.
+
+Compare output in Output.txt.
+
+Expected Outcome:
+
+Column states should match expected results at each stage.
+
+Integration Test
+
+Create a test scenario that runs all these functionalities in sequence.
+
+Validate that the entire board interacts correctly with the game state.
+
+Ensure that all expected results are correctly logged in Output.txt.
+
+Test Execution & Logging
+
+All outputs should be written to Output.txt.
+
+Ensure that console logs match expected outputs.
+
+Review failures and debug accordingly.
