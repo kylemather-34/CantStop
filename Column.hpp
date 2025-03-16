@@ -11,7 +11,7 @@
 
 class Column {
     private:
-        static int columnLength[13];
+        static int columnLength[11];
         const int columnNumber;
         ColState colState;
         int markerPositions[(int)ECcolor::Count]{};

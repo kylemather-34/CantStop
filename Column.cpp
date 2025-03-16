@@ -38,12 +38,16 @@ ostream &Column::print(ostream& os) const {
         case ColState::available: default: stateStr = "Available"; break;
     }
 
+    static const int columnHeights[13] = {0, 0, 3, 5, 7, 9, 11, 13, 11, 9, 7, 5, 3}; // Heights for columns 2-12
+
+    int maxHeight = columnHeights[columnNumber]; // Get the correct height
+
     // Print column number and state
     os << columnNumber << "  " << stateStr << "   ";
 
     // Print the column's marker positions
-    for (int pos = 1; pos <= 7; ++pos) { // Assuming positions are between 1 and 7
-        string square = "------"; // Default empty slots
+    for (int pos = maxHeight; pos >= 1; --pos) {
+        string square = "------"; // Default empty slot
 
         // Check for tower in this position
         if (markerPositions[static_cast<int>(ECcolor::white)] == pos) {
@@ -104,6 +108,7 @@ bool Column::startTower(const Player *player) {
         colState = ColState::pending;
     }
 
+    // If tower isn't marked by players color, it will be here
    markerPositions[static_cast<int>(playerColor)] = newTowerPos;
    markerPositions[static_cast<int>(ECcolor::white)] = 0;
 
