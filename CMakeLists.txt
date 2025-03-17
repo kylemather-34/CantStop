@@ -19,4 +19,6 @@ add_executable(AdvanceC__ main.cpp
         Game.cpp
         Board.hpp
         Board.cpp
+        CList.h
+        CList.cpp
 )
