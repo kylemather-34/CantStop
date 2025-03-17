@@ -10,31 +10,7 @@
 int main(int argc, char* argv[]) {
     srand(time(nullptr));
 
-    /*
-    // Run dice unit test
-    unitTests test;
-    test.diceUnitTest();
-    */
 
-    /*
-    // Run player unit test
-    unitTests::playerUnitTest();
-    */
-
-    // Run column unit test
-    // unitTests::columnUnitTest();
-
-    /*
-    // Run game unit test
-    // unitTests::testGame();
-    */
-    
-    // Run board unit test
-    // unitTests::testBoard();
-
-    banner();
-    Game game;
-    game.oneTurn(&game.getPlayerOne());
 
     if (ifstream infile("output.txt"); infile) {
         string line;

@@ -10,12 +10,14 @@
 #include "Column.hpp"
 #include "Game.h"
 #include "Board.hpp"
+#include "CList.h"
+#include <memory>
 
 /*diceUnitTest() function follows dice test plan in this directory to examine the
  required input and output values, edge cases, and potential errors
 */
 
-/*void unitTests::diceUnitTest() {
+void unitTests::diceUnitTest() {
     ofstream outFile("Output.txt", ios::app);
     if (!outFile) {
         cerr << "Error opening file!" << endl;
@@ -52,13 +54,13 @@
     outFile << "No explicit output; check for memory leaks.\n";
     // Closing output file
     outFile.close();
-}*/
+}
 
 
 /*playerUnitTest() function tests Player class functionality
  It initalizes a Player object, prints details, and tests column wins.
  */
-/*void unitTests::playerUnitTest() {
+void unitTests::playerUnitTest() {
     ofstream outFile("Output.txt", ios::app);
     if (!outFile) {
         cerr << "Error opening file!" << endl;
@@ -199,6 +201,65 @@ void unitTests::testGame() {
     outFile << os.str() << endl;
 
     outFile.close();
-}*/
+}
 
+void unitTests::testPlayerList() {
+    // Create a CList of unique pointers to Players
+    CList playerList;
 
+    // Test 1: Add Players to the list
+    cout << "=== Test 1: Adding Players ===" << endl;
+    playerList.addCell(new Cell(make_unique<Player>(1, "Alice")));
+    playerList.addCell(new Cell(make_unique<Player>(2, "Bob")));
+    playerList.addCell(new Cell(make_unique<Player>(3, "Charlie")));
+    playerList.addCell(new Cell(make_unique<Player>(4, "Diana")));
+    playerList.print();
+    cout << "Number of players: " << playerList.getCount() << endl;
+    cout << endl;
+
+    // Test 2: Remove a Player and verify the list remains functional
+    cout << "=== Test 2: Removing a Player ===" << endl;
+    playerList.init(); // Set current to head
+    playerList.next(); // Move to the first player (Alice)
+    playerList.remove(); // Remove Alice
+    playerList.print();
+    cout << "Number of players: " << playerList.getCount() << endl;
+    cout << endl;
+
+    // Test 3: Remove all Players and verify the list is empty
+    cout << "=== Test 3: Removing All Players ===" << endl;
+    while (!playerList.empty()) {
+        playerList.remove();
+    }
+    playerList.print();
+    cout << "Number of players: " << playerList.getCount() << endl;
+    cout << endl;
+
+    // Test 4: Add Players again after removing all
+    cout << "=== Test 4: Adding Players Again ===" << endl;
+    playerList.addCell(new Cell(make_unique<Player>(5, "Eve")));
+    playerList.addCell(new Cell(make_unique<Player>(6, "Frank")));
+    playerList.print();
+    cout << "Number of players: " << playerList.getCount() << endl;
+    cout << endl;
+
+    // Test 5: Traverse the list using nextPlayer()
+    cout << "=== Test 5: Traversing the List ===" << endl;
+    playerList.init(); // Set current to head
+    for (int i = 0; i < playerList.getCount() * 2; ++i) { // Traverse twice
+        Cell* currentCell = playerList.next();
+        cout << "Current Player: ";
+        currentCell->upp->print();
+    }
+    cout << endl;
+
+    // Test 6: Print an empty list
+    cout << "=== Test 6: Printing an Empty List ===" << endl;
+    while (!playerList.empty()) {
+        playerList.remove();
+    }
+    playerList.print();
+    cout << "Number of players: " << playerList.getCount() << endl;
+
+    return 0;
+}
