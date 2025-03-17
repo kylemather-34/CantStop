@@ -32,20 +32,41 @@ bool CList::empty() const {
     return count == 0;
 }
 
-void CList::print() const {
+// Make sure this actually works
+/*ostream &CList::print(ostream& os) const {
     if (empty()) {
-        cout << "Empty list." << endl;
-        return;
+        os << "Empty list." << endl;
+        return os;
     }
 
     Cell* temp = head;
     do {
-        temp->upp->print(outFile);
+        temp->upp->print(os);
         temp = temp->next;
     } while (temp != head);
+
+    return os;
+}*/
+
+ostream& CList::print(ostream& os) const {
+    if (empty()) {
+        os << "Empty list." << endl;
+        return os;
+    }
+
+    Cell* temp = head;
+    do {
+        os << "Player: " << temp->upp->getName() << endl;
+        temp = temp->next;
+    } while (temp != head);
+
+    return os;
 }
 
-void CList::addCell(Cell* it) {
+void CList::addCell(const string& name, ECcolor playerColor) {
+    unique_ptr<Player> player = make_unique<Player>(name, playerColor);
+    Cell* it = new Cell(std::move(player), head); // Use std::move to transfer ownership
+
     if (empty()) {
         // Special case: first insertion
         head = it;
@@ -58,8 +79,9 @@ void CList::addCell(Cell* it) {
         tail = it; // Maintain tail pointer
     }
 
-    count++; // update count
+    count++; // Update count
 }
+
 
 void CList::init() {
     current = head;
@@ -99,4 +121,7 @@ void CList::remove() {
         tail = nullptr;
         current = nullptr;
     }
+}
+ostream& operator<<(ostream& os, const CList& CList) {
+    return CList.print(os);
 }

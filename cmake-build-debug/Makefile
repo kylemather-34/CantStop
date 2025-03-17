@@ -153,6 +153,30 @@ Board.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvanceC__.dir/build.make CMakeFiles/AdvanceC__.dir/Board.cpp.s
 .PHONY : Board.cpp.s
 
+CList.o: CList.cpp.o
+.PHONY : CList.o
+
+# target to build an object file
+CList.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvanceC__.dir/build.make CMakeFiles/AdvanceC__.dir/CList.cpp.o
+.PHONY : CList.cpp.o
+
+CList.i: CList.cpp.i
+.PHONY : CList.i
+
+# target to preprocess a source file
+CList.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvanceC__.dir/build.make CMakeFiles/AdvanceC__.dir/CList.cpp.i
+.PHONY : CList.cpp.i
+
+CList.s: CList.cpp.s
+.PHONY : CList.s
+
+# target to generate assembly for a file
+CList.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvanceC__.dir/build.make CMakeFiles/AdvanceC__.dir/CList.cpp.s
+.PHONY : CList.cpp.s
+
 Column.o: Column.cpp.o
 .PHONY : Column.o
 
@@ -357,6 +381,9 @@ help:
 	@echo "... Board.o"
 	@echo "... Board.i"
 	@echo "... Board.s"
+	@echo "... CList.o"
+	@echo "... CList.i"
+	@echo "... CList.s"
 	@echo "... Column.o"
 	@echo "... Column.i"
 	@echo "... Column.s"

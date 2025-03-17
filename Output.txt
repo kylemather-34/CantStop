@@ -1,0 +1,16 @@
+
+----------------------------------------------------------------
+	Ryan Lang, Kyle Mather
+	CSCI 4526 Spring 2025
+	Mon Mar 17 2025	16:54:22
+----------------------------------------------------------------
+
+Test Initialization: Player
+Player Name: Test Player
+Color: white
+Score: 0
+Columns Captured: 
+Testing winColumn() function:
+0
+0
+1

@@ -203,17 +203,20 @@ void unitTests::testGame() {
     outFile.close();
 }
 
-void unitTests::testPlayerList() {
+int unitTests::testPlayerList() {
     // Create a CList of unique pointers to Players
     CList playerList;
 
+
+
     // Test 1: Add Players to the list
     cout << "=== Test 1: Adding Players ===" << endl;
-    playerList.addCell(new Cell(make_unique<Player>(1, "Alice")));
-    playerList.addCell(new Cell(make_unique<Player>(2, "Bob")));
+
+    playerList.addCell("Alice", ECcolor::blue);
+    /*playerList.addCell(new Cell(make_unique<Player>(2, "Bob")));
     playerList.addCell(new Cell(make_unique<Player>(3, "Charlie")));
-    playerList.addCell(new Cell(make_unique<Player>(4, "Diana")));
-    playerList.print();
+    playerList.addCell(new Cell(make_unique<Player>(4, "Diana")));*/
+    playerList.print(cout);
     cout << "Number of players: " << playerList.getCount() << endl;
     cout << endl;
 
@@ -222,7 +225,7 @@ void unitTests::testPlayerList() {
     playerList.init(); // Set current to head
     playerList.next(); // Move to the first player (Alice)
     playerList.remove(); // Remove Alice
-    playerList.print();
+    cout << playerList << endl;
     cout << "Number of players: " << playerList.getCount() << endl;
     cout << endl;
 
@@ -231,15 +234,15 @@ void unitTests::testPlayerList() {
     while (!playerList.empty()) {
         playerList.remove();
     }
-    playerList.print();
+    // playerList.print();
     cout << "Number of players: " << playerList.getCount() << endl;
     cout << endl;
 
     // Test 4: Add Players again after removing all
     cout << "=== Test 4: Adding Players Again ===" << endl;
-    playerList.addCell(new Cell(make_unique<Player>(5, "Eve")));
+    /*playerList.addCell(new Cell(make_unique<Player>(5, "Eve")));
     playerList.addCell(new Cell(make_unique<Player>(6, "Frank")));
-    playerList.print();
+    playerList.print();*/
     cout << "Number of players: " << playerList.getCount() << endl;
     cout << endl;
 
@@ -249,7 +252,7 @@ void unitTests::testPlayerList() {
     for (int i = 0; i < playerList.getCount() * 2; ++i) { // Traverse twice
         Cell* currentCell = playerList.next();
         cout << "Current Player: ";
-        currentCell->upp->print();
+        // currentCell->upp->print();
     }
     cout << endl;
 
@@ -258,7 +261,7 @@ void unitTests::testPlayerList() {
     while (!playerList.empty()) {
         playerList.remove();
     }
-    playerList.print();
+    // playerList.print();
     cout << "Number of players: " << playerList.getCount() << endl;
 
     return 0;

@@ -14,6 +14,7 @@ class unitTests {
         static void columnUnitTest();
         static void testGame();
         static void testBoard();
+        static int testPlayerList();
 };
 
 #endif //UNITTESTS_H

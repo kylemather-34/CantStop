@@ -49,10 +49,12 @@ public:
     bool empty() const;
 
     // Function to print all Cells in the list
+    ostream& print(ostream& os) const;
+
     void print() const;
 
     // Add a new cell to the list
-    void addCell(Cell* it);
+    void addCell(const string &name, ECcolor playerColor);
 
     // Initialize the current pointer to head of list
     void init();
@@ -62,6 +64,8 @@ public:
 
     // Remove current cell and corresponding upp, delete both from list
     void remove();
+    friend class Cell;
 };
 
+ostream& operator<<(ostream& os, const CList&);
 #endif //CLIST_H
