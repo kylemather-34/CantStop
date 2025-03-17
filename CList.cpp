@@ -65,7 +65,7 @@ ostream& CList::print(ostream& os) const {
 
 void CList::addCell(const string& name, ECcolor playerColor) {
     unique_ptr<Player> player = make_unique<Player>(name, playerColor);
-    Cell* it = new Cell(std::move(player), head); // Use std::move to transfer ownership
+    Cell* it = new Cell(std::move(player), nullptr); // Use std::move to transfer ownership
 
     if (empty()) {
         // Special case: first insertion

@@ -213,9 +213,9 @@ int unitTests::testPlayerList() {
     cout << "=== Test 1: Adding Players ===" << endl;
 
     playerList.addCell("Alice", ECcolor::blue);
-    /*playerList.addCell(new Cell(make_unique<Player>(2, "Bob")));
-    playerList.addCell(new Cell(make_unique<Player>(3, "Charlie")));
-    playerList.addCell(new Cell(make_unique<Player>(4, "Diana")));*/
+    playerList.addCell("Bob", ECcolor::green);
+    playerList.addCell("Charlie", ECcolor::orange);
+    playerList.addCell("Diana", ECcolor::yellow);
     playerList.print(cout);
     cout << "Number of players: " << playerList.getCount() << endl;
     cout << endl;
