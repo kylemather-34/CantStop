@@ -240,19 +240,22 @@ int unitTests::testPlayerList() {
 
     // Test 4: Add Players again after removing all
     cout << "=== Test 4: Adding Players Again ===" << endl;
-    /*playerList.addCell(new Cell(make_unique<Player>(5, "Eve")));
-    playerList.addCell(new Cell(make_unique<Player>(6, "Frank")));
-    playerList.print();*/
+    playerList.addCell("Eve", ECcolor::blue);
+    playerList.addCell("Frank", ECcolor::orange);
+    playerList.print(cout);
     cout << "Number of players: " << playerList.getCount() << endl;
     cout << endl;
 
     // Test 5: Traverse the list using nextPlayer()
     cout << "=== Test 5: Traversing the List ===" << endl;
     playerList.init(); // Set current to head
-    for (int i = 0; i < playerList.getCount() * 2; ++i) { // Traverse twice
+    for (int i = 0; i < playerList.getCount() * 2; ++i) {
+        // Traverse twice
         Cell* currentCell = playerList.next();
-        cout << "Current Player: ";
-        // currentCell->upp->print();
+        Player* currentPlayer = playerList.getCurrentPlayer(); // Get Player from the list
+        if (currentPlayer) {
+            cout << "Current Player: " << currentPlayer->getName() << endl; // Use Player's methods
+        }
     }
     cout << endl;
 

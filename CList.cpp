@@ -98,7 +98,7 @@ Cell* CList::next() {
     return result;
 }
 
-void CList::remove() {
+/*void CList::remove() {
     if (empty()) {
         cout << "List is empty. Nothing to remove." << endl;
         return;
@@ -114,6 +114,53 @@ void CList::remove() {
 
     current = current->next; // Move current to the next Cell
     delete temp; // Delete temp Cell
+    count--; // Update count
+
+    if (empty()) {
+        head = nullptr;
+        tail = nullptr;
+        current = nullptr;
+    }
+}*/
+void CList::remove() {
+    if (empty()) {
+        cout << "List is empty. Nothing to remove." << endl;
+        return;
+    }
+
+    Cell* temp = current;
+
+    if (current == head) {
+        // Special case: removing the head
+        if (head == tail) {
+            // Case when there's only one element in the list
+            head = nullptr;
+            tail = nullptr;
+        } else {
+            head = head->next;
+            tail->next = head; // Update tail's predecessor to point to new head
+        }
+    } else if (current == tail) {
+        // Special case: removing the tail
+        Cell* temp = head;
+        while (temp->next != tail) {
+            temp = temp->next;
+        }
+        tail = temp;
+        tail->next = head; // Update tail's next to point to the head
+    } else {
+        // Regular case: removing a middle node
+        Cell* prev = head;
+        while (prev->next != current) {
+            prev = prev->next;
+        }
+        prev->next = current->next; // Skip the current node
+    }
+
+    // Move current to the next Cell before deleting the current one
+    current = current->next;
+
+    delete temp; // Delete the current Cell
     count--; // Update count
 
     if (empty()) {

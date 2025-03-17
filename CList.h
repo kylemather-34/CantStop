@@ -53,6 +53,12 @@ public:
 
     void print() const;
 
+    Player* getCurrentPlayer() {
+        if (current) {
+            return current->upp.get();  // Access the Player via the unique_ptr
+        }
+        return nullptr;  // Return nullptr if no current Cell
+    }
     // Add a new cell to the list
     void addCell(const string &name, ECcolor playerColor);
 
