@@ -5,6 +5,8 @@
 
 #include "CList.h"
 
+ofstream outFile("Output.txt", ios::app);
+
 // Cell class implementation
 Cell::Cell(unique_ptr<Player> player, Cell* nextCell)
     : upp(move(player)), next(nextCell) {}
@@ -38,7 +40,7 @@ void CList::print() const {
 
     Cell* temp = head;
     do {
-        temp->upp->print();
+        temp->upp->print(outFile);
         temp = temp->next;
     } while (temp != head);
 }
