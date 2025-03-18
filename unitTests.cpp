@@ -60,7 +60,7 @@ void unitTests::diceUnitTest() {
 /*playerUnitTest() function tests Player class functionality
  It initalizes a Player object, prints details, and tests column wins.
  */
-void unitTests::playerUnitTest() {
+/*void unitTests::playerUnitTest() {
     ofstream outFile("Output.txt", ios::app);
     if (!outFile) {
         cerr << "Error opening file!" << endl;
@@ -78,7 +78,7 @@ void unitTests::playerUnitTest() {
     }
 
     outFile.close();
-}
+}*/
 
 void unitTests::columnUnitTest() {
     ofstream outFile("Output.txt", ios::app);
@@ -203,7 +203,14 @@ void unitTests::testGame() {
     outFile.close();
 }
 
-int unitTests::testPlayerList() {
+void unitTests::testPlayerList() {
+    ofstream outFile("Output.txt", ios::app);
+    if (!outFile) {
+        cerr << "Error opening file!" << endl;
+        return;
+    }
+
+    fbanner(outFile);
     // Create a CList of unique pointers to Players
     CList playerList;
 
@@ -264,8 +271,8 @@ int unitTests::testPlayerList() {
     while (!playerList.empty()) {
         playerList.remove();
     }
-    // playerList.print();
+    playerList.print(cout);
     cout << "Number of players: " << playerList.getCount() << endl;
 
-    return 0;
+    outFile.close();
 }

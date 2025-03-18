@@ -32,22 +32,6 @@ bool CList::empty() const {
     return count == 0;
 }
 
-// Make sure this actually works
-/*ostream &CList::print(ostream& os) const {
-    if (empty()) {
-        os << "Empty list." << endl;
-        return os;
-    }
-
-    Cell* temp = head;
-    do {
-        temp->upp->print(os);
-        temp = temp->next;
-    } while (temp != head);
-
-    return os;
-}*/
-
 ostream& CList::print(ostream& os) const {
     if (empty()) {
         os << "Empty list." << endl;
@@ -56,7 +40,7 @@ ostream& CList::print(ostream& os) const {
 
     Cell* temp = head;
     do {
-        os << "Player: " << temp->upp->getName() << endl;
+        os << "Player: " << temp->upp->getName() <<"("<< ECcolorNames[static_cast<int>(temp->upp->color())] << ")" << endl;
         temp = temp->next;
     } while (temp != head);
 
@@ -98,30 +82,6 @@ Cell* CList::next() {
     return result;
 }
 
-/*void CList::remove() {
-    if (empty()) {
-        cout << "List is empty. Nothing to remove." << endl;
-        return;
-    }
-
-    Cell* temp = current;
-
-    if (current == head) {
-        // Special case: removing the head
-        head = head -> next;
-        tail->next = head; // Update tail's predecessor
-    }
-
-    current = current->next; // Move current to the next Cell
-    delete temp; // Delete temp Cell
-    count--; // Update count
-
-    if (empty()) {
-        head = nullptr;
-        tail = nullptr;
-        current = nullptr;
-    }
-}*/
 void CList::remove() {
     if (empty()) {
         cout << "List is empty. Nothing to remove." << endl;
