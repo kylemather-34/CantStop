@@ -40,7 +40,7 @@ ostream& CList::print(ostream& os) const {
 
     Cell* temp = head;
     do {
-        os << "Player: " << temp->upp->getName() <<"("<< ECcolorNames[static_cast<int>(temp->upp->color())] << ")" << endl;
+        os << "Player: " << temp->upp->getName() <<"("<< ECcolorNames[(int)(temp->upp->color())] << ")" << endl;
         temp = temp->next;
     } while (temp != head);
 
