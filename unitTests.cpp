@@ -217,15 +217,15 @@ void unitTests::testPlayerList() {
 
 
     // Test 1: Add Players to the list
-    cout << "=== Test 1: Adding Players ===" << endl;
+    outFile << "=== Test 1: Adding Players ===" << endl;
 
     playerList.addCell("Alice", ECcolor::blue);
     playerList.addCell("Bob", ECcolor::green);
     playerList.addCell("Charlie", ECcolor::orange);
     playerList.addCell("Diana", ECcolor::yellow);
     playerList.print(cout);
-    cout << "Number of players: " << playerList.getCount() << endl;
-    cout << endl;
+    outFile << "Number of players: " << playerList.getCount() << endl;
+    outFile<< endl;
 
     // Test 2: Remove a Player and verify the list remains functional
     cout << "=== Test 2: Removing a Player ===" << endl;
