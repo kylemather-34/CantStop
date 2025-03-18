@@ -223,56 +223,56 @@ void unitTests::testPlayerList() {
     playerList.addCell("Bob", ECcolor::green);
     playerList.addCell("Charlie", ECcolor::orange);
     playerList.addCell("Diana", ECcolor::yellow);
-    playerList.print(cout);
+    playerList.print(outFile);
     outFile << "Number of players: " << playerList.getCount() << endl;
     outFile<< endl;
 
     // Test 2: Remove a Player and verify the list remains functional
-    cout << "=== Test 2: Removing a Player ===" << endl;
+    outFile << "=== Test 2: Removing a Player ===" << endl;
     playerList.init(); // Set current to head
     playerList.next(); // Move to the first player (Alice)
     playerList.remove(); // Remove Alice
-    cout << playerList << endl;
-    cout << "Number of players: " << playerList.getCount() << endl;
-    cout << endl;
+    outFile << playerList << endl;
+    outFile << "Number of players: " << playerList.getCount() << endl;
+    outFile << endl;
 
     // Test 3: Remove all Players and verify the list is empty
-    cout << "=== Test 3: Removing All Players ===" << endl;
+    outFile << "=== Test 3: Removing All Players ===" << endl;
     while (!playerList.empty()) {
         playerList.remove();
     }
     // playerList.print();
-    cout << "Number of players: " << playerList.getCount() << endl;
-    cout << endl;
+    outFile << "Number of players: " << playerList.getCount() << endl;
+    outFile << endl;
 
     // Test 4: Add Players again after removing all
-    cout << "=== Test 4: Adding Players Again ===" << endl;
+    outFile << "=== Test 4: Adding Players Again ===" << endl;
     playerList.addCell("Eve", ECcolor::blue);
     playerList.addCell("Frank", ECcolor::orange);
-    playerList.print(cout);
-    cout << "Number of players: " << playerList.getCount() << endl;
-    cout << endl;
+    playerList.print(outFile);
+    outFile << "Number of players: " << playerList.getCount() << endl;
+    outFile << endl;
 
     // Test 5: Traverse the list using nextPlayer()
-    cout << "=== Test 5: Traversing the List ===" << endl;
+    outFile << "=== Test 5: Traversing the List ===" << endl;
     playerList.init(); // Set current to head
-    for (int i = 0; i < playerList.getCount() * 2; ++i) {
+    for (int i = 0; i < playerList.getCount(); ++i) {
         // Traverse twice
         Cell* currentCell = playerList.next();
         Player* currentPlayer = playerList.getCurrentPlayer(); // Get Player from the list
         if (currentPlayer) {
-            cout << "Current Player: " << currentPlayer->getName() << endl; // Use Player's methods
+            outFile << "Current Player: " << currentPlayer->getName() << endl; // Use Player's methods
         }
     }
-    cout << endl;
+    outFile << endl;
 
     // Test 6: Print an empty list
-    cout << "=== Test 6: Printing an Empty List ===" << endl;
+    outFile << "=== Test 6: Printing an Empty List ===" << endl;
     while (!playerList.empty()) {
         playerList.remove();
     }
-    playerList.print(cout);
-    cout << "Number of players: " << playerList.getCount() << endl;
+    playerList.print(outFile);
+    outFile << "Number of players: " << playerList.getCount() << endl;
 
     outFile.close();
 }

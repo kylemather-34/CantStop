@@ -10,9 +10,6 @@
 int main(int argc, char* argv[]) {
     srand(time(nullptr));
 
-
-
-
     unitTests::testPlayerList();
 
     if (ifstream infile("output.txt"); infile) {
