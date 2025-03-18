@@ -7,23 +7,61 @@
 #include "enums.hpp"
 #include "tools.hpp"
 
+
 // Constructor
 Game::Game() :
-    cOne(2), cTwo(7),
-    pOne(getNewPlayer()), pTwo(getNewPlayer()),
-    fourDice(nullptr), board()
+    cOne(2), cTwo(7), fourDice(nullptr), board()
 {
     fourDice = new Dice[4];
+
+    // Add players to the CList instead of storing them directly
+    int numOfPlayers;
+    do {
+        cout << "Please intput your number of players: ";
+        cin >> numOfPlayers;
+        if (numOfPlayers < 2 || numOfPlayers > 4) {
+            cout << "Invalid input. Please try again." << endl;
+        }
+    }while (numOfPlayers < 2 || numOfPlayers > 4);
+
+    for (int x = 0; x < numOfPlayers; x++) {
+        addPlayer();
+    }
 }
 
 Game::~Game() {
     delete[] fourDice; // Free allocated dice array
 }
 
+void Game::addPlayer() {
+    string name;
+    char colorChar;
+    ECcolor color;
 
+    cout << "Enter player name: ";
+    cin >> name;
+    transform(name.begin(), name.end(), name.begin(), ::tolower);
+    cout << "Enter letter of color (o. orange, y. yellow, g. green, b. blue): ";
+    cin >> colorChar;
+
+    colorChar = tolower(colorChar);
+
+    switch (colorChar) {
+        case 'o': color = ECcolor::orange; break;
+        case 'y': color = ECcolor::yellow; break;
+        case 'g': color = ECcolor::green; break;
+        case 'b': color = ECcolor::blue; break;
+        default:
+            cout << "Invalid color! Defaulting to blue.\n";
+        color = ECcolor::blue;
+    }
+
+    // Use CList's addCell to create and store the player
+    players.addCell(name, color);
+}
 /* getNewPlayer function inputs player's data from keyboard
  * and calls the constructor */
-Player Game::getNewPlayer() {
+/*Player Game::getNewPlayer() {
     string name;
     char colorChar;
     ECcolor color;
@@ -53,9 +91,8 @@ Player Game::getNewPlayer() {
             cout << "Invalid color! Defaulting to blue.\n";
             color = ECcolor::blue;
     }
-
     return Player(name, color);
-}
+}*/
 
 void Game::oneTurn(Player* pp) {
     board.startTurn(pp);  // Start turn for the player

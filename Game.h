@@ -9,6 +9,7 @@
 #include "Dice.hpp"
 #include "Player.hpp"
 #include "Board.hpp"
+#include "CList.h"
 #include "tools.hpp"
 
 class Game {
@@ -16,19 +17,20 @@ class Game {
         Board board;
         Game* game;
         Dice* fourDice;
-        Player pOne;
-        Player pTwo;
+        /*Player pOne;
+        Player pTwo;*/
         Column cOne;
         Column cTwo;
+        CList players;
 
     public:
         explicit Game();
         ~Game();
-        Player getNewPlayer();
+        void addPlayer();
         void oneTurn (Player* player);
         Dice* getDice() const {return fourDice;}
-        Player& getPlayerOne() {return pOne;}
-        Player& getPlayerTwo() {return pTwo;}
+        /*Player& getPlayerOne() {return pOne;}
+        Player& getPlayerTwo() {return pTwo;}*/
         Column& getColumnOne() {return cOne;}
         Column& getColumnTwo() {return cTwo;}
 };
