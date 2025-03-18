@@ -129,6 +129,7 @@ void CList::remove() {
         current = nullptr;
     }
 }
+
 ostream& operator<<(ostream& os, const CList& CList) {
     return CList.print(os);
 }
