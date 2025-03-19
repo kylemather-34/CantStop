@@ -27,6 +27,17 @@ Game::Game() :
     for (int x = 0; x < numOfPlayers; x++) {
         addPlayer();
     }
+
+    players.init(); // Set current to head
+    for (int y = 0; y < players.getCount(); ++y) {
+
+        Player* currentPlayer = players.getCurrentPlayer(); // Get Player from the list
+        if (currentPlayer) {
+            oneTurn(currentPlayer);
+            cout << "Current Player: " << currentPlayer->getName() << endl; // Use Player's methods
+        }
+        Cell* currentCell = players.next();
+    }
 }
 
 Game::~Game() {
