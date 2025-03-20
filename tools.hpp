@@ -1,5 +1,5 @@
 //======================================================
-// Project: Dice  File: tools.hpp
+// Project: Can't Stop  File: tools.hpp
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
 //                    -*- mode:c++; tab-width:4 -*-

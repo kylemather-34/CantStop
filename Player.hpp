@@ -1,5 +1,5 @@
 //======================================================
-// Project: Player  File: Player.h
+// Project: Can't Stop  File: Player.h
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
 

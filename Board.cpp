@@ -1,6 +1,7 @@
-//
-// Created by Kyle on 2/17/2025.
-//
+//======================================================
+// Project: Can't Stop  File: Board.cpp
+// Author: Ryan Lang and Kyle Mather     Copyright: 2025
+//======================================================
 
 #include "Board.hpp"
 

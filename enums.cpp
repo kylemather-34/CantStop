@@ -1,5 +1,5 @@
 //======================================================
-// Project: Player  File: enums.cpp
+// Project: Can't Stop  File: enums.cpp
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
 
@@ -7,9 +7,9 @@
 
 //String array for ECColor enum class
 const string ECcolorNames[] = {
-    "white", "orange", "yellow", "green", "blue", "error"
+    "white", "orange", "yellow", "green", "blue"
 };
 
-const string ColNames[] = {
-    "available", "pending", "captured", "error"
+const string ColStates[] = {
+    "available", "pending", "captured"
 };

@@ -1,5 +1,5 @@
 //======================================================
-// Project: Player  File: enums.h
+// Project: Can't Stop  File: enums.h
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
 

@@ -1,5 +1,5 @@
 //======================================================
-// Project: Dice  File: Column.h
+// Project: Can't Stop  File: Column.hpp
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
 #ifndef COLUMN_H
@@ -22,7 +22,6 @@ class Column {
         string colStateToString(ColState state);
         ostream& print(ostream& os) const;
         char getColorChar(ECcolor color) const;
-        const int* getMarkerPositions() const;
         bool startTower(const Player* player);
         bool move();
         void stop(Player* player);
@@ -33,5 +32,9 @@ class Column {
 };
 
 
-ostream& operator<<(ostream&, const Column&);
+inline ostream& operator<<(ostream& os, const Column& column) {
+    column.print(os);
+    return os;
+}
+
 #endif //COLUMN_H

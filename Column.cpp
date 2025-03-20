@@ -1,5 +1,5 @@
 //======================================================
-// Project: Dice  File: Column.cpp
+// Project: Can't Stop  File: Column.cpp
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
 #include "Column.hpp"
@@ -78,10 +78,6 @@ char Column::getColorChar(ECcolor color) const {
         case ECcolor::blue: return 'B';
         default: return '-';
     }
-}
-
-const int* Column::getMarkerPositions() const {
-    return markerPositions;
 }
 
 bool Column::startTower(const Player *player) {

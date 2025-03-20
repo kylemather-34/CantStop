@@ -1,5 +1,5 @@
 //======================================================
-// Project: Dice  File: Dice.h
+// Project: Can't Stop  File: Dice.h
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
 #ifndef DICE_H

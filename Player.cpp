@@ -1,5 +1,5 @@
 //======================================================
-// Project: Player  File: Player.cpp
+// Project: Can't Stop  File: Player.cpp
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
 #include "Player.hpp"

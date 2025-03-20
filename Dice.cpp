@@ -1,5 +1,5 @@
 //======================================================
-// Project: Dice  File: Dice.cpp
+// Project: Can't Stop  File: Dice.cpp
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
 #include "Dice.hpp"
