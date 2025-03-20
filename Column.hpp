@@ -18,8 +18,8 @@ class Column {
     public:
         Column(int a);
         ~Column();
-        ColState state() const;
-        string colStateToString(ColState state);
+        ColState state() const {return colState;}
+        string colStateToString(ColState state) const;
         ostream& print(ostream& os) const;
         char getColorChar(ECcolor color) const;
         bool startTower(const Player* player);

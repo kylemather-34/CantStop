@@ -36,7 +36,7 @@ void Board::print() const {
     }
 }
 
-ostream& operator<<(std::ostream& os, const Board& board) {
+ostream& operator<<(ostream& os, const Board& board) {
     board.print();
     return os;
 }

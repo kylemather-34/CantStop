@@ -24,8 +24,8 @@ class Game {
         CList players;
 
     public:
-        explicit Game();
-        ~Game();
+        Game();
+        ~Game() {delete[] fourDice;}
         void addPlayer();
         void oneTurn (Player* player);
         Dice* getDice() const {return fourDice;}

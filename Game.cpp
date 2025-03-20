@@ -40,10 +40,6 @@ Game::Game() :
     }
 }
 
-Game::~Game() {
-    delete[] fourDice; // Free allocated dice array
-}
-
 void Game::addPlayer() {
     string name;
     char colorChar;
