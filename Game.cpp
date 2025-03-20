@@ -66,40 +66,6 @@ void Game::addPlayer() {
     // Use CList's addCell to create and store the player
     players.addCell(name, color);
 }
-/* getNewPlayer function inputs player's data from keyboard
- * and calls the constructor */
-/*Player Game::getNewPlayer() {
-    string name;
-    char colorChar;
-    ECcolor color;
-
-    cout << "Enter player name: ";
-    cin >> name;
-    transform(name.begin(), name.end(), name.begin(), ::tolower);
-    cout << "Enter letter of color (o. orange, y. yellow, g. green, b. blue): ";
-    cin >> colorChar;
-
-    colorChar = tolower(colorChar);
-
-    switch (colorChar) {
-        case 'o':
-            color = ECcolor::orange;
-            break;
-        case 'y':
-            color = ECcolor::yellow;
-            break;
-        case 'g':
-            color = ECcolor::green;
-            break;
-        case 'b':
-            color = ECcolor::blue;
-            break;
-        default:
-            cout << "Invalid color! Defaulting to blue.\n";
-            color = ECcolor::blue;
-    }
-    return Player(name, color);
-}*/
 
 void Game::oneTurn(Player* pp) {
     board.startTurn(pp);  // Start turn for the player

@@ -44,7 +44,7 @@ ostream& operator<<(ostream& os, const Board& board) {
 void Board::startTurn(Player* player) {
     currentPlayer = player;
     countTowers = 0;
-    for (int y = 2; y < 3; ++y) towerCols[y] = -1;
+    for (int y = 1; y < 3; ++y) towerCols[y] = -1;
 }
 
 bool Board::move(int column) {
