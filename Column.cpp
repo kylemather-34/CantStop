@@ -5,17 +5,13 @@
 #include "Column.hpp"
 
 Column::Column(int a) : columnNumber(a), colState(ColState::available){
-    for (int &pos : markerPositions) {
-        pos = 0;
-    }
+    for (int &pos : markerPositions) {pos = 0;}
     if (a < 2 || a > 12) {
         throw out_of_range("Column number must be between 2 and 12.");
     }
-
 }
 
 Column::~Column () = default;
-
 
 string Column::colStateToString(ColState state) const{
     switch (state) {
@@ -39,7 +35,6 @@ ostream &Column::print(ostream& os) const {
 
     int maxHeight = columnHeights[columnNumber]; // Get the correct height
 
-    // Print column number and state
     os << columnNumber << "  " << stateStr << "   ";
 
     // Print the column's marker positions
@@ -57,10 +52,8 @@ ostream &Column::print(ostream& os) const {
                 square[i + 1] = getColorChar(static_cast<ECcolor>(i));
             }
         }
-
         os << square << "  ";
     }
-
     os << endl;
     return os;
 }
@@ -83,7 +76,6 @@ const int* Column::getMarkerPositions() const {
 
 bool Column::startTower(const Player *player) {
     ECcolor playerColor = (*player).color();
-
 
     // Finds player position off of color
     int playerPos = static_cast<int>(playerColor);
@@ -131,7 +123,6 @@ bool Column::move() {
     if (towerPos >= 7) {
         colState = ColState::captured;
     }
-
     return true;
 }
 
@@ -159,8 +150,6 @@ bool Column::isPending(const Player* player) const {
 }
 
 void Column::bust() {
-    for (int& pos : markerPositions) {
-        pos = 0; // Reset all marker positions
-    }
+    for (int& pos : markerPositions) {pos = 0;}// Reset all marker positions
     colState = ColState::available; // Reset column state
 }
