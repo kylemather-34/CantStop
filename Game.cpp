@@ -69,7 +69,7 @@ void Game::addPlayer() {
 
 void Game::oneTurn(Player* pp) {
     board.startTurn(pp);  // Start turn for the player
-
+    cout << "The current board is: " << &board << endl;
     cout << "Player " << pp->getName() << " is first." << endl;
 
 
