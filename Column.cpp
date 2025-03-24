@@ -38,18 +38,25 @@ ostream &Column::print(ostream& os) const {
     os << columnNumber << "  " << stateStr << "   ";
 
     // Print the column's marker positions
-    for (int pos = 1; pos <= maxHeight; ++pos) {
+    for (int pos = maxHeight; pos >= 1; --pos) {
         string square = "------"; // Default empty slot
 
         // Check for tower in this position
-        if (markerPositions[(int)(ECcolor::white)] == pos) {
+        /*if (markerPositions[(int)(ECcolor::white)] == pos) {
             square[0] = 'T'; // Tower is always stored in White's position
+        }*/
+
+        for (int i = 1; i < (int)(ECcolor::Count); ++i) {
+            if (markerPositions[i] == pos) {
+                square[0] = 'T';  // Tower should be in front of player markers
+                break;  // Ensure only one 'T' is placed
+            }
         }
 
         // Check for player markers in this position
         for (int y = 1; y < (int)(ECcolor::Count); ++y) {
             if (markerPositions[y] == pos) {
-                square[y] = getColorChar((ECcolor)(y));
+                square[y + 1] = getColorChar(static_cast<ECcolor>(y));
             }
         }
         os << square << "  ";

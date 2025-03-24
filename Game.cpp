@@ -16,21 +16,21 @@ Game::Game() :
 
     // Add players to the CList instead of storing them directly
     int numOfPlayers;
-    do {
-        cout << "Please intput your number of players: ";
-        cin >> numOfPlayers;
-        if (numOfPlayers < 2 || numOfPlayers > 4) {
-            cout << "Invalid input. Please try again." << endl;
-        }
-    }while (numOfPlayers < 2 || numOfPlayers > 4);
+    cout << "Please input your number of players (2-4): ";
+    while (!(cin >> numOfPlayers) || numOfPlayers < 2 || numOfPlayers > 4) {
+        cout << "Invalid input. Please enter a number between 2 and 4: ";
+        cin.clear();  // Clear error flag
+        cin.ignore(10000, '\n');  // Discard invalid input
+    }
+
 
     for (int x = 0; x < numOfPlayers; x++) {
         addPlayer();
     }
 
     players.init(); // Set current to head
-    for (int y = 0; y < players.getCount(); ++y) {
 
+    while (true) {
         Player* currentPlayer = players.getCurrentPlayer(); // Get Player from the list
         if (currentPlayer) {
             oneTurn(currentPlayer);
@@ -39,6 +39,8 @@ Game::Game() :
         Cell* currentCell = players.next();
     }
 }
+
+
 
 void Game::addPlayer() {
     string name;
