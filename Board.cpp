@@ -54,7 +54,7 @@ bool Board::move(int column) {
     if (backBone[column]->isCaptured()) return false;
 
     // Check if the column is pending for another player
-    if (backBone[column]->isPending(currentPlayer)) return false;
+    if (backBone[column]->isPending(currentPlayer)) return true;
 
     // Check if a tower is already in this column
     bool towerExists = false;
@@ -84,8 +84,8 @@ bool Board::move(int column) {
 
 // Stop function: finalizes tower positions
 void Board::stop() {
-    for (int i = 0; i < countTowers; ++i) {
-        backBone[towerCols[i]]->stop(currentPlayer);
+    for (int y = 0; y < countTowers; ++y) {
+        backBone[towerCols[y]]->stop(currentPlayer);
     }
     countTowers = 0;
 }
@@ -93,8 +93,8 @@ void Board::stop() {
 
 // Bust function: removes all towers
 void Board::bust() {
-    for (int i = 0; i < countTowers; ++i) {
-        backBone[towerCols[i]]->bust();
+    for (int y = 0; y < countTowers; ++y) {
+        backBone[towerCols[y]]->bust();
     }
     countTowers = 0;
 }

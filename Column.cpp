@@ -38,18 +38,18 @@ ostream &Column::print(ostream& os) const {
     os << columnNumber << "  " << stateStr << "   ";
 
     // Print the column's marker positions
-    for (int pos = maxHeight; pos >= 1; --pos) {
+    for (int pos = 1; pos <= maxHeight; ++pos) {
         string square = "------"; // Default empty slot
 
         // Check for tower in this position
-        if (markerPositions[static_cast<int>(ECcolor::white)] == pos) {
+        if (markerPositions[(int)(ECcolor::white)] == pos) {
             square[0] = 'T'; // Tower is always stored in White's position
         }
 
         // Check for player markers in this position
-        for (int i = 1; i < static_cast<int>(ECcolor::Count); ++i) {
-            if (markerPositions[i] == pos) {
-                square[i + 1] = getColorChar(static_cast<ECcolor>(i));
+        for (int y = 1; y < (int)(ECcolor::Count); ++y) {
+            if (markerPositions[y] == pos) {
+                square[y] = getColorChar((ECcolor)(y));
             }
         }
         os << square << "  ";
@@ -78,9 +78,9 @@ bool Column::startTower(const Player *player) {
     ECcolor playerColor = (*player).color();
 
     // Finds player position off of color
-    int playerPos = static_cast<int>(playerColor);
+    int playerPos = (int)(playerColor);
     // Finds the current tower position
-    int towerPos = markerPositions[static_cast<int>(ECcolor::orange)];
+    int towerPos = markerPositions[(int)(ECcolor::orange)];
     // If current tower position is greater than 0, returns false
     if (towerPos > 0) { return false; }
 
@@ -91,21 +91,21 @@ bool Column::startTower(const Player *player) {
     } else {
         newTowerPos = playerPos + 1;
     }
-    markerPositions[static_cast<int>(ECcolor::white)] = newTowerPos;
+    markerPositions[(int)(ECcolor::white)] = newTowerPos;
 
     if (newTowerPos >= 7) {
         colState = ColState::pending;
     }
 
     // If tower isn't marked by players color, it will be here
-   markerPositions[static_cast<int>(playerColor)] = newTowerPos;
-   markerPositions[static_cast<int>(ECcolor::white)] = 0;
+   markerPositions[(int)(playerColor)] = newTowerPos;
+   markerPositions[(int)(ECcolor::white)] = 0;
 
     return true;
 }
 
 bool Column::move() {
-    int& towerPos = markerPositions[static_cast<int>(ECcolor::white)];
+    int& towerPos = markerPositions[(int)(ECcolor::white)];
 
     // Check if there is a tower to move
     if (towerPos == 0) {
@@ -131,8 +131,8 @@ void Column::stop(Player* player) {
     ECcolor playerColor = player->color();
 
     // Replace the tower with the player's color
-    markerPositions[static_cast<int>(playerColor)] = markerPositions[static_cast<int>(ECcolor::white)];
-    markerPositions[static_cast<int>(ECcolor::white)] = 0;  // Remove tower
+    markerPositions[(int)(playerColor)] = markerPositions[(int)(ECcolor::white)];
+    markerPositions[(int)(ECcolor::white)] = 0;  // Remove tower
 
     // If the column state is pending, change it to captured and call wonColumn()
     if (colState == ColState::pending) {

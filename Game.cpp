@@ -69,9 +69,8 @@ void Game::addPlayer() {
 
 void Game::oneTurn(Player* pp) {
     board.startTurn(pp);  // Start turn for the player
-    cout << "The current board is: " << &board << endl;
+    cout << "The current board is: " << board << endl;
     cout << "Player " << pp->getName() << " is first." << endl;
-
 
     while (true) {
         int towersPlaced = 0;
@@ -123,35 +122,16 @@ void Game::oneTurn(Player* pp) {
             int secondIndex = second - 'A';
 
             // Calculate the column numbers based on the selected dice pairs
-            int column1 = rollResults[firstIndex] + rollResults[secondIndex];
+            int cl = rollResults[firstIndex] + rollResults[secondIndex];
 
-            int remainingIndex[2], count = 0;
-            for (int k = 0; k < 4; k++) {
-                if (k != firstIndex && k != secondIndex) {
-                    remainingIndex[count++] = k;
-                }
-            }
-            int column2 = rollResults[remainingIndex[0]] + rollResults[remainingIndex[1]];
-
-            // Attempt to move towers
-            bool move1, move2;
-            if (towersPlaced == 2) {
-                cout << "Reordering moves due to last tower placement rule.\n";
-                move2 = board.move(column2);
-                move1 = board.move(column1);
-            } else {
-                move1 = board.move(column1);
-                move2 = board.move(column2);
-            }
+            bool mv = board.move(cl);
 
             cout << "\nMove Results:\n";
-            cout << "First Move (" << column1 << "): " <<
-                (move1 ? "Success" : "Failed") << endl;
-            cout << "Second Move (" << column2 << "): " <<
-                (move2 ? "Success" : "Failed") << endl;
+            cout << "Move (" << cl << "): " <<
+                (mv ? "Success" : "Failed") << endl;
 
             // Check if the player went bust
-            if (!move1 && !move2) {
+            if (!mv) {
                 cout << "Bust! No valid moves." << endl;
                 board.bust();
                 break;
@@ -161,13 +141,9 @@ void Game::oneTurn(Player* pp) {
             board.print();
 
             // Check for column captures
-            if (move1 && board.getColumn(column1)->isCaptured()) {
-                cout << "Column " << column1 << " captured!" << endl;
-                pp->wonColumn(column1);
-            }
-            if (move2 && board.getColumn(column2)->isCaptured()) {
-                cout << "Column " << column2 << " captured!" << endl;
-                pp->wonColumn(column2);
+            if (mv && board.getColumn(cl)->isCaptured()) {
+                cout << "Column " << cl << " captured!" << endl;
+                pp->wonColumn(cl);
             }
 
             // Check if the player has won

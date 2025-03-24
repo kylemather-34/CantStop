@@ -17,7 +17,7 @@ Player::~Player() = default;
 // Function to print player details to the output stream
 ostream& Player::print(ostream& os) const{
     os << "Player Name: " << playerName << endl;
-    os << "Color: " << ECcolorNames[static_cast<int>(playerColor)] << endl;
+    os << "Color: " << ECcolorNames[(int)(playerColor)] << endl;
     os << "Score: " << playerScore << endl;
     os << "Columns Captured: ";
     for (int y = 0; y < playerScore; ++y) { // Loop to test both logic points work for captured column
