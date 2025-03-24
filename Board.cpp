@@ -50,36 +50,28 @@ void Board::startTurn(Player* player) {
 bool Board::move(int column) {
     if (column < 2 || column > 12 || !backBone[column]) return false;
 
-    // Check if the column is already captured
-    if (backBone[column]->isCaptured()) return false;
+    Column* col = backBone[column];
 
-    // Check if the column is pending for another player
-    if (backBone[column]->isPending(currentPlayer)) return true;
+    // Check if column is captured by anyone
+    if (col->isCaptured()) return false;
 
-    // Check if a tower is already in this column
-    bool towerExists = false;
-    for (int y = 0; y < countTowers; ++y) {
-        if (towerCols[y] == column) {
-            towerExists = true;
-            break;
-        }
+    // Check if current player already has progress here
+    if (col->hasPlayerMarker(currentPlayer)) {
+        return col->move(); // Advance existing marker
     }
 
-    // If no tower exists and all towers are in use, return false
-    if (!towerExists && countTowers == 3) return false;
+    // Check tower limits
+    if (countTowers >= 3) return false;
 
-    // Place a new tower if necessary
-    if (!towerExists) {
-        // Attempt to start a tower for the current player
-        if (!backBone[column]->startTower(currentPlayer)) {
-            return false; // Tower couldn't be started, return false
-        }
-        towerCols[countTowers++] = column; // Tower placed
+    // Start new tower
+    if (col->startTower(currentPlayer)) {
+        towerCols[countTowers++] = column;
+        return true;
     }
 
-    // Advance the tower in the column
-    return backBone[column]->move();
+    return false;
 }
+
 
 
 // Stop function: finalizes tower positions
