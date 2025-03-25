@@ -32,7 +32,7 @@ Game::Game() :
     while (true) {
         Player* currentPlayer = players.getCurrentPlayer(); // Get Player from the list
         if (currentPlayer) {
-            oneTurn(currentPlayer);
+            takeTurn(currentPlayer);
             cout << "Current Player: " << currentPlayer->getName() << endl; // Use Player's methods
         }
         Cell* currentCell = players.next();
@@ -66,7 +66,7 @@ void Game::addPlayer() {
     players.addCell(name, color);
 }
 
-void Game::oneTurn(Player* currentPlayer) {
+void Game::takeTurn(Player* currentPlayer) {
     board.startTurn(currentPlayer);
     cout << "The current board is:\n" << board << endl;
     cout << "Player " << currentPlayer->getName() << "'s turn.\n";
