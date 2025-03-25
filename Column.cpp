@@ -13,8 +13,6 @@ Column::Column(int a) : columnNumber(a), colState(ColState::available), isTempor
     }
 }
 
-Column::~Column () = default;
-
 string Column::colStateToString(ColState state) const{
     switch (state) {
         case ColState::captured: return "Captured";
@@ -125,8 +123,6 @@ void Column::stop(Player* player) {
     }
 }
 
-
-
 bool Column::isCaptured() const {
     return colState == ColState::captured;
 }
@@ -145,13 +141,8 @@ void Column::bust() {
     isTemporary = false;
 }
 
-
 bool Column::hasPlayerMarker(const Player* player) const {
     return markerPositions[(int)player->color()] > 0;
-}
-
-void Column::makePermanent() {
-    isTemporary = false;
 }
 
 int Column::getColumnHeight() const {

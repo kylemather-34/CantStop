@@ -23,7 +23,7 @@ private:
     Cell(unique_ptr<Player> player, Cell* nextCell = nullptr);
 
     // Destructor
-    ~Cell();
+    ~Cell(){cout << "Cell Destroyed";};
 
     // Friend declaration to allow CList access to private members
     friend class CList;
@@ -43,10 +43,10 @@ public:
     ~CList();
 
     // Accessor function to return number of Cells in list
-    int getCount() const;
+    int getCount() const {return count;};
 
     // Function to check if list is empty
-    bool empty() const;
+    bool empty() const {return count == 0;};
 
     // Function to print all Cells in the list
     ostream& print(ostream& os) const;

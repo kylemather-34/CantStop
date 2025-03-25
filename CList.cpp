@@ -11,10 +11,6 @@ ofstream outFile("Output.txt", ios::app);
 Cell::Cell(unique_ptr<Player> player, Cell* nextCell)
     : upp(move(player)), next(nextCell) {}
 
-Cell::~Cell() {
-    cout << "Cell destroyed." << endl;
-}
-
 // CList class implementation
 CList::CList() : count(0), head(nullptr), tail(nullptr), current(nullptr) {}
 
@@ -22,14 +18,6 @@ CList::~CList() {
     while (head) {
         remove();
     }
-}
-
-int CList::getCount() const {
-    return count;
-}
-
-bool CList::empty() const {
-    return count == 0;
 }
 
 ostream& CList::print(ostream& os) const {

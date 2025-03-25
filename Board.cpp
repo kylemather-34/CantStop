@@ -5,7 +5,6 @@
 
 #include "Board.hpp"
 
-// Constructor
 Board::Board() {
     countTowers = 0;
     for (int y = 0; y < 3; ++y) towerCols[y] = -1;
@@ -57,7 +56,7 @@ bool Board::move(int column) {
 
     // Check if current player already has progress here
     if (col->hasPlayerMarker(currentPlayer)) {
-        return col->move(); // Advance existing marker
+        return col->move();
     }
 
     // Check tower limits
@@ -68,11 +67,8 @@ bool Board::move(int column) {
         towerCols[countTowers++] = column;
         return true;
     }
-
     return false;
 }
-
-
 
 // Stop function: finalizes tower positions
 void Board::stop() {
@@ -83,16 +79,13 @@ void Board::stop() {
     countTowers = 0;
 }
 
-
 // Bust function: removes all towers
-
 void Board::bust() {
     for (int i = 0; i < countTowers; ++i) {
         backBone[towerCols[i]]->bust();
     }
     countTowers = 0;
 }
-
 
 Column* Board::getColumn(int column) {
     if (column < 2 || column > 12) return nullptr; // Ensure valid column range

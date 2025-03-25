@@ -20,11 +20,10 @@ private:
 
 public:
     Column(int a);
-    ~Column();
+    ~Column() = default;
     ColState state() const {return colState;}
     string colStateToString(ColState state) const;
-        ostream& print(ostream& os) const;
-        friend ostream& operator<<(ostream& os, const Column& col);
+    ostream& print(ostream& os) const;
     char getColorChar(ECcolor color) const;
     const int *getMarkerPositions() const;
     bool startTower(const Player *player, bool temporary);
@@ -35,12 +34,10 @@ public:
     bool isPending(const Player* player) const;
     void bust();
     bool hasPlayerMarker(const Player *player) const;
-
-    void makePermanent();
-
+    void makePermanent() {isTemporary = false;};
     int getColumnHeight() const;
     };
 
-
+ostream& operator<<(ostream& os, const Column& col);
 
 #endif //COLUMN_H
