@@ -154,9 +154,23 @@ void Game::takeTurn(Player* currentPlayer) {
             }
         }
         else if (choice == 3) { // Resign
-            cout << currentPlayer->getName() << " resigns.\n";
+            cout << "\n"<<currentPlayer->getName() << " resigns.\n";
             board.bust();
             keepRolling = false;
+
+            cout << endl;
+            players.init(); // Set current to head
+            players.remove(); // Remove Alice
+            cout << endl;
+            cout << "Number of players left: " << players.getCount() << endl;
+            cout << "Not enough player, ending the game!" << endl;
+            cout << endl;
+
+            if (players.getCount() < 2) {
+                cout << *players.getCurrentPlayer() << "WINS!\n";
+                exit(0);
+            }
+
         }
         else {
             cout << "Invalid choice. Try again.\n";
