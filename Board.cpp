@@ -64,7 +64,7 @@ bool Board::move(int column) {
     if (countTowers >= 3) return false;
 
     // Start new tower
-    if (col->startTower(currentPlayer)) {
+    if (col->startTower(currentPlayer, true)) {
         towerCols[countTowers++] = column;
         return true;
     }
@@ -76,20 +76,23 @@ bool Board::move(int column) {
 
 // Stop function: finalizes tower positions
 void Board::stop() {
-    for (int y = 0; y < countTowers; ++y) {
-        backBone[towerCols[y]]->stop(currentPlayer);
+    for (int i = 0; i < countTowers; ++i) {
+        backBone[towerCols[i]]->makePermanent();
+        backBone[towerCols[i]]->stop(currentPlayer);
     }
     countTowers = 0;
 }
 
 
 // Bust function: removes all towers
+
 void Board::bust() {
-    for (int y = 0; y < countTowers; ++y) {
-        backBone[towerCols[y]]->bust();
+    for (int i = 0; i < countTowers; ++i) {
+        backBone[towerCols[i]]->bust();
     }
     countTowers = 0;
 }
+
 
 Column* Board::getColumn(int column) {
     if (column < 2 || column > 12) return nullptr; // Ensure valid column range

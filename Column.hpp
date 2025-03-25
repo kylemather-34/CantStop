@@ -12,37 +12,35 @@
     class Column {
 private:
 
-
     static int columnLength[11];
     const int columnNumber;
     ColState colState;
     int markerPositions[(int)ECcolor::Count]{};
+        bool isTemporary = false;
+
 public:
     Column(int a);
     ~Column();
-
     ColState state() const {return colState;}
     string colStateToString(ColState state) const;
-    ostream& print(ostream& os) const;
+        ostream& print(ostream& os) const;
+        friend ostream& operator<<(ostream& os, const Column& col);
     char getColorChar(ECcolor color) const;
-
     const int *getMarkerPositions() const;
-
-    bool startTower(const Player* player);
+    bool startTower(const Player *player, bool temporary);
     bool move();
     void stop(Player* player);
     void capture(Player* player);
     bool isCaptured() const;
     bool isPending(const Player* player) const;
     void bust();
-
     bool hasPlayerMarker(const Player *player) const;
+
+    void makePermanent();
+
+    int getColumnHeight() const;
     };
 
 
-inline ostream& operator<<(ostream& os, const Column& column) {
-    column.print(os);
-    return os;
-}
 
 #endif //COLUMN_H
