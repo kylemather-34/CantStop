@@ -105,7 +105,7 @@ ostream& Column::print(ostream& os) const {
         if (pos < maxHeight) os << "  ";
     }
 
-    return os;
+    return os << endl;
 }
 
 ostream& operator<<(ostream& os, const Column& col) {
