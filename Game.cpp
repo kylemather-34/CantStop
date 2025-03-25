@@ -160,13 +160,13 @@ void Game::takeTurn(Player* currentPlayer) {
 
             cout << endl;
             players.init(); // Set current to head
-            players.remove(); // Remove Alice
+            players.remove();
             cout << endl;
             cout << "Number of players left: " << players.getCount() << endl;
-            cout << "Not enough player, ending the game!" << endl;
             cout << endl;
 
             if (players.getCount() < 2) {
+                cout << "Not enough players, ending the game!" << endl;
                 cout << *players.getCurrentPlayer() << "WINS!\n";
                 exit(0);
             }
