@@ -4,8 +4,10 @@
 //======================================================
 #include "Column.hpp"
 
-Column::Column(int a) : columnNumber(a), colState(ColState::available){
-    for (int &pos : markerPositions) {pos = 0;}
+Column::Column(int a) : columnNumber(a), colState(ColState::available), isTemporary(false) {
+    for (int& pos : markerPositions) {
+        pos = 0; // Initialize all marker positions to 0
+    }
     if (a < 2 || a > 12) {
         throw out_of_range("Column number must be between 2 and 12.");
     }
@@ -22,41 +24,7 @@ string Column::colStateToString(ColState state) const{
     }
 }
 
-ostream &Column::print(ostream& os) const {
-    // Convert column state to a string
-    string stateStr;
-    switch (colState) {
-        case ColState::captured: stateStr = "Captured"; break;
-        case ColState::pending: stateStr = "Pending"; break;
-        case ColState::available: default: stateStr = "Available"; break;
-    }
 
-    static const int columnHeights[13] = {0, 0, 3, 5, 7, 9, 11, 13, 11, 9, 7, 5, 3}; // Heights for columns 2-12
-
-    int maxHeight = columnHeights[columnNumber]; // Get the correct height
-
-    os << columnNumber << "  " << stateStr << "   ";
-
-    // Print the column's marker positions
-    for (int pos = 1; pos <= maxHeight; ++pos) {
-        string square = "------"; // Default empty slot
-
-        // Check for tower in this position
-        if (markerPositions[(int)(ECcolor::white)] == pos) {
-            square[0] = 'T'; // Tower is always stored in White's position
-        }
-
-        // Check for player markers in this position
-        for (int y = 1; y < (int)(ECcolor::Count); ++y) {
-            if (markerPositions[y] == pos) {
-                square[y] = getColorChar((ECcolor)(y));
-            }
-        }
-        os << square << "  ";
-    }
-    os << endl;
-    return os;
-}
 
 // Helper function to get color character
 char Column::getColorChar(ECcolor color) const {
@@ -74,72 +42,90 @@ const int* Column::getMarkerPositions() const {
     return markerPositions;
 }
 
-bool Column::startTower(const Player *player) {
-    ECcolor playerColor = (*player).color();
 
-    // Finds player position off of color
-    int playerPos = (int)(playerColor);
-    // Finds the current tower position
-    int towerPos = markerPositions[(int)(ECcolor::orange)];
-    // If current tower position is greater than 0, returns false
-    if (towerPos > 0) { return false; }
 
-    // If it gets passed that, we will continue with creating a new tower
-    int newTowerPos;
-    if (playerPos == 0) {
-        newTowerPos = 1;
-    } else {
-        newTowerPos = playerPos + 1;
-    }
-    markerPositions[(int)(ECcolor::white)] = newTowerPos;
+bool Column::startTower(const Player* player, bool temporary) {
+    ECcolor playerColor = player->color();
+    int colorIndex = static_cast<int>(playerColor);
 
-    if (newTowerPos >= 7) {
-        colState = ColState::pending;
+    if (colState == ColState::captured || markerPositions[colorIndex] > 0) {
+        return false;
     }
 
-    // If tower isn't marked by players color, it will be here
-   markerPositions[(int)(playerColor)] = newTowerPos;
-   markerPositions[(int)(ECcolor::white)] = 0;
-
+    markerPositions[colorIndex] = 1;
+    colState = ColState::pending;
+    isTemporary = temporary;
     return true;
 }
 
 bool Column::move() {
-    int& towerPos = markerPositions[(int)(ECcolor::white)];
-
-    // Check if there is a tower to move
-    if (towerPos == 0) {
-        // No tower exists, so place a new tower at position 1
-        towerPos = 1;
-    } else {
-        // Advance the tower by one position
-        towerPos++;
+    // Find which player has a tower here
+    int activePlayer = -1;
+    for (int i = 1; i < static_cast<int>(ECcolor::Count); i++) {
+        if (markerPositions[i] > 0) {
+            activePlayer = i;
+            break;
+        }
     }
 
-    //Check if the column is pending
-    if (towerPos != 0 && towerPos < 7) colState = ColState::pending;
+    if (activePlayer == -1) return false;
 
-    // Check if the column is captured
-    if (towerPos >= 7) {
+    // Advance the tower
+    markerPositions[activePlayer]++;
+
+    // Check for column capture
+    if (markerPositions[activePlayer] >= getColumnHeight()) {
         colState = ColState::captured;
     }
+
     return true;
 }
 
+ostream& Column::print(ostream& os) const {
+    os << "Column " << columnNumber << ": " << colStateToString(colState) << "   ";
+
+    int maxHeight = getColumnHeight();
+
+    for (int pos = 1; pos <= maxHeight; pos++) {
+        bool markerFound = false;
+        char marker = '-';
+
+        // Check all player colors
+        for (int color = 1; color < static_cast<int>(ECcolor::Count); color++) {
+            if (markerPositions[color] == pos) {
+                marker = isTemporary ? 'T' : getColorChar(static_cast<ECcolor>(color));
+                markerFound = true;
+                break;
+            }
+        }
+
+        os << "--";
+        if (markerFound) os << marker;
+        else os << "-";
+        os << "--";
+
+        if (pos < maxHeight) os << "  ";
+    }
+
+    return os;
+}
+
+ostream& operator<<(ostream& os, const Column& col) {
+    return col.print(os);
+}
+
 void Column::stop(Player* player) {
-    // Get the player's color
+    makePermanent();
     ECcolor playerColor = player->color();
+    int colorIndex = (int)(playerColor);
 
-    // Replace the tower with the player's color
-    markerPositions[(int)(playerColor)] = markerPositions[(int)(ECcolor::white)];
-    markerPositions[(int)(ECcolor::white)] = 0;  // Remove tower
-
-    // If the column state is pending, change it to captured and call wonColumn()
-    if (colState == ColState::pending) {
+    if (markerPositions[colorIndex] >= getColumnHeight()) {
         colState = ColState::captured;
-        player->wonColumn(columnNumber);  // Notify the player that they won the column
+        player->wonColumn(columnNumber);
     }
 }
+
+
 
 bool Column::isCaptured() const {
     return colState == ColState::captured;
@@ -150,6 +136,25 @@ bool Column::isPending(const Player* player) const {
 }
 
 void Column::bust() {
-    for (int& pos : markerPositions) {pos = 0;}// Reset all marker positions
-    colState = ColState::available; // Reset column state
+    if (isTemporary) {
+        for (int i = 0; i < 5; i++) {
+            markerPositions[i] = 0;
+        }
+        colState = ColState::available;
+    }
+    isTemporary = false;
+}
+
+
+bool Column::hasPlayerMarker(const Player* player) const {
+    return markerPositions[(int)player->color()] > 0;
+}
+
+void Column::makePermanent() {
+    isTemporary = false;
+}
+
+int Column::getColumnHeight() const {
+    static const int columnHeights[13] = {0, 0, 3, 5, 7, 9, 11, 13, 11, 9, 7, 5, 3};
+    return columnHeights[columnNumber];
 }

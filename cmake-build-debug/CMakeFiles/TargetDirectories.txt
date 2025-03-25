@@ -1,3 +1,3 @@
-C:/Users/Kyle/CLionProjects/CantStop/cmake-build-debug/CMakeFiles/AdvanceC__.dir
-C:/Users/Kyle/CLionProjects/CantStop/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Kyle/CLionProjects/CantStop/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/ryanlang/CLionProjects/CantStop/cmake-build-debug/CMakeFiles/AdvanceC__.dir
+/Users/ryanlang/CLionProjects/CantStop/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/ryanlang/CLionProjects/CantStop/cmake-build-debug/CMakeFiles/rebuild_cache.dir

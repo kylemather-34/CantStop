@@ -20,7 +20,7 @@ class Player {
         void print() const;
         ostream& print(ostream&) const;
         ECcolor color() const;
-        [[nodiscard]] int score() const;
+        int score() const;
         bool wonColumn(int colNum);
         string getName() {return playerName;}
 };

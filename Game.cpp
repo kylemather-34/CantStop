@@ -16,21 +16,21 @@ Game::Game() :
 
     // Add players to the CList instead of storing them directly
     int numOfPlayers;
-    do {
-        cout << "Please intput your number of players: ";
-        cin >> numOfPlayers;
-        if (numOfPlayers < 2 || numOfPlayers > 4) {
-            cout << "Invalid input. Please try again." << endl;
-        }
-    }while (numOfPlayers < 2 || numOfPlayers > 4);
+    cout << "Please input your number of players (2-4): ";
+    while (!(cin >> numOfPlayers) || numOfPlayers < 2 || numOfPlayers > 4) {
+        cout << "Invalid input. Please enter a number between 2 and 4: ";
+        cin.clear();  // Clear error flag
+        cin.ignore(10000, '\n');  // Discard invalid input
+    }
+
 
     for (int x = 0; x < numOfPlayers; x++) {
         addPlayer();
     }
 
     players.init(); // Set current to head
-    for (int y = 0; y < players.getCount(); ++y) {
 
+    while (true) {
         Player* currentPlayer = players.getCurrentPlayer(); // Get Player from the list
         if (currentPlayer) {
             oneTurn(currentPlayer);
@@ -39,6 +39,8 @@ Game::Game() :
         Cell* currentCell = players.next();
     }
 }
+
+
 
 void Game::addPlayer() {
     string name;
@@ -67,97 +69,88 @@ void Game::addPlayer() {
     players.addCell(name, color);
 }
 
-void Game::oneTurn(Player* pp) {
-    board.startTurn(pp);  // Start turn for the player
-    cout << "The current board is: " << board << endl;
-    cout << "Player " << pp->getName() << " is first." << endl;
+void Game::oneTurn(Player* currentPlayer) {
+    board.startTurn(currentPlayer);
+    cout << "The current board is:\n" << board << endl;
+    cout << "Player " << currentPlayer->getName() << "'s turn.\n";
 
-    while (true) {
-        int towersPlaced = 0;
-        
-        // Display menu
-        cout << "Pick a choice (Use the # associated with the choice):\n";
-        cout << "1. Roll  2. Stop  3. Resign" << endl;
+    bool keepRolling = true;
+    while (keepRolling) {
+        cout << "1. Roll  2. Stop  3. Resign\n";
         int choice;
         cin >> choice;
 
-        if (choice == 2) {  // Stop turn
+        if (choice == 2) { // Stop
             board.stop();
-            break;
+            cout << "Turn ended. Final positions:\n" << board << endl;
+            keepRolling = false;
         }
-        else if (choice == 1) {  // Roll dice
-            if (!fourDice) {  // Ensure the dice object exists
-                cout << "Error: Dice not initialized!" << endl;
-                return;
+        else if (choice == 1) { // Roll
+            const int* dice = fourDice->roll();
+            cout << "Rolled: A:" << dice[0] << " B:" << dice[1]
+                 << " C:" << dice[2] << " D:" << dice[3] << endl;
+
+            // Get dice pair selection
+            char pair1, pair2;
+            cout << "Choose first pair (e.g. AB): ";
+            cin >> pair1 >> pair2;
+            pair1 = toupper(pair1);
+            pair2 = toupper(pair2);
+
+            // Calculate column numbers
+            int col1 = dice[pair1-'A'] + dice[pair2-'A'];
+
+            // Calculate second pair automatically
+            int unused1 = (pair1 == 'A' || pair2 == 'A') ? 0 : 'A'-'A';
+            int unused2 = (pair1 == 'B' || pair2 == 'B') ? 0 : 'B'-'A';
+            if (unused1 == unused2) {
+                unused2 = (pair1 == 'C' || pair2 == 'C') ? 0 : 'C'-'A';
             }
-        
-            const int* rollResults = fourDice->roll();  // Get roll values
+            int col2 = dice[unused1] + dice[unused2];
 
-            cout << "Rolled Dice: ";
-            char diceLabels[4] = {'A', 'B', 'C', 'D'};
+            // Attempt moves
+            bool move1 = board.move(col1);
+            bool move2 = board.move(col2);
 
-            for (int y = 0; y < 4; y++) {
-                cout << diceLabels[y] << ": " << rollResults[y] << "  ";
-            }
-            cout << endl;
+            cout << "Attempting moves: " << col1 << " and " << col2 << endl;
+            cout << "Move " << col1 << ": " << (move1 ? "Success" : "Failed") << endl;
+            cout << "Move " << col2 << ": " << (move2 ? "Success" : "Failed") << endl;
 
-            // Get user selection for dice pairs
-            char first, second;
-            bool isValid = false;
-            while (!isValid) {
-                cout << "Choose a pair using letters (e.g., AC): ";
-                cin >> first >> second;
-                first = toupper(first);
-                second = toupper(second);
-                if (first != second &&
-                   (first == 'A' || first == 'B' || first == 'C' || first == 'D') &&
-                   (second == 'A' || second == 'B' || second == 'C' || second == 'D')) {
-                    isValid = true;
-                   } else {
-                       cout << "Invalid selection. Choose two different dice (A, B, C, D).\n";
-                   }
-            }
-
-            int firstIndex = first - 'A';
-            int secondIndex = second - 'A';
-
-            // Calculate the column numbers based on the selected dice pairs
-            int cl = rollResults[firstIndex] + rollResults[secondIndex];
-
-            bool mv = board.move(cl);
-
-            cout << "\nMove Results:\n";
-            cout << "Move (" << cl << "): " <<
-                (mv ? "Success" : "Failed") << endl;
-
-            // Check if the player went bust
-            if (!mv) {
-                cout << "Bust! No valid moves." << endl;
+            if (!move1 && !move2) {
+                cout << "BUST! No valid moves.\n";
                 board.bust();
-                break;
+                cout << "Current board:\n" << board << endl;
+                keepRolling = false;
             }
+            else {
+                cout << "Current board (T = temporary):\n" << board << endl;
 
-            // Print the board after moving
-            board.print();
+                // Check for captured columns
+                if (move1 && board.getColumn(col1)->isCaptured()) {
+                    currentPlayer->wonColumn(col1);
+                    cout << "COLUMN " << col1 << " CAPTURED!\n";
+                }
+                if (move2 && board.getColumn(col2)->isCaptured()) {
+                    currentPlayer->wonColumn(col2);
+                    cout << "COLUMN " << col2 << " CAPTURED!\n";
+                }
 
-            // Check for column captures
-            if (mv && board.getColumn(cl)->isCaptured()) {
-                cout << "Column " << cl << " captured!" << endl;
-                pp->wonColumn(cl);
-            }
-
-            // Check if the player has won
-            if (pp->score() >= 3) {
-                cout << "Player " << pp->getName() << " has won the game!" << endl;
-                return;
+                // Check win condition
+                if (currentPlayer->score() >= 3) {
+                    cout << "PLAYER " << currentPlayer->getName() << " WINS!\n";
+                    keepRolling = false;
+                }
             }
         }
-        else if (choice == 3) {
-            cout << "Resign option not implemented yet." << endl;
-            break;
+        else if (choice == 3) { // Resign
+            cout << currentPlayer->getName() << " resigns.\n";
+            board.bust();
+            keepRolling = false;
         }
         else {
-            cout << "Invalid option. Try again." << endl;
+            cout << "Invalid choice. Try again.\n";
         }
     }
 }
+
+
