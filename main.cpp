@@ -8,25 +8,11 @@
 #include "Player.hpp"
 
 int main(int argc, char* argv[]) {
-
     srand(time(nullptr));
 
     Game game1;
 
-    /*if (ifstream infile("output.txt"); infile) {
-        string line;
-        while (getline(infile, line)) {
-            cout << line << endl;
-        }
-        infile.close();
-    } else {
-        cerr << "Error opening output.txt" << endl;
-    }*/
-
-
-
     bye();  //Designates program termination
-    ofstream outFile("output.txt");
-    std::cout.rdbuf(outFile.rdbuf());
+
     return 0;
 }

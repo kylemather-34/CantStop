@@ -31,6 +31,7 @@ Game::Game() :
 
     while (players.getCount() >= 2) {
         Player* currentPlayer = players.getCurrentPlayer(); // Get Player from the list
+        if (!currentPlayer) break;
         if (currentPlayer) {
             takeTurn(currentPlayer);
             cout << "Current Player: " << currentPlayer->getName() << endl; // Use Player's methods
@@ -183,7 +184,6 @@ void Game::takeTurn(Player* currentPlayer) {
         else if (choice == 3) { // Resign
             cout << "\n"<<currentPlayer->getName() << " resigns.\n";
             board.bust();
-            keepRolling = false;
 
             cout << endl;
             players.init(); // Set current to head
@@ -199,8 +199,8 @@ void Game::takeTurn(Player* currentPlayer) {
                 while (!players.empty()) {
                     players.remove();
                 }
+                return;
             }
-
         }
         else {
             cout << "Invalid choice. Try again.\n";
