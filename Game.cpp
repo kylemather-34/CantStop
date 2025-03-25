@@ -32,7 +32,7 @@ Game::Game() :
     while (true) {
         Player* currentPlayer = players.getCurrentPlayer(); // Get Player from the list
         if (currentPlayer) {
-            oneTurn(currentPlayer);
+            takeTurn(currentPlayer);
             cout << "Current Player: " << currentPlayer->getName() << endl; // Use Player's methods
         }
         Cell* currentCell = players.next();
@@ -66,7 +66,7 @@ void Game::addPlayer() {
     players.addCell(name, color);
 }
 
-void Game::oneTurn(Player* currentPlayer) {
+void Game::takeTurn(Player* currentPlayer) {
     board.startTurn(currentPlayer);
     cout << "The current board is:\n" << board << endl;
     cout << "Player " << currentPlayer->getName() << "'s turn.\n";
@@ -154,9 +154,23 @@ void Game::oneTurn(Player* currentPlayer) {
             }
         }
         else if (choice == 3) { // Resign
-            cout << currentPlayer->getName() << " resigns.\n";
+            cout << "\n"<<currentPlayer->getName() << " resigns.\n";
             board.bust();
             keepRolling = false;
+
+            cout << endl;
+            players.init(); // Set current to head
+            players.remove(); // Remove Alice
+            cout << endl;
+            cout << "Number of players left: " << players.getCount() << endl;
+            cout << "Not enough player, ending the game!" << endl;
+            cout << endl;
+
+            if (players.getCount() < 2) {
+                cout << *players.getCurrentPlayer() << "WINS!\n";
+                exit(0);
+            }
+
         }
         else {
             cout << "Invalid choice. Try again.\n";
