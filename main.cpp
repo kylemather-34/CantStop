@@ -8,6 +8,7 @@
 #include "Player.hpp"
 
 int main(int argc, char* argv[]) {
+
     srand(time(nullptr));
 
     Game game1;
@@ -22,9 +23,10 @@ int main(int argc, char* argv[]) {
         cerr << "Error opening output.txt" << endl;
     }*/
 
-    ofstream outFile("output.txt");
-    cout.rdbuf(outFile.rdbuf());
+
 
     bye();  //Designates program termination
+    ofstream outFile("output.txt");
+    std::cout.rdbuf(outFile.rdbuf());
     return 0;
 }

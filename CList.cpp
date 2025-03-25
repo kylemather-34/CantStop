@@ -20,6 +20,11 @@ CList::~CList() {
     }
 }
 
+void CList::clear() {
+    while (head != nullptr) {
+        remove();
+    }
+}
 ostream& CList::print(ostream& os) const {
     if (empty()) {
         os << "Empty list." << endl;

@@ -29,7 +29,7 @@ Game::Game() :
 
     players.init(); // Set current to head
 
-    while (true) {
+    while (players.getCount() >= 2) {
         Player* currentPlayer = players.getCurrentPlayer(); // Get Player from the list
         if (currentPlayer) {
             takeTurn(currentPlayer);
@@ -43,26 +43,53 @@ void Game::addPlayer() {
     string name;
     char colorChar;
     ECcolor color;
+    bool colorAvailable;
 
+    // Get player name
     cout << "Enter player name: ";
     cin >> name;
     transform(name.begin(), name.end(), name.begin(), ::tolower);
-    cout << "Enter letter of color (o. orange, y. yellow, g. green, b. blue): ";
-    cin >> colorChar;
 
-    colorChar = tolower(colorChar);
+    do {
+        colorAvailable = true;
 
-    switch (colorChar) {
-        case 'o': color = ECcolor::orange; break;
-        case 'y': color = ECcolor::yellow; break;
-        case 'g': color = ECcolor::green; break;
-        case 'b': color = ECcolor::blue; break;
-        default:
-            cout << "Invalid color! Defaulting to blue.\n";
-        color = ECcolor::blue;
-    }
+        // Get color choice
+        cout << "Enter letter of color (o. orange, y. yellow, g. green, b. blue): ";
+        cin >> colorChar;
+        colorChar = tolower(colorChar);
 
-    // Use CList's addCell to create and store the player
+        // Validate color choice
+        switch (colorChar) {
+            case 'o': color = ECcolor::orange; break;
+            case 'y': color = ECcolor::yellow; break;
+            case 'g': color = ECcolor::green; break;
+            case 'b': color = ECcolor::blue; break;
+            default:
+                cout << "Invalid color! Please choose from o,y,g,b.\n";
+                colorAvailable = false;
+                continue;
+        }
+
+        // Check if color is already taken
+        if (players.getCount() > 0) {
+            players.init(); // Reset to head of list
+            for (int i = 0; i < players.getCount(); i++) {
+                Player* existingPlayer = players.getCurrentPlayer();
+                if (existingPlayer) {
+
+                    if (existingPlayer->color() == color) {
+                        cout << "Color already taken by " << existingPlayer->getName() << "!\n";
+                        colorAvailable = false;
+                        break;
+                    }
+                }
+                players.next();
+            }
+        }
+
+    } while (!colorAvailable);
+
+    // Add the player with validated color
     players.addCell(name, color);
 }
 
@@ -168,7 +195,10 @@ void Game::takeTurn(Player* currentPlayer) {
             if (players.getCount() < 2) {
                 cout << "Not enough players, ending the game!" << endl;
                 cout << *players.getCurrentPlayer() << "WINS!\n";
-                exit(0);
+                keepRolling = false;
+                while (!players.empty()) {
+                    players.remove();
+                }
             }
 
         }

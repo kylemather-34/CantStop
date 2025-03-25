@@ -42,6 +42,8 @@ public:
     // Destructor
     ~CList();
 
+    void clear();
+
     // Accessor function to return number of Cells in list
     int getCount() const {return count;};
 
