@@ -23,7 +23,6 @@ Game::Game() :
         cin.ignore(10000, '\n');  // Discard invalid input
     }
 
-
     for (int x = 0; x < numOfPlayers; x++) {
         addPlayer();
     }
@@ -39,8 +38,6 @@ Game::Game() :
         Cell* currentCell = players.next();
     }
 }
-
-
 
 void Game::addPlayer() {
     string name;
@@ -76,43 +73,57 @@ void Game::oneTurn(Player* currentPlayer) {
 
     bool keepRolling = true;
     while (keepRolling) {
-        cout << "1. Roll  2. Stop  3. Resign\n";
+        cout << "\nOptions: 1. Roll  2. Stop  3. Resign\nChoice: ";
         int choice;
         cin >> choice;
 
         if (choice == 2) { // Stop
             board.stop();
-            cout << "Turn ended. Final positions:\n" << board << endl;
+            cout << "\nTurn ended. Final positions:\n";
+            board.print();
             keepRolling = false;
         }
         else if (choice == 1) { // Roll
             const int* dice = fourDice->roll();
-            cout << "Rolled: A:" << dice[0] << " B:" << dice[1]
-                 << " C:" << dice[2] << " D:" << dice[3] << endl;
+            cout << "\nRolled Dice:\n";
+            cout << "A: " << dice[0] << "  B: " << dice[1]
+                 << "  C: " << dice[2] << "  D: " << dice[3] << "\n";
 
             // Get dice pair selection
             char pair1, pair2;
-            cout << "Choose first pair (e.g. AB): ";
-            cin >> pair1 >> pair2;
-            pair1 = toupper(pair1);
-            pair2 = toupper(pair2);
+            bool valid = false;
+            while (!valid) {
+                cout << "Choose first pair (e.g. AB): ";
+                cin >> pair1 >> pair2;
+                pair1 = toupper(pair1);
+                pair2 = toupper(pair2);
 
-            // Calculate column numbers
-            int col1 = dice[pair1-'A'] + dice[pair2-'A'];
-
-            // Calculate second pair automatically
-            int unused1 = (pair1 == 'A' || pair2 == 'A') ? 0 : 'A'-'A';
-            int unused2 = (pair1 == 'B' || pair2 == 'B') ? 0 : 'B'-'A';
-            if (unused1 == unused2) {
-                unused2 = (pair1 == 'C' || pair2 == 'C') ? 0 : 'C'-'A';
+                if (pair1 != pair2 &&
+                    (pair1 == 'A' || pair1 == 'B' || pair1 == 'C' || pair1 == 'D') &&
+                    (pair2 == 'A' || pair2 == 'B' || pair2 == 'C' || pair2 == 'D')) {
+                    valid = true;
+                } else {
+                    cout << "Invalid selection. Choose two different dice (A-D).\n";
+                }
             }
-            int col2 = dice[unused1] + dice[unused2];
+
+            // Calculate first column
+            int col1 = dice[pair1-'A'] + dice[pair2-'A'];
+            // Calculate second column from remaining dice
+            int remainingIndices[2];
+            int idx = 0;
+            for (int i = 0; i < 4; i++) {
+                if (i != (pair1-'A') && i != (pair2-'A')) {
+                    remainingIndices[idx++] = i;
+                }
+            }
+            int col2 = dice[remainingIndices[0]] + dice[remainingIndices[1]];
 
             // Attempt moves
             bool move1 = board.move(col1);
             bool move2 = board.move(col2);
 
-            cout << "Attempting moves: " << col1 << " and " << col2 << endl;
+            cout << "\nAttempting moves: " << col1 << " and " << col2 << endl;
             cout << "Move " << col1 << ": " << (move1 ? "Success" : "Failed") << endl;
             cout << "Move " << col2 << ": " << (move2 ? "Success" : "Failed") << endl;
 

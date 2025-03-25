@@ -13,8 +13,6 @@ Column::Column(int a) : columnNumber(a), colState(ColState::available), isTempor
     }
 }
 
-Column::~Column () = default;
-
 string Column::colStateToString(ColState state) const{
     switch (state) {
         case ColState::captured: return "Captured";
@@ -107,7 +105,7 @@ ostream& Column::print(ostream& os) const {
         if (pos < maxHeight) os << "  ";
     }
 
-    return os;
+    return os << endl;
 }
 
 ostream& operator<<(ostream& os, const Column& col) {
@@ -124,8 +122,6 @@ void Column::stop(Player* player) {
         player->wonColumn(columnNumber);
     }
 }
-
-
 
 bool Column::isCaptured() const {
     return colState == ColState::captured;
@@ -145,13 +141,8 @@ void Column::bust() {
     isTemporary = false;
 }
 
-
 bool Column::hasPlayerMarker(const Player* player) const {
     return markerPositions[(int)player->color()] > 0;
-}
-
-void Column::makePermanent() {
-    isTemporary = false;
 }
 
 int Column::getColumnHeight() const {
