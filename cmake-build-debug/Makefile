@@ -273,6 +273,30 @@ Player.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvanceC__.dir/build.make CMakeFiles/AdvanceC__.dir/Player.cpp.s
 .PHONY : Player.cpp.s
 
+Tee.o: Tee.cpp.o
+.PHONY : Tee.o
+
+# target to build an object file
+Tee.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvanceC__.dir/build.make CMakeFiles/AdvanceC__.dir/Tee.cpp.o
+.PHONY : Tee.cpp.o
+
+Tee.i: Tee.cpp.i
+.PHONY : Tee.i
+
+# target to preprocess a source file
+Tee.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvanceC__.dir/build.make CMakeFiles/AdvanceC__.dir/Tee.cpp.i
+.PHONY : Tee.cpp.i
+
+Tee.s: Tee.cpp.s
+.PHONY : Tee.s
+
+# target to generate assembly for a file
+Tee.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvanceC__.dir/build.make CMakeFiles/AdvanceC__.dir/Tee.cpp.s
+.PHONY : Tee.cpp.s
+
 enums.o: enums.cpp.o
 .PHONY : enums.o
 
@@ -396,6 +420,9 @@ help:
 	@echo "... Player.o"
 	@echo "... Player.i"
 	@echo "... Player.s"
+	@echo "... Tee.o"
+	@echo "... Tee.i"
+	@echo "... Tee.s"
 	@echo "... enums.o"
 	@echo "... enums.i"
 	@echo "... enums.s"

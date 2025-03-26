@@ -7,7 +7,6 @@
 #include "enums.hpp"
 #include "tools.hpp"
 
-
 // Constructor
 Game::Game() :
     cOne(2), cTwo(7), fourDice(nullptr), board()
@@ -34,7 +33,7 @@ Game::Game() :
         if (!currentPlayer) break;
         if (currentPlayer) {
             takeTurn(currentPlayer);
-            cout << "Current Player: " << currentPlayer->getName() << endl; // Use Player's methods
+            cout << "Current Player: " << currentPlayer->getName() << "\n";// Use Player's methods
         }
         Cell* currentCell = players.next();
     }
@@ -96,8 +95,8 @@ void Game::addPlayer() {
 
 void Game::takeTurn(Player* currentPlayer) {
     board.startTurn(currentPlayer);
-    cout << "The current board is:\n" << board << endl;
-    cout << "Player " << currentPlayer->getName() << "'s turn.\n";
+    cout << "\nThe current board is:\n" << board << endl;
+    cout << "Player " + currentPlayer->getName() + "'s turn.\n";
 
     bool keepRolling = true;
     while (keepRolling) {
@@ -207,5 +206,3 @@ void Game::takeTurn(Player* currentPlayer) {
         }
     }
 }
-
-

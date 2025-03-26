@@ -5,7 +5,7 @@
 
 #include "CList.h"
 
-ofstream outFile("Output.txt", ios::app);
+
 
 // Cell class implementation
 Cell::Cell(unique_ptr<Player> player, Cell* nextCell)
