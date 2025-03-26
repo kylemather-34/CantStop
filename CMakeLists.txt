@@ -21,6 +21,4 @@ add_executable(AdvanceC__ main.cpp
         Board.cpp
         CList.h
         CList.cpp
-        Tee.cpp
-        Tee.h
 )

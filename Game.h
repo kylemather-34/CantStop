@@ -11,7 +11,6 @@
 #include "Board.hpp"
 #include "CList.h"
 #include "tools.hpp"
-#include "Tee.h"
 
 class Game {
     private:
