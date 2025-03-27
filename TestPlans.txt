@@ -333,3 +333,89 @@ All outputs should be written to Output.txt.
 Ensure that console logs match expected outputs.
 
 Review failures and debug accordingly.
+
+------------------------------------------------------------------------------------------------------------------------
+
+TEST PLAN - PlayerList
+Objective:
+Ensure that the CList class correctly manages a circular list of Players. The test will validate player addition, removal, re-adding after removal, circular iteration, and printing functionality.
+
+Test Cases:
+
+Adding Players
+
+Objective: Verify that Players can be successfully added to CList.
+
+Steps:
+
+Create four dummy Player objects.
+
+Add them to CList.
+
+Expected Outcome:
+
+The list contains four players.
+
+The order of Players is maintained.
+
+Removing a Player
+
+Objective: Ensure that removing a Player does not break the list.
+
+Steps:
+
+Remove one Player from the list.
+
+Verify that the remaining Players are still linked correctly.
+
+Expected Outcome:
+
+The list contains three Players.
+
+nextPlayer() still progresses correctly.
+
+Removing All Players & Re-adding
+
+Objective: Verify that the list can be emptied and reused.
+
+Steps:
+
+Remove all Players.
+
+Verify that the list is empty.
+
+Add new Players again.
+
+Expected Outcome:
+
+The list becomes empty.
+
+Players can be added again successfully.
+
+Circular Iteration
+
+Objective: Ensure that nextPlayer() correctly cycles through all Players and returns to the starting point.
+
+Steps:
+
+Start from a Player.
+
+Call nextPlayer() repeatedly until the starting Player is reached again.
+
+Expected Outcome:
+
+The iteration loops through all Players correctly.
+
+Printing Players
+
+Objective: Validate the printing functionality for different states of the list.
+
+Steps:
+
+Print an empty CList.
+
+Print CList with 1-4 Players.
+
+Expected Outcome:
+
+Output reflects the correct number of Players in the list.
