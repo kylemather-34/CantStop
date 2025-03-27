@@ -44,13 +44,14 @@ const int* Column::getMarkerPositions() const {
 
 bool Column::startTower(const Player* player, bool temporary) {
     ECcolor playerColor = player->color();
-    int colorIndex = static_cast<int>(playerColor);
+    int colorIndex = (int)(playerColor);
 
-    if (colState == ColState::captured || markerPositions[colorIndex] > 0) {
+    // Only reject if column is captured OR player has an active marker (position >= 1)
+    if (colState == ColState::captured || markerPositions[colorIndex] >= 1) {
         return false;
     }
 
-    markerPositions[colorIndex] = 1;
+    markerPositions[colorIndex] = 1;  // Start at position 1 (first step)
     colState = ColState::pending;
     isTemporary = temporary;
     return true;
@@ -59,7 +60,7 @@ bool Column::startTower(const Player* player, bool temporary) {
 bool Column::move() {
     // Find which player has a tower here
     int activePlayer = -1;
-    for (int i = 1; i < static_cast<int>(ECcolor::Count); i++) {
+    for (int i = 1; i < (int)(ECcolor::Count); i++) {
         if (markerPositions[i] > 0) {
             activePlayer = i;
             break;
@@ -89,7 +90,7 @@ ostream& Column::print(ostream& os) const {
         char marker = '-';
 
         // Check all player colors
-        for (int color = 1; color < static_cast<int>(ECcolor::Count); color++) {
+        for (int color = 1; color < (int)(ECcolor::Count); color++) {
             if (markerPositions[color] == pos) {
                 marker = isTemporary ? 'T' : getColorChar(static_cast<ECcolor>(color));
                 markerFound = true;
