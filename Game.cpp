@@ -9,9 +9,9 @@
 
 // Constructor
 Game::Game() :
-    cOne(2), cTwo(7), fourDice(nullptr), board()
+    cOne(2), cTwo(7), CSDice(nullptr), board()
 {
-    fourDice = new Dice[4];
+    CSDice = new CantStopDice();
 
     // Add players to the CList instead of storing them directly
     int numOfPlayers;
@@ -111,40 +111,10 @@ void Game::takeTurn(Player* currentPlayer) {
             keepRolling = false;
         }
         else if (choice == 1) { // Roll
-            const int* dice = fourDice->roll();
-            cout << "\nRolled Dice:\n";
-            cout << "A: " << dice[0] << "  B: " << dice[1]
-                 << "  C: " << dice[2] << "  D: " << dice[3] << "\n";
+            const int* dice = CSDice->roll(); // Use CantStopDice::roll() to handle dice rolls
 
-            // Get dice pair selection
-            char pair1, pair2;
-            bool valid = false;
-            while (!valid) {
-                cout << "Choose first pair (e.g. AB): ";
-                cin >> pair1 >> pair2;
-                pair1 = toupper(pair1);
-                pair2 = toupper(pair2);
-
-                if (pair1 != pair2 &&
-                    (pair1 == 'A' || pair1 == 'B' || pair1 == 'C' || pair1 == 'D') &&
-                    (pair2 == 'A' || pair2 == 'B' || pair2 == 'C' || pair2 == 'D')) {
-                    valid = true;
-                } else {
-                    cout << "Invalid selection. Choose two different dice (A-D).\n";
-                }
-            }
-
-            // Calculate first column
-            int col1 = dice[pair1-'A'] + dice[pair2-'A'];
-            // Calculate second column from remaining dice
-            int remainingIndices[2];
-            int idx = 0;
-            for (int i = 0; i < 4; i++) {
-                if (i != (pair1-'A') && i != (pair2-'A')) {
-                    remainingIndices[idx++] = i;
-                }
-            }
-            int col2 = dice[remainingIndices[0]] + dice[remainingIndices[1]];
+            int col1 = dice[0];
+            int col2 = dice[1];
 
             // Attempt moves
             bool move1 = board.move(col1);

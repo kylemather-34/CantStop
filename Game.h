@@ -15,17 +15,17 @@
 class Game {
     private:
         Board board;
-        Dice* fourDice;
+        Dice* CSDice;
         Column cOne;
         Column cTwo;
         CList players;
 
     public:
         Game();
-        ~Game() {delete[] fourDice;}
+        ~Game() {delete[] CSDice;}
         void addPlayer();
         void takeTurn (Player* player);
-        Dice* getDice() const {return fourDice;}
+        Dice* getDice() const {return CSDice;}
         Column& getColumnOne() {return cOne;}
         Column& getColumnTwo() {return cTwo;}
 };

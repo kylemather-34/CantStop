@@ -20,7 +20,7 @@ public:
     ostream& print(ostream&) const; // Print function
 };
 
-class CantStopDice : Dice {
+class CantStopDice : public Dice {
 private:
     int pairValues[2];
 public:
