@@ -33,15 +33,22 @@ ostream& Dice::print(ostream& os) const {
 }
 
 const int* CantStopDice::roll() {
-    const int* diceVals = Dice::roll();
+    // Get the actual dice values from FakeDice
+    const int* diceVals = fakeDice->roll();
 
+    // Copy to our storage
+    int* diceValues = new int[4];
+    for (int i = 0; i < 4; i++) {
+        diceValues[i] = diceVals[i];
+    }
+
+    // Display dice values
     cout << "Dice rolled: ";
     for (int x = 0; x < 4; ++x) {
-        cout << char('A' + x) << ": " << diceVals[x] << " ";
+        cout << char('A' + x) << ": " << diceValues[x] << " ";
     }
     cout << endl;
 
-    // Get player's choice (unchanged)
     char pair1, pair2;
     bool valid = false;
     while (!valid) {
@@ -57,10 +64,11 @@ const int* CantStopDice::roll() {
                               cout << "Invalid selection. Choose two different dice (A-D).\n";
                           }
     }
-    // Calculate pairs (using public getDice())
-    const int* vals = getDice();
-    pairValues[0] = vals[pair1-'A'] + vals[pair2-'A'];
-    pairValues[1] = vals[0] + vals[1] + vals[2] + vals[3] - pairValues[0];
+
+    pairValues[0] = diceValues[pair1-'A'] + diceValues[pair2-'A'];
+
+    int total = diceValues[0] + diceValues[1] + diceValues[2] + diceValues[3];
+    pairValues[1] = total - pairValues[0];
 
     return pairValues;
 }
@@ -74,33 +82,41 @@ FakeDice::FakeDice() {
 
 bool FakeDice::readNextRoll(int* values) {
     string line;
-    if (!getline(diceFile, line)) return false;
+    if (!getline(diceFile, line)) {
+        return false;
+    }
 
     istringstream iss(line);
     for (int i = 0; i < 4; i++) {
-        if (!(iss >> values[i])) return false;
+        if (!(iss >> values[i])) {
+            values[i] = 1;  // Default value
+        }
     }
+
     return true;
 }
+
+
 
 const int* FakeDice::roll() {
     int values[4];
     if (!readNextRoll(values)) {
-        fatal("End of fake dice file reached");
+        diceFile.clear();
+        diceFile.seekg(0);
+        if (!readNextRoll(values)) {
+            fatal("Failed to read fake dice values");
+        }
     }
 
-    // Create a new array with the fake values
-    int* fakeRolls = new int[4];
+    int *diceValues = new int[4];
     for (int i = 0; i < 4; i++) {
-        fakeRolls[i] = values[i];
+        diceValues[i] = values[i];
     }
 
-    // Store in our pairValues array (inherited from CantStopDice)
-    myPairValues[0] = fakeRolls[0] + fakeRolls[1];
-    myPairValues[1] = fakeRolls[2] + fakeRolls[3];
+    myPairValues[0] = diceValues[0] + diceValues[1];
+    myPairValues[1] = diceValues[2] + diceValues[3];
 
-    delete[] fakeRolls;  // Clean up temporary array
-    return myPairValues;
+    return diceValues;
 }
 
 //Output operator
