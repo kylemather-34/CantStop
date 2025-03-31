@@ -33,7 +33,7 @@ Game::Game() :
         if (!currentPlayer) break;
         if (currentPlayer) {
             takeTurn(currentPlayer);
-            cout << "Current Player: " << currentPlayer->getName() << "\n";// Use Player's methods
+            // cout << "Current Player: " << currentPlayer->getName() << "\n";// Use Player's methods
         }
         Cell* currentCell = players.next();
     }
