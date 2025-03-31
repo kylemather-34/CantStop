@@ -1,5 +1,4 @@
--------------------------------------Players can be added, maintained, and printed--------------------------------------
-Please input your number of players (2-4):2
+Please input your number of players (2-4):3
 
 Enter player name:Ryan
 
@@ -8,6 +7,10 @@ Enter letter of color (o. orange, y. yellow, g. green, b. blue):o
 Enter player name:Kyle
 
 Enter letter of color (o. orange, y. yellow, g. green, b. blue):y
+
+Enter player name:Alice
+
+Enter letter of color (o. orange, y. yellow, g. green, b. blue):b
 
 
 The current board is:
@@ -40,55 +43,15 @@ Player ryan's turn.
 Options: 1. Roll  2. Stop  3. Resign
 Choice:1
 
-
-Rolled Dice:
-A: 5  B: 6  C: 5  D: 5
-Choose first pair (e.g. AB):AB
+Dice rolled: A: 1 B: 5 C: 1 D: 1
+Choose first pair (e.g. AB):AC
 
 
-Attempting moves: 11 and 10
-Move 11: Success
-Move 10: Success
-Current board (T = temporary):
-Column 2: Column 2: Available   -----  -----  -----
-
-Column 3: Column 3: Available   -----  -----  -----  -----  -----
-
-Column 4: Column 4: Available   -----  -----  -----  -----  -----  -----  -----
-
-Column 5: Column 5: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
-
-Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
-
-Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----
--
-
-Column 8: Column 8: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
-
-Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
-
-Column 10: Column 10: Pending   --T--  -----  -----  -----  -----  -----  -----
-
-Column 11: Column 11: Pending   --T--  -----  -----  -----  -----
-
-Column 12: Column 12: Available   -----  -----  -----
-
-
-
-Options: 1. Roll  2. Stop  3. Resign
-Choice:1
-
-
-Rolled Dice:
-A: 4  B: 2  C: 4  D: 6
-Choose first pair (e.g. AB):AB
-
-
-Attempting moves: 6 and 10
+Attempting moves: 2 and 6
+Move 2: Success
 Move 6: Success
-Move 10: Success
 Current board (T = temporary):
-Column 2: Column 2: Available   -----  -----  -----
+Column 2: Column 2: Pending   --T--  -----  -----
 
 Column 3: Column 3: Available   -----  -----  -----  -----  -----
 
@@ -105,9 +68,9 @@ Column 8: Column 8: Available   -----  -----  -----  -----  -----  -----  ----- 
 
 Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
 
-Column 10: Column 10: Pending   -----  --T--  -----  -----  -----  -----  -----
+Column 10: Column 10: Available   -----  -----  -----  -----  -----  -----  -----
 
-Column 11: Column 11: Pending   --T--  -----  -----  -----  -----
+Column 11: Column 11: Available   -----  -----  -----  -----  -----
 
 Column 12: Column 12: Available   -----  -----  -----
 
@@ -116,25 +79,23 @@ Column 12: Column 12: Available   -----  -----  -----
 Options: 1. Roll  2. Stop  3. Resign
 Choice:1
 
-
-Rolled Dice:
-A: 6  B: 6  C: 2  D: 4
-Choose first pair (e.g. AB):AB
+Dice rolled: A: 2 B: 1 C: 2 D: 1
+Choose first pair (e.g. AB):BD
 
 
-Attempting moves: 12 and 6
-Move 12: Failed
-Move 6: Success
+Attempting moves: 2 and 4
+Move 2: Success
+Move 4: Success
 Current board (T = temporary):
-Column 2: Column 2: Available   -----  -----  -----
+Column 2: Column 2: Pending   -----  --T--  -----
 
 Column 3: Column 3: Available   -----  -----  -----  -----  -----
 
-Column 4: Column 4: Available   -----  -----  -----  -----  -----  -----  -----
+Column 4: Column 4: Pending   --T--  -----  -----  -----  -----  -----  -----
 
 Column 5: Column 5: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
 
-Column 6: Column 6: Pending   -----  --T--  -----  -----  -----  -----  -----  -----  -----  -----  -----
+Column 6: Column 6: Pending   --T--  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
 
 Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----
 -
@@ -143,47 +104,9 @@ Column 8: Column 8: Available   -----  -----  -----  -----  -----  -----  ----- 
 
 Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
 
-Column 10: Column 10: Pending   -----  --T--  -----  -----  -----  -----  -----
+Column 10: Column 10: Available   -----  -----  -----  -----  -----  -----  -----
 
-Column 11: Column 11: Pending   --T--  -----  -----  -----  -----
-
-Column 12: Column 12: Available   -----  -----  -----
-
-
-
-Options: 1. Roll  2. Stop  3. Resign
-Choice:1
-
-
-Rolled Dice:
-A: 1  B: 1  C: 1  D: 5
-Choose first pair (e.g. AB):AB
-
-
-Attempting moves: 2 and 6
-Move 2: Failed
-Move 6: Success
-Current board (T = temporary):
-Column 2: Column 2: Available   -----  -----  -----
-
-Column 3: Column 3: Available   -----  -----  -----  -----  -----
-
-Column 4: Column 4: Available   -----  -----  -----  -----  -----  -----  -----
-
-Column 5: Column 5: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
-
-Column 6: Column 6: Pending   -----  -----  --T--  -----  -----  -----  -----  -----  -----  -----  -----
-
-Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----
--
-
-Column 8: Column 8: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
-
-Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
-
-Column 10: Column 10: Pending   -----  --T--  -----  -----  -----  -----  -----
-
-Column 11: Column 11: Pending   --T--  -----  -----  -----  -----
+Column 11: Column 11: Available   -----  -----  -----  -----  -----
 
 Column 12: Column 12: Available   -----  -----  -----
 
@@ -192,15 +115,13 @@ Column 12: Column 12: Available   -----  -----  -----
 Options: 1. Roll  2. Stop  3. Resign
 Choice:1
 
-
-Rolled Dice:
-A: 1  B: 6  C: 3  D: 1
-Choose first pair (e.g. AB):AC
+Dice rolled: A: 3 B: 1 C: 6 D: 2
+Choose first pair (e.g. AB):BD
 
 
-Attempting moves: 4 and 7
-Move 4: Failed
-Move 7: Failed
+Attempting moves: 3 and 9
+Move 3: Failed
+Move 9: Failed
 BUST! No valid moves.
 Current board:
 Column 2: Column 2: Available   -----  -----  -----
@@ -257,47 +178,21 @@ Column 12: Column 12: Available   -----  -----  -----
 Player kyle's turn.
 
 Options: 1. Roll  2. Stop  3. Resign
-Choice:3
+Choice:1
+
+Dice rolled: A: 1 B: 6 C: 2 D: 3
+Choose first pair (e.g. AB):AD
 
 
-kyle resigns.
-
-Cell Destroyed
-Number of players left: 1
-
-Not enough players, ending the game!
-Player Name: kyle
-Color: yellow
-Score: 0
-Columns Captured:
-WINS!
-Cell DestroyedCurrent Player: kyle
-List is empty. No next player.
-
-Normal termination.
-
---------------------------------PLAYER CAN BE REMOVED-------------------------------------------------------------------
-Please input your number of players (2-4):3
-
-Enter player name:Kyle
-
-Enter letter of color (o. orange, y. yellow, g. green, b. blue):o
-
-Enter player name:Ryan
-
-Enter letter of color (o. orange, y. yellow, g. green, b. blue):y
-
-Enter player name:ALice
-
-Enter letter of color (o. orange, y. yellow, g. green, b. blue):g
-
-
-The current board is:
+Attempting moves: 4 and 8
+Move 4: Success
+Move 8: Success
+Current board (T = temporary):
 Column 2: Column 2: Available   -----  -----  -----
 
 Column 3: Column 3: Available   -----  -----  -----  -----  -----
 
-Column 4: Column 4: Available   -----  -----  -----  -----  -----  -----  -----
+Column 4: Column 4: Pending   --T--  -----  -----  -----  -----  -----  -----
 
 Column 5: Column 5: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
 
@@ -306,7 +201,7 @@ Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  ----- 
 Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----
 -
 
-Column 8: Column 8: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+Column 8: Column 8: Pending   --T--  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
 
 Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
 
@@ -317,18 +212,357 @@ Column 11: Column 11: Available   -----  -----  -----  -----  -----
 Column 12: Column 12: Available   -----  -----  -----
 
 
-Player kyle's turn.
+
+Options: 1. Roll  2. Stop  3. Resign
+Choice:1
+
+Dice rolled: A: 3 B: 1 C: 5 D: 3
+Choose first pair (e.g. AB):AB
+
+
+Attempting moves: 4 and 8
+Move 4: Success
+Move 8: Success
+Current board (T = temporary):
+Column 2: Column 2: Available   -----  -----  -----
+
+Column 3: Column 3: Available   -----  -----  -----  -----  -----
+
+Column 4: Column 4: Pending   -----  --T--  -----  -----  -----  -----  -----
+
+Column 5: Column 5: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----
+-
+
+Column 8: Column 8: Pending   -----  --T--  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 10: Column 10: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 11: Column 11: Available   -----  -----  -----  -----  -----
+
+Column 12: Column 12: Available   -----  -----  -----
+
+
+
+Options: 1. Roll  2. Stop  3. Resign
+Choice:1
+
+Dice rolled: A: 1 B: 2 C: 3 D: 3
+Choose first pair (e.g. AB):AD
+
+
+Attempting moves: 4 and 5
+Move 4: Success
+Move 5: Success
+Current board (T = temporary):
+Column 2: Column 2: Available   -----  -----  -----
+
+Column 3: Column 3: Available   -----  -----  -----  -----  -----
+
+Column 4: Column 4: Pending   -----  -----  --T--  -----  -----  -----  -----
+
+Column 5: Column 5: Pending   --T--  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----
+-
+
+Column 8: Column 8: Pending   -----  --T--  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 10: Column 10: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 11: Column 11: Available   -----  -----  -----  -----  -----
+
+Column 12: Column 12: Available   -----  -----  -----
+
+
+
+Options: 1. Roll  2. Stop  3. Resign
+Choice:1
+
+Dice rolled: A: 6 B: 3 C: 2 D: 6
+Choose first pair (e.g. AB):BC
+
+
+Attempting moves: 5 and 12
+Move 5: Success
+Move 12: Failed
+Current board (T = temporary):
+Column 2: Column 2: Available   -----  -----  -----
+
+Column 3: Column 3: Available   -----  -----  -----  -----  -----
+
+Column 4: Column 4: Pending   -----  -----  --T--  -----  -----  -----  -----
+
+Column 5: Column 5: Pending   -----  --T--  -----  -----  -----  -----  -----  -----  -----
+
+Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----
+-
+
+Column 8: Column 8: Pending   -----  --T--  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 10: Column 10: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 11: Column 11: Available   -----  -----  -----  -----  -----
+
+Column 12: Column 12: Available   -----  -----  -----
+
+
+
+Options: 1. Roll  2. Stop  3. Resign
+Choice:2
+
+
+Turn ended. Final positions:
+Column 2: Column 2: Available   -----  -----  -----
+
+Column 3: Column 3: Available   -----  -----  -----  -----  -----
+
+Column 4: Column 4: Pending   -----  -----  --Y--  -----  -----  -----  -----
+
+Column 5: Column 5: Pending   -----  --Y--  -----  -----  -----  -----  -----  -----  -----
+
+Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----
+-
+
+Column 8: Column 8: Pending   -----  --Y--  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 10: Column 10: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 11: Column 11: Available   -----  -----  -----  -----  -----
+
+Column 12: Column 12: Available   -----  -----  -----
+
+Current Player: kyle
+
+The current board is:
+Column 2: Column 2: Available   -----  -----  -----
+
+Column 3: Column 3: Available   -----  -----  -----  -----  -----
+
+Column 4: Column 4: Pending   -----  -----  --Y--  -----  -----  -----  -----
+
+Column 5: Column 5: Pending   -----  --Y--  -----  -----  -----  -----  -----  -----  -----
+
+Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----
+-
+
+Column 8: Column 8: Pending   -----  --Y--  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 10: Column 10: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 11: Column 11: Available   -----  -----  -----  -----  -----
+
+Column 12: Column 12: Available   -----  -----  -----
+
+
+Player alice's turn.
+
+Options: 1. Roll  2. Stop  3. Resign
+Choice:1
+
+Dice rolled: A: 3 B: 5 C: 1 D: 6
+Choose first pair (e.g. AB):AC
+
+
+Attempting moves: 4 and 11
+Move 4: Success
+Move 11: Success
+Current board (T = temporary):
+Column 2: Column 2: Available   -----  -----  -----
+
+Column 3: Column 3: Available   -----  -----  -----  -----  -----
+
+Column 4: Column 4: Pending   --T--  -----  --T--  -----  -----  -----  -----
+
+Column 5: Column 5: Pending   -----  --Y--  -----  -----  -----  -----  -----  -----  -----
+
+Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----
+-
+
+Column 8: Column 8: Pending   -----  --Y--  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 10: Column 10: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 11: Column 11: Pending   --T--  -----  -----  -----  -----
+
+Column 12: Column 12: Available   -----  -----  -----
+
+
+
+Options: 1. Roll  2. Stop  3. Resign
+Choice:1
+
+Dice rolled: A: 4 B: 2 C: 6 D: 6
+Choose first pair (e.g. AB):CD
+
+
+Attempting moves: 12 and 6
+Move 12: Success
+Move 6: Failed
+Current board (T = temporary):
+Column 2: Column 2: Available   -----  -----  -----
+
+Column 3: Column 3: Available   -----  -----  -----  -----  -----
+
+Column 4: Column 4: Pending   --T--  -----  --T--  -----  -----  -----  -----
+
+Column 5: Column 5: Pending   -----  --Y--  -----  -----  -----  -----  -----  -----  -----
+
+Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----
+-
+
+Column 8: Column 8: Pending   -----  --Y--  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 10: Column 10: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 11: Column 11: Pending   --T--  -----  -----  -----  -----
+
+Column 12: Column 12: Pending   --T--  -----  -----
+
+
+
+Options: 1. Roll  2. Stop  3. Resign
+Choice:1
+
+Dice rolled: A: 3 B: 1 C: 1 D: 6
+Choose first pair (e.g. AB):AC
+
+
+Attempting moves: 4 and 7
+Move 4: Success
+Move 7: Failed
+Current board (T = temporary):
+Column 2: Column 2: Available   -----  -----  -----
+
+Column 3: Column 3: Available   -----  -----  -----  -----  -----
+
+Column 4: Column 4: Pending   --T--  -----  -----  --T--  -----  -----  -----
+
+Column 5: Column 5: Pending   -----  --Y--  -----  -----  -----  -----  -----  -----  -----
+
+Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----
+-
+
+Column 8: Column 8: Pending   -----  --Y--  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 10: Column 10: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 11: Column 11: Pending   --T--  -----  -----  -----  -----
+
+Column 12: Column 12: Pending   --T--  -----  -----
+
+
+
+Options: 1. Roll  2. Stop  3. Resign
+Choice:1
+
+Dice rolled: A: 1 B: 4 C: 3 D: 6
+Choose first pair (e.g. AB):CD
+
+
+Attempting moves: 9 and 5
+Move 9: Failed
+Move 5: Failed
+BUST! No valid moves.
+Current board:
+Column 2: Column 2: Available   -----  -----  -----
+
+Column 3: Column 3: Available   -----  -----  -----  -----  -----
+
+Column 4: Column 4: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 5: Column 5: Pending   -----  --Y--  -----  -----  -----  -----  -----  -----  -----
+
+Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----
+-
+
+Column 8: Column 8: Pending   -----  --Y--  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 10: Column 10: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 11: Column 11: Available   -----  -----  -----  -----  -----
+
+Column 12: Column 12: Available   -----  -----  -----
+
+
+Current Player: alice
+
+The current board is:
+Column 2: Column 2: Available   -----  -----  -----
+
+Column 3: Column 3: Available   -----  -----  -----  -----  -----
+
+Column 4: Column 4: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 5: Column 5: Pending   -----  --Y--  -----  -----  -----  -----  -----  -----  -----
+
+Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----
+-
+
+Column 8: Column 8: Pending   -----  --Y--  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 10: Column 10: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 11: Column 11: Available   -----  -----  -----  -----  -----
+
+Column 12: Column 12: Available   -----  -----  -----
+
+
+Player ryan's turn.
 
 Options: 1. Roll  2. Stop  3. Resign
 Choice:3
 
 
-kyle resigns.
+ryan resigns.
 
 Cell Destroyed
 Number of players left: 2
 
 
 Options: 1. Roll  2. Stop  3. Resign
-Choice:
+Choice:3
 
+Not enough players, ending the game!
+Alice wins!
