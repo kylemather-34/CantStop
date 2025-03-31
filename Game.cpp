@@ -73,7 +73,7 @@ void Game::addPlayer() {
         // Check if color is already taken
         if (players.getCount() > 0) {
             players.init(); // Reset to head of list
-            for (int i = 0; i < players.getCount(); i++) {
+            for (int x = 0; x < players.getCount(); x++) {
                 Player* existingPlayer = players.getCurrentPlayer();
                 if (existingPlayer) {
 

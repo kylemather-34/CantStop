@@ -77,8 +77,8 @@ bool FakeDice::readNextRoll(int* values) {
     if (!getline(diceFile, line)) return false;
 
     istringstream iss(line);
-    for (int i = 0; i < 4; i++) {
-        if (!(iss >> values[i])) return false;
+    for (int x = 0; x < 4; ++x) {
+        if (!(iss >> values[x])) return false;
     }
     return true;
 }
