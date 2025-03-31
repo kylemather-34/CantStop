@@ -419,3 +419,97 @@ Print CList with 1-4 Players.
 Expected Outcome:
 
 Output reflects the correct number of Players in the list.
+
+------------------------------------------------------------------------------------------------------------------------
+
+**TEST PLAN - FakeDice**
+
+**Objective:**
+Ensure that the `FakeDice` class correctly reads predetermined dice values from a file, overrides the `roll()` method as expected, and integrates properly with the game mechanics.
+
+---
+
+**Test Cases:**
+
+### 1. File Opening and Validation
+**Objective:** Verify that the constructor correctly opens and validates the input file.
+
+**Steps:**
+1. Create a valid input file with multiple lines of four dice values and ROLL/STOP commands.
+2. Instantiate a `FakeDice` object.
+3. Attempt to instantiate a `FakeDice` object with a nonexistent file.
+
+**Expected Outcome:**
+- If the file exists, the `FakeDice` object is created successfully.
+- If the file does not exist, `fatal()` is triggered, terminating the program.
+
+---
+
+### 2. Reading Dice Rolls
+**Objective:** Ensure that `roll()` correctly retrieves values from the file instead of generating random ones.
+
+**Steps:**
+1. Create a test file containing predefined sequences of four dice values.
+2. Call `roll()` multiple times and check that the returned values match those in the file.
+3. Verify that values are stored in the pair-totals array correctly.
+
+**Expected Outcome:**
+- `roll()` returns values as per the input file.
+- The same sequence is repeated when restarting the program with the same file.
+
+---
+
+### 3. Handling End of File (EOF)
+**Objective:** Ensure the program terminates correctly if EOF is reached before the game ends.
+
+**Steps:**
+1. Create an input file with only a few lines of dice values.
+2. Continue calling `roll()` until the file is exhausted.
+
+**Expected Outcome:**
+- The program calls `fatal()` and terminates when attempting to read past the file’s end.
+
+---
+
+### 4. Processing ROLL and STOP Commands
+**Objective:** Verify that the game correctly interprets ROLL and STOP instructions.
+
+**Steps:**
+1. Construct an input file with alternating ROLL and STOP commands.
+2. Ensure that calling `roll()` continues rolling when ROLL is read.
+3. Ensure that the turn stops when STOP is read.
+
+**Expected Outcome:**
+- The game continues rolling if the command is ROLL.
+- The game stops and switches to the next player if the command is STOP.
+
+---
+
+### 5. Integration with `CSDice`
+**Objective:** Ensure `FakeDice` behaves consistently as a derived class of `CSDice`.
+
+**Steps:**
+1. Instantiate a `FakeDice` object and cast it as `CSDice*`.
+2. Call the overridden `roll()` method and ensure it behaves correctly.
+
+**Expected Outcome:**
+- `FakeDice` functions properly within any code that expects a `CSDice` object.
+
+---
+
+### 6. Testing Complete Game Flow
+**Objective:** Simulate an entire game session using `FakeDice` to validate correctness.
+
+**Steps:**
+1. Create an input file with a sequence of rolls leading to a win condition.
+2. Run the game with `FakeDice` replacing `CSDice`.
+3. Observe if the game progresses correctly according to predefined dice rolls.
+
+**Expected Outcome:**
+- The game follows the predetermined rolls and properly transitions turns.
+- The game declares a winner when the predefined sequence dictates.
+
+---
+
+### **Conclusion**
+This test plan ensures that `FakeDice` functions as intended, correctly reading dice values from a file and supporting controlled game debugging.
