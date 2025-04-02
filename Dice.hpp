@@ -6,6 +6,7 @@
 #define DICE_H
 #include "tools.hpp"
 #define FAKE_DICE_FILE "fakedice.txt"
+#include "Exceptions.h"
 
 class Dice {
 private:
@@ -18,6 +19,7 @@ public:
     virtual const int* roll(); // Function for "rolling" the dice
     const int* getDice() const { return rVal; }
     ostream& print(ostream&) const; // Print function
+    void validDice(const string &selection);
 };
 
 class FakeDice : public Dice {

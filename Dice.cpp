@@ -42,6 +42,8 @@ const int* CantStopDice::roll() {
         diceValues[x] = diceVals[x];
     }
 
+
+
     // Display dice values
     cout << "Dice rolled: ";
     for (int x = 0; x < 4; ++x) {
@@ -52,11 +54,13 @@ const int* CantStopDice::roll() {
     // Get player's choice (unchanged)
     char pair1, pair2;
     bool valid = false;
-    while (!valid) {
-        cout << "Choose first pair (e.g. AB): ";
-        cin >> pair1 >> pair2;
-        pair1 = toupper(pair1);
-        pair2 = toupper(pair2);
+    cout << "Choose first pair (e.g. AB): ";
+    cin >> pair1 >> pair2;
+    pair1 = toupper(pair1);
+    pair2 = toupper(pair2);
+
+    /*while (!valid) {
+
 
         if (pair1 != pair2 && (pair1 >= 'A' && pair1 <= 'D')
                           && (pair2 >= 'A' && pair2 <= 'D')) {
@@ -64,7 +68,7 @@ const int* CantStopDice::roll() {
                           } else {
                               cout << "Invalid selection. Choose two different dice (A-D).\n";
                           }
-    }
+    }*/
 
     pairValues[0] = diceValues[pair1-'A'] + diceValues[pair2-'A'];
 
@@ -72,6 +76,7 @@ const int* CantStopDice::roll() {
     pairValues[1] = total - pairValues[0];
 
     return pairValues;
+
 }
 
 FakeDice::FakeDice() {
@@ -116,6 +121,7 @@ const int* FakeDice::roll() {
 
     return diceValues;
 }
+
 
 //Output operator
 ostream& operator<<(ostream& os, const Dice& d) {
