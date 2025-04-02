@@ -13,14 +13,18 @@
 #include "tools.hpp"
 
 class Game {
-    private:
+private:
+        CList players;
         Board board;
-        Dice* CSDice;
         Column cOne;
         Column cTwo;
-        CList players;
+        CantStopDice* CSDice;
 
-    public:
+        void checkData(const string& name, char colorChar);
+        void validDice(const string& selection);
+        void validMenu(const int& input);
+
+public:
         Game();
         ~Game() {delete[] CSDice;}
         void addPlayer();
