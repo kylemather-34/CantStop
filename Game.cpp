@@ -160,15 +160,16 @@ void Game::takeTurn(Player* currentPlayer) {
             int choice;
             cin >> choice;
 
-            try {
-                validMenu(choice);
-            } catch (const BadChoice& e) {
-                e.print();
-                cout << "Please enter 1 (Roll), 2 (Stop), or 3 (Resign).\n";
-                cin.clear();
-                cin.ignore(10000, '\n');
-                continue;
-            }
+                try {
+                    validMenu(choice);  // Validate the choice
+
+                } catch (const BadChoice& e) {
+                    e.print();
+                    cin.clear();  // Clear error flag
+                    cin.ignore(10000, '\n'); // Remove invalid input from buffer
+                    cout << "Please enter 1 (Roll), 2 (Stop), or 3 (Resign).\n";
+                    cin >> choice;
+                }
 
             if (choice == 2) { // Stop
                 board.stop();
@@ -178,23 +179,35 @@ void Game::takeTurn(Player* currentPlayer) {
             }
             else if (choice == 1) { // Roll
                 const int* dice = CSDice->roll();
-                cout << "Dice rolled: a) " << dice[0] << " b) " << dice[1]
-                     << " c) " << dice[2] << " d) " << dice[3] << endl;
+                cout << "Dice rolled: a. " << dice[0] << " b. " << dice[1]
+                     << " c. " << dice[2] << " d. " << dice[3] << endl;
 
-                cout << "Select two dice (e.g., 'ab' or 'a b'): ";
+                // Get player's choice (unchanged)
+                char pair1, pair2;
+                bool valid = false;
+                cout << "Choose first pair (e.g. AB): ";
+                cin >> pair1 >> pair2;
+                pair1 = toupper(pair1);
+                pair2 = toupper(pair2);
+
                 string selection;
-                cin >> ws;
-                getline(cin, selection);
-
-                // Remove whitespace
-                selection.erase(remove_if(selection.begin(), selection.end(), ::isspace), selection.end());
+                selection = string(1, pair1) + string(1, pair2);
 
                 try {
                     validDice(selection);
 
+                    int pairValues[2];
+
+                    pairValues[0] = dice[pair1-'A'] + dice[pair2-'A'];
+
+                    int total = dice[0] + dice[1] + dice[2] + dice[3];
+                    pairValues[1] = total - pairValues[0];
+
                     // Process dice selection
-                    int col1 = dice[selection[0] - 'a'];
-                    int col2 = dice[selection[1] - 'a'];
+                    int col1 = pairValues[0];
+                    cout << "Col1: " << col1 << endl;
+                    int col2 = pairValues[1];
+                    cout << "Col2: " << col2 << endl;
 
                     bool move1 = board.move(col1);
                     bool move2 = board.move(col2);

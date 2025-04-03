@@ -43,7 +43,7 @@ const int* CantStopDice::roll() {
     }
 
 
-
+    /*
     // Display dice values
     cout << "Dice rolled: ";
     for (int x = 0; x < 4; ++x) {
@@ -59,7 +59,7 @@ const int* CantStopDice::roll() {
     pair1 = toupper(pair1);
     pair2 = toupper(pair2);
 
-    /*while (!valid) {
+    while (!valid) {
 
 
         if (pair1 != pair2 && (pair1 >= 'A' && pair1 <= 'D')
@@ -68,14 +68,14 @@ const int* CantStopDice::roll() {
                           } else {
                               cout << "Invalid selection. Choose two different dice (A-D).\n";
                           }
-    }*/
+    }
 
     pairValues[0] = diceValues[pair1-'A'] + diceValues[pair2-'A'];
 
     int total = diceValues[0] + diceValues[1] + diceValues[2] + diceValues[3];
     pairValues[1] = total - pairValues[0];
-
-    return pairValues;
+    */
+    return diceValues;
 
 }
 

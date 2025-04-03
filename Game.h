@@ -21,7 +21,7 @@ private:
         CantStopDice* CSDice;
 
         void checkData(const string& name, char colorChar);
-        void validDice(const string& selection);
+        void validDice(const string &selection);
         void validMenu(const int& input);
 
 public:
