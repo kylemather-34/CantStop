@@ -138,7 +138,6 @@ void Game::addPlayer() {
             break;
 
         } catch (const BadPlayer& e) {
-            cout << flush;
             e.print();
             cout << "Please try again.\n";
             cin.ignore(10000, '\n');
