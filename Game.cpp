@@ -8,6 +8,7 @@
 #include "tools.hpp"
 #include "Exceptions.h"
 #include <cstring>
+#include <thread>
 
 // Constructor
 Game::Game() :
@@ -126,6 +127,7 @@ void Game::addPlayer() {
                 case 'b': color = ECcolor::blue; break;
                 default:
                     throw runtime_error("Invalid color! Please choose from o,y,g,b.");
+                    continue;
             }
 
             // Check for duplicate name/color
@@ -136,9 +138,12 @@ void Game::addPlayer() {
             break;
 
         } catch (const BadPlayer& e) {
+            cout << flush;
             e.print();
             cout << "Please try again.\n";
             cin.ignore(10000, '\n');
+            cin.clear();
+            continue;
         } catch (const exception& e) {
             cerr << "Error: " << e.what() << "\n";
             cin.ignore(10000, '\n');
