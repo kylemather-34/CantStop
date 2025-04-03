@@ -30,7 +30,7 @@ class BadName : public BadPlayer {
 public:
     BadName(const string& n, char c) : BadPlayer(n, c) {}
     void print() const override {
-        cerr << "\nPlayer name '" << getName() << "' is already in use." << endl;
+        cerr << "\nPlayer name '" << getName() << "' is already in use." << flush;
         basePrint();
     }
 };
@@ -39,7 +39,8 @@ class BadColor : public BadPlayer {
 public:
     BadColor(const string& n, char c) : BadPlayer(n, c) {}
     void print() const override {
-        cerr << "\nColor '" << getColorChar() << "' is already taken by another player." << endl;;
+        cerr << "\nColor '" << getColorChar() << "' is already taken by another player." << endl;
+        basePrint();
     }
 };
 

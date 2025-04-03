@@ -127,7 +127,7 @@ void Game::addPlayer() {
                 case 'b': color = ECcolor::blue; break;
                 default:
                     throw runtime_error("Invalid color! Please choose from o,y,g,b.");
-                    continue;
+                continue;
             }
 
             // Check for duplicate name/color
@@ -136,7 +136,6 @@ void Game::addPlayer() {
             // If we get here, data is valid
             players.addCell(name, color);
             break;
-
         } catch (const BadPlayer& e) {
             e.print();
             cout << "Please try again.\n";
@@ -171,6 +170,7 @@ void Game::takeTurn(Player* currentPlayer) {
                     e.print();
                     cin.clear();  // Clear error flag
                     cin.ignore(10000, '\n'); // Remove invalid input from buffer
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     cout << "Please enter 1 (Roll), 2 (Stop), or 3 (Resign).\n";
                     cin >> choice;
                 }
