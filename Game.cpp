@@ -170,7 +170,6 @@ void Game::takeTurn(Player* currentPlayer) {
                     e.print();
                     cin.clear();  // Clear error flag
                     cin.ignore(10000, '\n'); // Remove invalid input from buffer
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     cout << "Please enter 1 (Roll), 2 (Stop), or 3 (Resign).\n";
                     cin >> choice;
                 }
