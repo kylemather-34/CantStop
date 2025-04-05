@@ -21,8 +21,8 @@ Game::Game() :
     cout << "Please input your number of players (2-4): ";
     while (!(cin >> numOfPlayers) || numOfPlayers < 2 || numOfPlayers > 4) {
         cout << "Invalid input. Please enter a number between 2 and 4: ";
-        cin.clear();  // Clear error flag
-        cin.ignore(10000, '\n');  // Discard invalid input
+        cin.clear();
+        cin.ignore(10000, '\n');
     }
 
     for (int x = 0; x < numOfPlayers; x++) {
@@ -32,11 +32,10 @@ Game::Game() :
     players.init(); // Set current to head
 
     while (players.getCount() >= 2) {
-        Player* currentPlayer = players.getCurrentPlayer(); // Get Player from the list
+        Player* currentPlayer = players.getCurrentPlayer();
         if (!currentPlayer) break;
         if (currentPlayer) {
             takeTurn(currentPlayer);
-            // cout << "Current Player: " << currentPlayer->getName() << "\n";// Use Player's methods
         }
         Cell* currentCell = players.next();
     }
@@ -47,7 +46,7 @@ void Game::checkData(const string& name, char colorChar) {
     bool colorTaken = false;
 
     if (players.getCount() > 0) {
-        players.init(); // Reset to head of list
+        players.init();
         for (int x = 0; x < players.getCount(); x++) {
             Player* existingPlayer = players.getCurrentPlayer();
             if (existingPlayer) {
@@ -100,57 +99,78 @@ void Game::validMenu(const int& input) {
     }
 }
 
-// Update addPlayer() to use checkData()
 void Game::addPlayer() {
     string name;
     char colorChar;
     ECcolor color;
 
     while (true) {
-        try {
-            // Get player name
-            cout << "Enter player name: ";
-            cin >> name;
-            string lowerName = name;
-            transform(lowerName.begin(), lowerName.end(), lowerName.begin(), ::tolower);
+        // Get player name (only once unless there's a name conflict)
+        cout << "Enter player name: ";
+        if (!(cin >> name)) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Invalid name input. Please try again.\n";
+            continue;
+        }
+        string lowerName = name;
+        transform(lowerName.begin(), lowerName.end(), lowerName.begin(), ::tolower);
 
-            // Get color choice
+        // Color selection loop
+        bool colorValid = false;
+        while (!colorValid) {
             cout << "Enter letter of color (o. orange, y. yellow, g. green, b. blue): ";
-            cin >> colorChar;
+            if (!(cin >> colorChar)) {
+                cin.clear();
+                cin.ignore(10000, '\n');
+                cout << "Invalid color input. Please try again.\n";
+                continue;
+            }
             colorChar = tolower(colorChar);
 
-            // Validate color choice
+            // Validate color choice format
             switch (colorChar) {
                 case 'o': color = ECcolor::orange; break;
                 case 'y': color = ECcolor::yellow; break;
                 case 'g': color = ECcolor::green; break;
                 case 'b': color = ECcolor::blue; break;
                 default:
-                    throw runtime_error("Invalid color! Please choose from o,y,g,b.");
-                continue;
+                    cout << "Invalid color! Please choose from o,y,g,b.\n";
+                    continue;
             }
 
-            // Check for duplicate name/color
-            checkData(lowerName, colorChar);
+            // Check for conflicts
+            try {
+                checkData(lowerName, colorChar);
+                colorValid = true;
+            }
+            catch (const BadPlayer& e) {
+                e.print();
+                cin.clear();
+                cin.ignore(10000, '\n');
+                // Will repeat color prompt
+            }
+            catch (const BadName& e) {
+                e.print();
+                cin.clear();
+                cin.ignore(10000, '\n');
+                break; // Go back to name prompt
+            }
+            catch (const BadColor& e) {
+                e.print();
+                cin.clear();
+                cin.ignore(10000, '\n');
+                // Will repeat color prompt
+            }
+        }
 
-            // If we get here, data is valid
+        if (colorValid) {
             players.addCell(name, color);
             break;
-        } catch (const BadPlayer& e) {
-            e.print();
-            cout << "Please try again.\n";
-            cin.ignore(10000, '\n');
-            cin.clear();
-            continue;
-        } catch (const exception& e) {
-            cerr << "Error: " << e.what() << "\n";
-            cin.ignore(10000, '\n');
-            exit(1);
         }
     }
 }
 
-// Update takeTurn() to use validMenu and validDice
 void Game::takeTurn(Player* currentPlayer) {
     board.startTurn(currentPlayer);
     cout << "\nThe current board is:\n" << board << endl;
@@ -158,121 +178,119 @@ void Game::takeTurn(Player* currentPlayer) {
 
     bool keepRolling = true;
     while (keepRolling) {
-        try {
+        int choice;
+        while (true) {
             cout << "\nOptions: 1. Roll  2. Stop  3. Resign\nChoice: ";
-            int choice;
-            cin >> choice;
-
+            if (cin >> choice) {
                 try {
-                    validMenu(choice);  // Validate the choice
-
+                    validMenu(choice);
+                    break;
                 } catch (const BadChoice& e) {
                     e.print();
-                    cin.clear();  // Clear error flag
-                    cin.ignore(10000, '\n'); // Remove invalid input from buffer
-                    cout << "Please enter 1 (Roll), 2 (Stop), or 3 (Resign).\n";
-                    cin >> choice;
+                    cin.clear();
+                    cin.ignore(10000, '\n');
                 }
-
-            if (choice == 2) { // Stop
-                board.stop();
-                cout << "\nTurn ended. Final positions:\n";
-                board.print();
-                keepRolling = false;
+            } else {
+                cout << "Invalid input. Please enter a number.\n";
+                cin.clear();
+                cin.ignore(10000, '\n');
             }
-            else if (choice == 1) { // Roll
-                const int* dice = CSDice->roll();
-                cout << "Dice rolled: a. " << dice[0] << " b. " << dice[1]
-                     << " c. " << dice[2] << " d. " << dice[3] << endl;
+        }
 
-                // Get player's choice (unchanged)
-                char pair1, pair2;
-                bool valid = false;
+        if (choice == 2) { // Stop
+            board.stop();
+            cout << "\nTurn ended. Final positions:\n";
+            board.print();
+            keepRolling = false;
+        }
+        else if (choice == 1) { // Roll
+            const int* dice = CSDice->roll();
+            cout << "Dice rolled: a. " << dice[0] << " b. " << dice[1]
+                 << " c. " << dice[2] << " d. " << dice[3] << endl;
+
+            string selection;
+            while (true) {
                 cout << "Choose first pair (e.g. AB): ";
-                cin >> pair1 >> pair2;
-                pair1 = toupper(pair1);
-                pair2 = toupper(pair2);
-
-                string selection;
-                selection = string(1, pair1) + string(1, pair2);
-
+                cin >> selection;
                 try {
                     validDice(selection);
-
-                    int pairValues[2];
-
-                    pairValues[0] = dice[pair1-'A'] + dice[pair2-'A'];
-
-                    int total = dice[0] + dice[1] + dice[2] + dice[3];
-                    pairValues[1] = total - pairValues[0];
-
-                    // Process dice selection
-                    int col1 = pairValues[0];
-                    cout << "Col1: " << col1 << endl;
-                    int col2 = pairValues[1];
-                    cout << "Col2: " << col2 << endl;
-
-                    bool move1 = board.move(col1);
-                    bool move2 = board.move(col2);
-
-                    cout << "\nAttempting moves: " << col1 << " and " << col2 << endl;
-                    cout << "Move " << col1 << ": " << (move1 ? "Success" : "Failed") << endl;
-                    cout << "Move " << col2 << ": " << (move2 ? "Success" : "Failed") << endl;
-
-                    if (!move1 && !move2) {
-                        cout << "BUST! No valid moves.\n";
-                        board.bust();
-                        cout << "Current board:\n" << board << endl;
-                        keepRolling = false;
-                    } else {
-                        cout << "Current board (T = temporary):\n" << board << endl;
-
-                        if (move1 && board.getColumn(col1)->isCaptured()) {
-                            currentPlayer->wonColumn(col1);
-                            cout << "COLUMN " << col1 << " CAPTURED!\n";
-                        }
-                        if (move2 && board.getColumn(col2)->isCaptured()) {
-                            currentPlayer->wonColumn(col2);
-                            cout << "COLUMN " << col2 << " CAPTURED!\n";
-                        }
-
-                        if (currentPlayer->score() >= 3) {
-                            cout << "PLAYER " << currentPlayer->getName() << " WINS!\n";
-                            keepRolling = false;
-                        }
-                    }
-
-                } catch (const BadChoice& e) {
+                    break;
+                }
+                catch (const BadSlot& e) {
                     e.print();
-                    cout << "Please try again.\n";
-                    continue;
+                    cout << "Please enter two valid letters (A-D), e.g. AB\n";
+                    cin.clear();
+                    cin.ignore(10000, '\n');
+                }
+                catch (const DuplicateSlot& e) {
+                    e.print();
+                    cout << "Please choose two different dice\n";
+                    cin.clear();
+                    cin.ignore(10000, '\n');
                 }
             }
-            else if (choice == 3) { // Resign
-                cout << "\n" << currentPlayer->getName() << " resigns.\n";
+
+            char pair1 = toupper(selection[0]);
+            char pair2 = toupper(selection[1]);
+            int pairValues[2];
+
+            pairValues[0] = dice[pair1-'A'] + dice[pair2-'A'];
+            int total = dice[0] + dice[1] + dice[2] + dice[3];
+            pairValues[1] = total - pairValues[0];
+
+            int col1 = pairValues[0];
+            int col2 = pairValues[1];
+
+            bool move1 = board.move(col1);
+            bool move2 = board.move(col2);
+
+            cout << "\nAttempting moves: " << col1 << " and " << col2 << endl;
+            cout << "Move " << col1 << ": " << (move1 ? "Success" : "Failed") << endl;
+            cout << "Move " << col2 << ": " << (move2 ? "Success" : "Failed") << endl;
+
+            if (!move1 && !move2) {
+                cout << "BUST! No valid moves.\n";
                 board.bust();
+                cout << "Current board:\n" << board << endl;
+                keepRolling = false;
+            } else {
+                cout << "Current board (T = temporary):\n" << board << endl;
 
-                cout << endl;
-                players.init();
-                players.remove();
-                cout << endl;
-                cout << "Number of players left: " << players.getCount() << endl;
-                cout << endl;
+                if (move1 && board.getColumn(col1)->isCaptured()) {
+                    currentPlayer->wonColumn(col1);
+                    cout << "COLUMN " << col1 << " CAPTURED!\n";
+                }
+                if (move2 && board.getColumn(col2)->isCaptured()) {
+                    currentPlayer->wonColumn(col2);
+                    cout << "COLUMN " << col2 << " CAPTURED!\n";
+                }
 
-                if (players.getCount() < 2) {
-                    cout << "Not enough players, ending the game!" << endl;
-                    cout << *players.getCurrentPlayer() << "WINS!\n";
+                if (currentPlayer->score() >= 3) {
+                    cout << "PLAYER " << currentPlayer->getName() << " WINS!\n";
                     keepRolling = false;
-                    while (!players.empty()) {
-                        players.remove();
-                    }
-                    return;
                 }
             }
-        } catch (const exception& e) {
-            cerr << "Unexpected error: " << e.what() << "\n";
-            cin.clear();
-            cin.ignore(10000, '\n');
+        }
+        else if (choice == 3) { // Resign
+            cout << "\n" << currentPlayer->getName() << " resigns.\n";
+            board.bust();
+
+            cout << endl;
+            players.init();
+            players.remove();
+            cout << endl;
+            cout << "Number of players left: " << players.getCount() << endl;
+            cout << endl;
+
+            if (players.getCount() < 2) {
+                cout << "Not enough players, ending the game!" << endl;
+                cout << *players.getCurrentPlayer() << " WINS!\n";
+                keepRolling = false;
+                while (!players.empty()) {
+                    players.remove();
+                }
+                return;
+            }
         }
     }
 }
