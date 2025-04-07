@@ -513,3 +513,117 @@ Ensure that the `FakeDice` class correctly reads predetermined dice values from 
 
 ### **Conclusion**
 This test plan ensures that `FakeDice` functions as intended, correctly reading dice values from a file and supporting controlled game debugging.
+
+------------------------------------------------------------------------------------------------------------------------
+
+TEST PLAN - Exceptions
+Objective:
+In order to meet requirements, we want to ensure that all exception cases are properly handled; namely that invalid inputs trigger the correct exceptions with appropriate error messages, and that the program continues execution smoothly after handling exceptions.
+
+Test Cases:
+
+Invalid Menu Choice Exception
+
+Procedure: During a player's turn, enter menu choices outside valid range (0, 4, -1, non-numeric)
+
+Expected Result: BadChoice exception thrown with message "Invalid choice: [input]"
+
+Validation: Program reprompts for input without crashing
+
+Invalid Dice Selection Format
+
+Procedure: When prompted for dice pairs, enter:
+
+Single character (e.g., "A")
+
+Three characters (e.g., "ABC")
+
+Non-letter characters (e.g., "12")
+
+Expected Result: BadSlot exception thrown with message "Error: Invalid dice selection ([input])"
+
+Validation: Error message appears on new line, followed by clear reprompt
+
+Duplicate Dice Selection
+
+Procedure: When prompted for dice pairs, enter same letter twice (e.g., "AA")
+
+Expected Result: DuplicateSlot exception thrown with message "Error: You selected the same dice twice ([input])"
+
+Validation: Program displays error and reprompts without terminating
+
+Duplicate Player Name
+
+Procedure: During player setup, enter same name for multiple players (case-insensitive)
+
+Expected Result: BadName exception thrown with message "Player name '[name]' is already in use"
+
+Validation: Program reprompts for new name while preserving other valid inputs
+
+Duplicate Player Color
+
+Procedure: During player setup, select same color for multiple players
+
+Expected Result: BadColor exception thrown with message "Color '[color]' is already taken by another player"
+
+Validation: Program reprompts for new color choice without losing previous valid inputs
+
+Simultaneous Name/Color Conflict
+
+Procedure: Attempt to create player with both duplicate name and color
+
+Expected Result: BadPlayer exception thrown with combined error message
+
+Validation: Program handles compound error and reprompts appropriately
+
+Test Methodology:
+
+Automated test script will:
+
+Inject invalid inputs at each exception point
+
+Capture program output to verify:
+
+Correct exception type thrown
+
+Proper error message format
+
+Appropriate program continuation
+
+Manual testing will verify:
+
+Error message formatting and placement
+
+Console input buffer clearing
+
+Program stability after exceptions
+
+Success Criteria:
+
+All exception cases produce correct error messages on new lines
+
+Program consistently reprompts after exceptions without skipping steps
+
+No memory leaks occur during exception handling
+
+Game state remains valid after handling exceptions
+
+All test cases produce expected results
+
+Additional Validation:
+
+Exception messages should appear between blank lines for readability
+
+Input buffer should be completely cleared after each exception
+
+Program should handle rapid successive errors without crashing
+
+All derived exception classes should maintain proper inheritance behavior
+
+Destructor Validation:
+
+Run program with forced exceptions in all possible states
+
+Verify no memory leaks occur during exception handling
+
+Confirm all resources are properly released when exceptions terminate game early
