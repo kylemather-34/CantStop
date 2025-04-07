@@ -7,7 +7,6 @@
 //Constructor
 Dice::Dice(int n) : nDice(n) {
     rVal = new int[nDice];
-
 }
 
 //Destructor

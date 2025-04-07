@@ -1,41 +1,24 @@
-Please input your number of players (2-4): 2
-Enter player name: ryan
-Enter letter of color (o. orange, y. yellow, g. green, b. blue): t
-Error: Invalid color! Please choose from o,y,g,b.
+/------------------------Gameplay demonstrating all exception handling--------------------------------------------------
+Please input your number of players (2-4):2
 
-Process finished with exit code 1
+Enter player name:Ryan
 
-Please input your number of players (2-4): 2
-Enter player name: ryan
-Enter letter of color (o. orange, y. yellow, g. green, b. blue): g
-Enter player name: kyle
-Enter letter of color (o. orange, y. yellow, g. green, b. blue): g
-Please try again.
-Enter player name: Color 'g' is already taken by another player.
+Enter letter of color (o. orange, y. yellow, g. green, b. blue):l
 
-Please input your number of players (2-4): ryan
-Invalid input. Please enter a number between 2 and 4: 2
-Enter player name: ryan
-Enter letter of color (o. orange, y. yellow, g. green, b. blue): b
-Enter player name: ryan
-Enter letter of color (o. orange, y. yellow, g. green, b. blue): g
-Please try again.
-Enter player name: Player name 'ryan' is already in use.
-Input received - Name: ryan, Color: g
+Invalid color! Please choose from o,y,g,b:o
 
-Please input your number of players (2-4): 2
-Enter player name: ryan
-Enter letter of color (o. orange, y. yellow, g. green, b. blue): g
-Enter player name: ryan
-Enter letter of color (o. orange, y. yellow, g. green, b. blue): g
-Please try again.
-Enter player name: Invalid player input. Both name 'ryan' and color 'g' are already in use.
+Enter player name:Ryan
 
-Please input your number of players (2-4): 2
-Enter player name: ryan
-Enter letter of color (o. orange, y. yellow, g. green, b. blue): g
-Enter player name: kyle
-Enter letter of color (o. orange, y. yellow, g. green, b. blue): b
+Input received - Name: Ryan, Color:
+
+Player name 'Ryan' is already in use. Please choose a different name:Kyle
+
+Enter letter of color (o. orange, y. yellow, g. green, b. blue):o
+
+Input received - Name: Kyle, Color: o
+
+Color 'o' is already taken by another player. Please choose a different color:b
+
 
 The current board is:
 Column 2: Column 2: Available   -----  -----  -----
@@ -48,7 +31,8 @@ Column 5: Column 5: Available   -----  -----  -----  -----  -----  -----  ----- 
 
 Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
 
-Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----
+-
 
 Column 8: Column 8: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
 
@@ -61,21 +45,26 @@ Column 11: Column 11: Available   -----  -----  -----  -----  -----
 Column 12: Column 12: Available   -----  -----  -----
 
 
-Player ryan's turn.
+Player Ryan's turn.
 
 Options: 1. Roll  2. Stop  3. Resign
-Choice: 1
-Dice rolled: A: 1 B: 2 C: 3 D: 4
-Choose first pair (e.g. AB): ABAB
-Dice rolled: a) 3 b) 7 c) 0 d) 0
-Select two dice (e.g., 'ab' or 'a b'):
-Attempting moves: 11 and 0
-Move 11: Success
-Move 0: Failed
+Choice:4
+
+Invalid choice: 4. Please choose again:1
+
+Dice rolled: a. 1 b. 2 c. 3 d. 4
+Choose first pair (e.g. AB):AA
+
+Error: You selected the same dice twice (AA). Please choose again:a b
+Error: Invalid dice selection (a). Please choose again: AB
+
+Attempting moves: 3 and 7
+Move 3: Success
+Move 7: Success
 Current board (T = temporary):
 Column 2: Column 2: Available   -----  -----  -----
 
-Column 3: Column 3: Available   -----  -----  -----  -----  -----
+Column 3: Column 3: Pending   --T--  -----  -----  -----  -----
 
 Column 4: Column 4: Available   -----  -----  -----  -----  -----  -----  -----
 
@@ -83,7 +72,7 @@ Column 5: Column 5: Available   -----  -----  -----  -----  -----  -----  ----- 
 
 Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
 
-Column 7: Column 7: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+Column 7: Column 7: Pending   --T--  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
 
 Column 8: Column 8: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
 
@@ -91,17 +80,118 @@ Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  ----- 
 
 Column 10: Column 10: Available   -----  -----  -----  -----  -----  -----  -----
 
-Column 11: Column 11: Pending   --T--  -----  -----  -----  -----
+Column 11: Column 11: Available   -----  -----  -----  -----  -----
 
 Column 12: Column 12: Available   -----  -----  -----
 
 
 
 Options: 1. Roll  2. Stop  3. Resign
-Choice: 4
-Please enter 1 (Roll), 2 (Stop), or 3 (Resign).
+Choice:2
+
+
+Turn ended. Final positions:
+Column 2: Column 2: Available   -----  -----  -----
+
+Column 3: Column 3: Pending   --O--  -----  -----  -----  -----
+
+Column 4: Column 4: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 5: Column 5: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 7: Column 7: Pending   --O--  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 8: Column 8: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 10: Column 10: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 11: Column 11: Available   -----  -----  -----  -----  -----
+
+Column 12: Column 12: Available   -----  -----  -----
+
+
+The current board is:
+Column 2: Column 2: Available   -----  -----  -----
+
+Column 3: Column 3: Pending   --O--  -----  -----  -----  -----
+
+Column 4: Column 4: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 5: Column 5: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 7: Column 7: Pending   --O--  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 8: Column 8: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 10: Column 10: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 11: Column 11: Available   -----  -----  -----  -----  -----
+
+Column 12: Column 12: Available   -----  -----  -----
+
+
+Player Kyle's turn.
 
 Options: 1. Roll  2. Stop  3. Resign
-Choice: Invalid choice: 4
+Choice:1
+
+Dice rolled: a. 2 b. 2 c. 3 d. 3
+Choose first pair (e.g. AB):LL
+
+Error: Invalid dice selection (LL). Please choose again:AC
 
 
+Attempting moves: 5 and 5
+Move 5: Success
+Move 5: Success
+Current board (T = temporary):
+Column 2: Column 2: Available   -----  -----  -----
+
+Column 3: Column 3: Pending   --O--  -----  -----  -----  -----
+
+Column 4: Column 4: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 5: Column 5: Pending   -----  --T--  -----  -----  -----  -----  -----  -----  -----
+
+Column 6: Column 6: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 7: Column 7: Pending   --O--  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 8: Column 8: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 9: Column 9: Available   -----  -----  -----  -----  -----  -----  -----  -----  -----
+
+Column 10: Column 10: Available   -----  -----  -----  -----  -----  -----  -----
+
+Column 11: Column 11: Available   -----  -----  -----  -----  -----
+
+Column 12: Column 12: Available   -----  -----  -----
+
+
+
+Options: 1. Roll  2. Stop  3. Resign
+Choice:3
+
+
+Kyle resigns.
+
+Cell Destroyed
+Number of players left: 1
+
+Not enough players, ending the game!
+Player Name: Kyle
+Color: blue
+Score: 0
+Columns Captured:
+ WINS!
+Cell DestroyedList is empty. No next player.
+
+Normal termination.

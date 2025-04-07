@@ -30,8 +30,8 @@ class BadName : public BadPlayer {
 public:
     BadName(const string& n, char c) : BadPlayer(n, c) {}
     void print() const override {
-        cerr << "\nPlayer name '" << getName() << "' is already in use." << flush;
         basePrint();
+        cerr << "\nPlayer name '" << getName() << "' is already in use. Please choose a different name: ";
     }
 };
 
@@ -39,8 +39,8 @@ class BadColor : public BadPlayer {
 public:
     BadColor(const string& n, char c) : BadPlayer(n, c) {}
     void print() const override {
-        cerr << "\nColor '" << getColorChar() << "' is already taken by another player." << endl;
         basePrint();
+        cerr << "\nColor '" << getColorChar() << "' is already taken by another player. Please choose a different color: ";
     }
 };
 
@@ -51,7 +51,7 @@ public:
     BadChoice(const string& c) : choice(c) {}
     virtual ~BadChoice() = default;
     virtual void print() const {
-        cerr << "Invalid choice: " << choice << "\n";
+        cerr << "Invalid choice: " << choice << ". Please choose again: ";
     }
     string getChoice() const { return choice; }
 };
@@ -61,7 +61,7 @@ class DuplicateSlot : public BadChoice {
 public:
     DuplicateSlot(const string& c) : BadChoice(c) {}
     void print() const override {
-        cerr << "Error: You selected the same dice twice (" << BadChoice::getChoice() << ").\n";
+        cerr << "Error: You selected the same dice twice (" << getChoice() << "). Please choose again: ";
     }
 };
 
@@ -70,7 +70,7 @@ class BadSlot : public BadChoice {
 public:
     BadSlot(const string& c) : BadChoice(c) {}
     void print() const override {
-        cerr << "Error: Invalid dice selection (" << BadChoice::getChoice() << ").\n";
+        cerr << "Error: Invalid dice selection (" << getChoice() << "). Please choose again: ";
     }
 };
 

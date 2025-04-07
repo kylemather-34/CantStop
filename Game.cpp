@@ -16,7 +16,7 @@ Game::Game() :
 {
     CSDice = new CantStopDice();
 
-    // Add players to the CList instead of storing them directly
+    // Add players to the CList
     int numOfPlayers;
     cout << "Please input your number of players (2-4): ";
     while (!(cin >> numOfPlayers) || numOfPlayers < 2 || numOfPlayers > 4) {
@@ -34,47 +34,13 @@ Game::Game() :
     while (players.getCount() >= 2) {
         Player* currentPlayer = players.getCurrentPlayer();
         if (!currentPlayer) break;
-        if (currentPlayer) {
-            takeTurn(currentPlayer);
-        }
-        Cell* currentCell = players.next();
-    }
-}
-
-void Game::checkData(const string& name, char colorChar) {
-    bool nameTaken = false;
-    bool colorTaken = false;
-
-    if (players.getCount() > 0) {
-        players.init();
-        for (int x = 0; x < players.getCount(); x++) {
-            Player* existingPlayer = players.getCurrentPlayer();
-            if (existingPlayer) {
-                string existingName = existingPlayer->getName();
-                transform(existingName.begin(), existingName.end(), existingName.begin(), ::tolower);
-
-                if (existingName == name) {
-                    nameTaken = true;
-                }
-                if (ECcolorNames[(int)existingPlayer->color()][0] == colorChar) {
-                    colorTaken = true;
-                }
-            }
-            players.next();
-        }
-    }
-
-    if (nameTaken && colorTaken) {
-        throw BadPlayer(name, colorChar);
-    } else if (nameTaken) {
-        throw BadName(name, colorChar);
-    } else if (colorTaken) {
-        throw BadColor(name, colorChar);
+        takeTurn(currentPlayer);
+        players.next();
     }
 }
 
 void Game::validDice(const string& selection) {
-    const char* validChoices = "abcd";
+    const char* validChoices = "abcdABCD";
 
     if (selection.length() != 2) {
         throw BadSlot(selection);
@@ -104,70 +70,113 @@ void Game::addPlayer() {
     char colorChar;
     ECcolor color;
 
-    while (true) {
-        // Get player name (only once unless there's a name conflict)
+    while (true) { // Main player addition loop
+        // Get and validate name
         cout << "Enter player name: ";
-        if (!(cin >> name)) {
-            cin.clear();
-            cin.ignore(10000, '\n');
-            cout << "Invalid name input. Please try again.\n";
-            continue;
-        }
-        string lowerName = name;
-        transform(lowerName.begin(), lowerName.end(), lowerName.begin(), ::tolower);
-
-        // Color selection loop
-        bool colorValid = false;
-        while (!colorValid) {
-            cout << "Enter letter of color (o. orange, y. yellow, g. green, b. blue): ";
-            if (!(cin >> colorChar)) {
-                cin.clear();
-                cin.ignore(10000, '\n');
-                cout << "Invalid color input. Please try again.\n";
-                continue;
-            }
-            colorChar = tolower(colorChar);
-
-            // Validate color choice format
-            switch (colorChar) {
-                case 'o': color = ECcolor::orange; break;
-                case 'y': color = ECcolor::yellow; break;
-                case 'g': color = ECcolor::green; break;
-                case 'b': color = ECcolor::blue; break;
-                default:
-                    cout << "Invalid color! Please choose from o,y,g,b.\n";
-                    continue;
-            }
-
-            // Check for conflicts
+        while (true) {
             try {
-                checkData(lowerName, colorChar);
-                colorValid = true;
-            }
-            catch (const BadPlayer& e) {
-                e.print();
-                cin.clear();
-                cin.ignore(10000, '\n');
-                // Will repeat color prompt
+                if (!(cin >> name)) {
+                    cin.clear();
+                    cin.ignore(10000, '\n');
+                    throw BadChoice("Invalid name input");
+                }
+
+                // Check for duplicate names
+                bool nameTaken = false;
+                if (players.getCount() > 0) {
+                    players.init();
+                    for (int x = 0; x < players.getCount(); x++) {
+                        Player* existingPlayer = players.getCurrentPlayer();
+                        if (existingPlayer) {
+                            string existingName = existingPlayer->getName();
+                            transform(existingName.begin(), existingName.end(),
+                                     existingName.begin(), ::tolower);
+                            string inputName = name;
+                            transform(inputName.begin(), inputName.end(),
+                                     inputName.begin(), ::tolower);
+
+                            if (existingName == inputName) {
+                                nameTaken = true;
+                                break;
+                            }
+                        }
+                        players.next();
+                    }
+                }
+
+                if (nameTaken) {
+                    throw BadName(name, ' ');
+                }
+                break; // Valid name
             }
             catch (const BadName& e) {
                 e.print();
                 cin.clear();
                 cin.ignore(10000, '\n');
-                break; // Go back to name prompt
+            }
+            catch (const BadChoice& e) {
+                cout << "Invalid name format. Please try again.\n";
+                cin.clear();
+                cin.ignore(10000, '\n');
+            }
+        }
+
+        cout << "Enter letter of color (o. orange, y. yellow, g. green, b. blue): ";
+        // Get and validate color
+        bool colorValid = false;
+        while (!colorValid) {
+            try {
+                if (!(cin >> colorChar)) {
+                    cin.clear();
+                    cin.ignore(10000, '\n');
+                    throw BadChoice("Invalid color input");
+                }
+                colorChar = tolower(colorChar);
+
+                // Validate color format
+                switch (colorChar) {
+                    case 'o': color = ECcolor::orange; break;
+                    case 'y': color = ECcolor::yellow; break;
+                    case 'g': color = ECcolor::green; break;
+                    case 'b': color = ECcolor::blue; break;
+                    default:
+                        throw BadChoice("Invalid color choice");
+                }
+
+                // Check for duplicate colors
+                bool colorTaken = false;
+                if (players.getCount() > 0) {
+                    players.init();
+                    for (int x = 0; x < players.getCount(); x++) {
+                        Player* existingPlayer = players.getCurrentPlayer();
+                        if (existingPlayer && existingPlayer->color() == color) {
+                            colorTaken = true;
+                            break;
+                        }
+                        players.next();
+                    }
+                }
+
+                if (colorTaken) {
+                    throw BadColor(name, colorChar);
+                }
+                colorValid = true;
             }
             catch (const BadColor& e) {
                 e.print();
                 cin.clear();
                 cin.ignore(10000, '\n');
-                // Will repeat color prompt
+            }
+            catch (const BadChoice& e) {
+                cout << "Invalid color! Please choose from o,y,g,b: ";
+                cin.clear();
+                cin.ignore(10000, '\n');
             }
         }
 
-        if (colorValid) {
-            players.addCell(name, color);
-            break;
-        }
+        // If we get here, both name and color are valid
+        players.addCell(name, color);
+        break;
     }
 }
 
@@ -178,20 +187,21 @@ void Game::takeTurn(Player* currentPlayer) {
 
     bool keepRolling = true;
     while (keepRolling) {
+        // Menu selection
         int choice;
+        cout << "\nOptions: 1. Roll  2. Stop  3. Resign\nChoice: ";
         while (true) {
-            cout << "\nOptions: 1. Roll  2. Stop  3. Resign\nChoice: ";
-            if (cin >> choice) {
-                try {
-                    validMenu(choice);
-                    break;
-                } catch (const BadChoice& e) {
-                    e.print();
+            try {
+                if (!(cin >> choice)) {
                     cin.clear();
-                    cin.ignore(10000, '\n');
+                    cin.ignore(10000, ' ');
+                    throw BadChoice("Invalid input");
                 }
-            } else {
-                cout << "Invalid input. Please enter a number.\n";
+                validMenu(choice);
+                break;
+            }
+            catch (const BadChoice& e) {
+                e.print();
                 cin.clear();
                 cin.ignore(10000, '\n');
             }
@@ -208,25 +218,23 @@ void Game::takeTurn(Player* currentPlayer) {
             cout << "Dice rolled: a. " << dice[0] << " b. " << dice[1]
                  << " c. " << dice[2] << " d. " << dice[3] << endl;
 
+            cout << "Choose first pair (e.g. AB): ";
             string selection;
             while (true) {
-                cout << "Choose first pair (e.g. AB): ";
-                cin >> selection;
                 try {
+                    cin >> selection;
                     validDice(selection);
                     break;
                 }
                 catch (const BadSlot& e) {
-                    e.print();
-                    cout << "Please enter two valid letters (A-D), e.g. AB\n";
                     cin.clear();
                     cin.ignore(10000, '\n');
+                    e.print();
                 }
                 catch (const DuplicateSlot& e) {
-                    e.print();
-                    cout << "Please choose two different dice\n";
                     cin.clear();
                     cin.ignore(10000, '\n');
+                    e.print();
                 }
             }
 
