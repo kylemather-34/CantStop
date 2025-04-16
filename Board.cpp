@@ -25,13 +25,11 @@ Board::~Board() {
 
 void Board::print() const {
     for (int y = 2; y <= 12; ++y) {
-        cout << "Column " << y << ": ";
         if (backBone[y]) {
-            backBone[y]->print(cout); // Delegate printing to the Column class
+            backBone[y]->print(cout); // Handles its own label
         } else {
-            cout << "Invalid Column";
+            cout << "Column " << y << ": Invalid Column\n";
         }
-        cout << endl;
     }
 }
 

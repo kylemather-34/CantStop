@@ -16,6 +16,10 @@ enum class ColState {
     available, pending, captured, error
 };
 
+enum class GameStatus {
+    begun, done, quit
+};
+
 inline ECcolor charToColor(char c) {
     switch (std::tolower(c)) {
         case 'o': return ECcolor::orange;

@@ -12,6 +12,7 @@ int main(int argc, char* argv[]) {
     srand(time(nullptr));
 
     Game game1;
+    game1.play();
 
     bye();  //Designates program termination
 
