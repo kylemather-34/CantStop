@@ -21,7 +21,7 @@ enum class GameStatus {
 };
 
 inline ECcolor charToColor(char c) {
-    switch (std::tolower(c)) {
+    switch (tolower(c)) {
         case 'o': return ECcolor::orange;
         case 'y': return ECcolor::yellow;
         case 'g': return ECcolor::green;

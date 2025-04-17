@@ -123,7 +123,7 @@ void Game::printDicePrompt() {
 }
 
 void Game::play() {
-    while (state == GameStatus::begun) {
+    while (*this == GameStatus::begun) {
         if (players.getCount() == 0) {
             state = GameStatus::quit;
             break;
@@ -256,4 +256,8 @@ GameStatus Game::handleResign(Player* currentPlayer) {
     }
     cout << "\nNumber of players left: " << players.getCount() << endl;
     return GameStatus::begun;
+}
+
+bool Game::operator==(GameStatus s) const {
+    return this->state == s;
 }

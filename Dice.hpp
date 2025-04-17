@@ -9,7 +9,7 @@
 #include "Exceptions.h"
 
 class Dice {
-private:
+protected:
     int nDice = 0; //# of dice in the set
     int* rVal; // Array we will store rolls in
 public:
@@ -23,7 +23,7 @@ public:
 };
 
 class FakeDice : public Dice {
-private:
+protected:
     ifstream diceFile;
     int myPairValues[2];
     bool readNextRoll(int* values);
@@ -34,7 +34,7 @@ public:
 };
 
 class CantStopDice : public Dice{
-private:
+protected:
     FakeDice* fakeDice;
     int pairValues[2];
 public:

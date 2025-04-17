@@ -1,17 +1,16 @@
-    //======================================================
-    // Project: Can't Stop  File: Column.hpp
-    // Author: Ryan Lang and Kyle Mather     Copyright: 2025
-    //======================================================
-    #ifndef COLUMN_H
-    #define COLUMN_H
+//======================================================
+// Project: Can't Stop  File: Column.hpp
+// Author: Ryan Lang and Kyle Mather     Copyright: 2025
+//======================================================
+#ifndef COLUMN_H
+#define COLUMN_H
 
-    #include "enums.hpp"
+#include "enums.hpp"
     #include "Player.hpp"
     #include "tools.hpp"
 
     class Column {
 private:
-
     static int columnLength[11];
     const int columnNumber;
     ColState colState;

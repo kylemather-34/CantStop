@@ -22,8 +22,6 @@ string Column::colStateToString(ColState state) const{
     }
 }
 
-
-
 // Helper function to get color character
 char Column::getColorChar(ECcolor color) const {
     switch (color) {

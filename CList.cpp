@@ -5,8 +5,6 @@
 
 #include "CList.h"
 
-
-
 // Cell class implementation
 Cell::Cell(unique_ptr<Player> player, Cell* nextCell)
     : upp(move(player)), next(nextCell) {}
