@@ -6,7 +6,7 @@
 #define DICE_H
 #include "tools.hpp"
 #define FAKE_DICE_FILE "fakedice.txt"
-#include "Exceptions.h"
+#include "Exceptions.hpp"
 
 class Dice {
 protected:
@@ -16,7 +16,7 @@ public:
     Dice() : Dice(6){} // Default to 6-sided dice
     Dice(int n); // Constructing the class
     virtual ~Dice(); // Destructor
-    virtual const int* roll(); // Function for "rolling" the dice
+    virtual int *roll(); // Function for "rolling" the dice
     const int* getDice() const { return rVal; }
     ostream& print(ostream&) const; // Print function
     void validDice(const string &selection);
@@ -30,7 +30,8 @@ protected:
 public:
     FakeDice();
     virtual ~FakeDice() {if (diceFile.is_open()) fatal("File could not be opened.");}
-    const int* roll() override;
+
+    int *roll() override;
 };
 
 class CantStopDice : public Dice{
@@ -42,7 +43,8 @@ public:
         fakeDice = new FakeDice;
     }
     virtual ~CantStopDice() = default;
-    const int* roll() override;
+
+    int *roll() override;
 };
 
 ostream& operator<<(ostream&, const Dice&);

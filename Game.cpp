@@ -3,10 +3,10 @@
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
 
-#include "Game.h"
+#include "Game.hpp"
 #include "enums.hpp"
 #include "tools.hpp"
-#include "Exceptions.h"
+#include "Exceptions.hpp"
 #include <cstring>
 #include <thread>
 
@@ -191,7 +191,7 @@ bool Game::handleRoll(Player* currentPlayer) {
     return processMoves(currentPlayer, pairValues);
 }
 
-string Game::getValidDiceSelection() {
+const string Game::getValidDiceSelection() {
     string selection;
     while (true) {
         try {

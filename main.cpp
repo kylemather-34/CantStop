@@ -4,7 +4,7 @@
 //======================================================
 #include "tools.hpp"
 #include "unitTests.hpp"
-#include "Game.h"
+#include "Game.hpp"
 #include "Player.hpp"
 
 

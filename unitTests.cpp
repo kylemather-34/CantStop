@@ -8,9 +8,9 @@
 #include "Dice.hpp"
 #include "Player.hpp"
 #include "Column.hpp"
-#include "Game.h"
+#include "Game.hpp"
 #include "Board.hpp"
-#include "CList.h"
+#include "CList.hpp"
 #include <memory>
 
 void unitTests::testPlayerList() {

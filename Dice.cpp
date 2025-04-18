@@ -15,7 +15,7 @@ Dice::~Dice() {
 }
 
 // Generates a random number in the range of 1 to nDice and returns into array
-const int* Dice::roll () {
+int *Dice::roll() {
     for (int x = 0; x < nDice; x++) {
         rVal[x] = (rand() % (6) + 1);
     }
@@ -31,7 +31,7 @@ ostream& Dice::print(ostream& os) const {
     return os;
 }
 
-const int* CantStopDice::roll() {
+int *CantStopDice::roll() {
     // Get the actual dice values from FakeDice
     const int* diceVals = fakeDice->roll();
 
@@ -67,7 +67,7 @@ bool FakeDice::readNextRoll(int* values) {
     return true;
 }
 
-const int* FakeDice::roll() {
+int *FakeDice::roll() {
     int values[4];
     if (!readNextRoll(values)) {
         diceFile.clear();

@@ -15,11 +15,11 @@ add_executable(AdvanceC__ main.cpp
         tools.cpp
         Column.hpp
         Column.cpp
-        Game.h
+        Game.hpp
         Game.cpp
         Board.hpp
         Board.cpp
-        CList.h
+        CList.hpp
         CList.cpp
-        Exceptions.h
+        Exceptions.hpp
 )

@@ -24,6 +24,7 @@ public:
     string colStateToString(ColState state) const;
     ostream& print(ostream& os) const;
     char getColorChar(ECcolor color) const;
+
     const int *getMarkerPositions() const;
     bool startTower(const Player *player, bool temporary);
     bool move();

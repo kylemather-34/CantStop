@@ -3,7 +3,7 @@
 // Author: Ryan Lang and Kyle Mather     Copyright: 2025
 //======================================================
 
-#include "CList.h"
+#include "CList.hpp"
 
 // Cell class implementation
 Cell::Cell(unique_ptr<Player> player, Cell* nextCell)

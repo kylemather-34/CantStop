@@ -9,7 +9,7 @@
 #include "Dice.hpp"
 #include "Player.hpp"
 #include "Board.hpp"
-#include "CList.h"
+#include "CList.hpp"
 #include "tools.hpp"
 
 class Game {
@@ -32,7 +32,7 @@ protected:
         int getMenuChoice();
         bool handleStop(Player* currentPlayer);
         bool handleRoll(Player* currentPlayer);
-        string getValidDiceSelection();
+        const string getValidDiceSelection();
         void getDicePairs(const int* dice, const string& selection, int pairValues[2]);
         bool processMoves(Player* currentPlayer, int pairValues[2]);
         void checkCapturedColumns(Player* currentPlayer, int col1, int col2);

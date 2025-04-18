@@ -34,7 +34,7 @@ char Column::getColorChar(ECcolor color) const {
     }
 }
 
-const int* Column::getMarkerPositions() const {
+const int *Column::getMarkerPositions() const {
     return markerPositions;
 }
 
@@ -79,7 +79,8 @@ bool Column::move() {
 }
 
 ostream& Column::print(ostream& os) const {
-    os << "Column " << columnNumber << ": " << colStateToString(colState) << "   ";
+    os << "Column " << setw(2) << columnNumber << ": "
+   << setw(12) << left << colStateToString(colState) << right << " ";
 
     int maxHeight = getColumnHeight();
 
