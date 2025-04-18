@@ -20,6 +20,10 @@ enum class GameStatus {
     begun, done, quit
 };
 
+enum class RollResult {
+    CONTINUE, BUST, WIN
+};
+
 inline ECcolor charToColor(char c) {
     switch (tolower(c)) {
         case 'o': return ECcolor::orange;

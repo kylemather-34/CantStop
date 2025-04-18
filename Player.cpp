@@ -39,12 +39,19 @@ int Player::score() const {
 
 // Records a won column and updates the players score
 bool Player::wonColumn(int colNum) {
-    if (playerScore < 3) { // Ensure only up to 3 columns are recorded
+    if (!hasWonColumn(colNum) && playerScore < 3) {
         scoreboard[playerScore] = colNum;
         ++playerScore;
         return playerScore == 3;
     }
-    return false; // No change is already at max score
+    return false;
+}
+
+bool Player::hasWonColumn(int colNum) const {
+    for (int i = 0; i < playerScore; ++i) {
+        if (scoreboard[i] == colNum) return true;
+    }
+    return false;
 }
 
 // Overloaded output stream operator to print Player details

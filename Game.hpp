@@ -31,10 +31,10 @@ protected:
         bool isColorTaken(ECcolor color);
         int getMenuChoice();
         bool handleStop(Player* currentPlayer);
-        bool handleRoll(Player* currentPlayer);
+        RollResult handleRoll(Player* currentPlayer);
         const string getValidDiceSelection();
         void getDicePairs(const int* dice, const string& selection, int pairValues[2]);
-        bool processMoves(Player* currentPlayer, int pairValues[2]);
+        RollResult processMoves(Player* currentPlayer, int pairValues[2]);
         void checkCapturedColumns(Player* currentPlayer, int col1, int col2);
         GameStatus handleResign(Player* currentPlayer);
         void printDicePrompt();

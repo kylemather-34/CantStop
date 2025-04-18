@@ -130,8 +130,13 @@ void Game::play() {
         }
         Player* currentPlayer = players.getCurrentPlayer();
         if (!currentPlayer) break;
+
+        GameStatus previousState = state;
         state = oneTurn(currentPlayer);
-        if (state == GameStatus::begun) players.next();
+        // Only advance to next player if game is still going AND player didn't resign
+        if (state == GameStatus::begun && previousState == GameStatus::begun) {
+            players.next();
+        }
     }
 }
 
@@ -142,7 +147,9 @@ GameStatus Game::oneTurn(Player* currentPlayer) {
     while (true) {
         int choice = getMenuChoice();
         if (choice == 1) {
-            if (handleRoll(currentPlayer)) return GameStatus::done;
+            RollResult result = handleRoll(currentPlayer);
+            if (result == RollResult::WIN) return GameStatus::done;
+            if (result == RollResult::BUST) return GameStatus::begun;
         } else if (choice == 2) {
             if (handleStop(currentPlayer)) return GameStatus::done;
             return GameStatus::begun;
@@ -172,15 +179,17 @@ int Game::getMenuChoice() {
 
 bool Game::handleStop(Player* currentPlayer) {
     board.stop();
-    for (int x = 0; x < 13; ++x) {
+    for (int x = 2; x <= 12; ++x) {
         Column* col = board.getColumn(x);
-        if (col && col->isCaptured()) currentPlayer->wonColumn(x);
+        if (col && col->isCaptured() && col->getOwner() == currentPlayer) {
+            currentPlayer->wonColumn(x);
+        }
     }
     cout << "\nTurn ended.\n";
     return currentPlayer->score() >= 3;
 }
 
-bool Game::handleRoll(Player* currentPlayer) {
+RollResult Game::handleRoll(Player* currentPlayer) {
     const int* dice = CSDice->roll();
     cout << "Dice rolled: a. " << dice[0] << " b. " << dice[1]
          << " c. " << dice[2] << " d. " << dice[3] << endl;
@@ -213,7 +222,7 @@ void Game::getDicePairs(const int* dice, const string& selection, int pairValues
     pairValues[1] = total - pairValues[0];
 }
 
-bool Game::processMoves(Player* currentPlayer, int pairValues[2]) {
+RollResult Game::processMoves(Player* currentPlayer, int pairValues[2]) {
     int col1 = pairValues[0], col2 = pairValues[1];
     bool move1 = board.move(col1), move2 = board.move(col2);
     cout << "\nAttempting moves: " << col1 << " and " << col2 << endl;
@@ -223,11 +232,16 @@ bool Game::processMoves(Player* currentPlayer, int pairValues[2]) {
         cout << "BUST! No valid moves.\n";
         board.bust();
         cout << "Current board:\n" << board << endl;
-        return false;
+        return RollResult::BUST;
     }
     cout << "Current board (T = temporary):\n" << board << endl;
     checkCapturedColumns(currentPlayer, col1, col2);
-    return currentPlayer->score() >= 3;
+    if (currentPlayer->score() >= 3) {
+        cout << "\nPLAYER " << currentPlayer->getName() << " WINS!\n";
+        return RollResult::WIN;
+    }
+
+    return RollResult::CONTINUE;
 }
 
 void Game::checkCapturedColumns(Player* currentPlayer, int col1, int col2) {

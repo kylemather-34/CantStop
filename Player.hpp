@@ -23,6 +23,7 @@ class Player {
         int score() const;
         bool wonColumn(int colNum);
         string getName() {return playerName;}
+        bool hasWonColumn(int colNum) const;
 };
 
 ostream& operator<<(ostream&, const Player&);

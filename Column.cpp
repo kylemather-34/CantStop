@@ -119,6 +119,7 @@ void Column::stop(Player* player) {
 
     if (markerPositions[colorIndex] >= getColumnHeight()) {
         colState = ColState::captured;
+        owner = player;
         player->wonColumn(columnNumber);
     }
 }

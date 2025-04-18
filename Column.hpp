@@ -6,16 +6,17 @@
 #define COLUMN_H
 
 #include "enums.hpp"
-    #include "Player.hpp"
-    #include "tools.hpp"
+#include "Player.hpp"
+#include "tools.hpp"
 
-    class Column {
+class Column {
 private:
     static int columnLength[11];
     const int columnNumber;
     ColState colState;
     int markerPositions[(int)ECcolor::Count]{};
         bool isTemporary = false;
+    Player* owner = nullptr;
 
 public:
     Column(int a);
@@ -36,6 +37,8 @@ public:
     bool hasPlayerMarker(const Player *player) const;
     void makePermanent() {isTemporary = false;};
     int getColumnHeight() const;
+    void setOwner(Player* p) { owner = p; }
+    Player* getOwner() const { return owner; }
     };
 
 ostream& operator<<(ostream& os, const Column& col);
