@@ -627,3 +627,95 @@ Run program with forced exceptions in all possible states
 Verify no memory leaks occur during exception handling
 
 Confirm all resources are properly released when exceptions terminate game early
+
+------------------------------------------------------------------------------------------------------------------------
+TEST PLAN – Game Completion and Player Turn Handling
+
+Objective:
+Ensure that the complete game flow is correctly implemented, including initializing players, managing turns via a menu, processing dice rolls and board moves, handling player resignations, column wins, and game completion. Each feature must function correctly, with appropriate game state transitions and graceful handling of invalid inputs.
+
+Test Cases:
+1. Valid Game Initialization with 3 Players
+Procedure: Enter 3 distinct player names and unique color choices
+Expected Result: Players are added successfully; game begins in begun state
+Validation: Players are displayed with names and colors before the first turn
+
+2. Invalid Player Color Selection
+Procedure: Enter a color already selected by another player
+Expected Result: Error: "Color '[color]' is already taken by another player"
+Validation: Program reprompts for color without skipping other inputs
+
+3. Resign on First Turn
+Procedure: Player 1 chooses "resign" from menu at start of turn
+Expected Result: Player 1 is removed; next player begins their turn
+Validation: Game continues with 2 players; PlayerList updates accordingly
+
+4. Complete Turn with Stop Command
+Procedure: Player selects "roll", makes a legal move, then selects "stop"
+Expected Result: Column progress is preserved and visible on scoreboard
+Validation: Player’s won columns update if thresholds are met
+
+5. Bust on Turn
+Procedure: Player rolls, selects pairs, but both board moves fail
+Expected Result: “Bust!” message appears; no column progress saved
+Validation: Turn ends and next player is prompted
+
+6. Winning a Column
+Procedure: Player rolls and captures a column
+Expected Result: "Player [name] has won column [x]!"
+Validation: Player::wonColumn() is called and board reflects ownership
+
+7. Winning the Game
+Procedure: A player wins 3 columns
+Expected Result: Game status updates to done; win message printed
+Validation: Game terminates gracefully; no more turns accepted
+
+8. Invalid Menu Option Input
+Procedure: Enter invalid menu option (e.g., -1, 4, letters) during turn
+Expected Result: Error: "Invalid choice: [input]"
+Validation: Program reprompts without crashing or skipping actions
+
+9. Player Resigns Mid-Game
+Procedure: Player resigns during a turn after the first roll
+Expected Result: Player removed; current board state remains unaffected
+Validation: No crashes; game continues with updated player list
+
+10. Full Game with FakeDice Input File
+Procedure: Run full game simulation using a prepared FakeDice input
+Expected Result: Players take turns according to dice file; one player wins
+Validation: Output matches planned moves; commands like stop, bust, win, and resign are triggered and handled properly
+
+Test Methodology:
+Automated Testing:
+
+Use a fake dice input file simulating specific roll/stop/resign choices.
+
+Capture program output to a transcript file for verification.
+
+Manual Testing:
+
+Observe screen output for input prompts, formatting, and board updates.
+
+Input malformed choices to trigger menu validation.
+
+Success Criteria:
+Game state transitions are valid (begun → done or quit).
+
+Resignation properly removes players and ends game if none remain.
+
+Menu interface consistently prompts after each action or invalid input.
+
+Each test case behaves exactly as described under expected results.
+
+Program does not crash or leak memory during any phase.
+
+Final transcript shows victory message and complete game trace.
+
+Additional Validation:
+Game does not allow duplicate colors or names.
+
+Turn-based logic maintains correct player order, even after resignations.
+
+Endgame detection (3 columns won) triggers immediate victory.
+
+All dynamic memory (Player objects, Dice) is correctly cleaned up.

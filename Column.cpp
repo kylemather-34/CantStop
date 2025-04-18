@@ -58,9 +58,9 @@ bool Column::startTower(const Player* player, bool temporary) {
 bool Column::move() {
     // Find which player has a tower here
     int activePlayer = -1;
-    for (int i = 1; i < (int)(ECcolor::Count); i++) {
-        if (markerPositions[i] > 0) {
-            activePlayer = i;
+    for (int x = 1; x < (int)(ECcolor::Count); ++x) {
+        if (markerPositions[x] > 0) {
+            activePlayer = x;
             break;
         }
     }
@@ -132,8 +132,8 @@ bool Column::isPending(const Player* player) const {
 
 void Column::bust() {
     if (isTemporary) {
-        for (int i = 0; i < 5; i++) {
-            markerPositions[i] = 0;
+        for (int x = 0; x < 5; ++x) {
+            markerPositions[x] = 0;
         }
         colState = ColState::available;
     }

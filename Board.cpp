@@ -70,9 +70,8 @@ bool Board::move(int column) {
 
 // Stop function: finalizes tower positions
 void Board::stop() {
-    for (int i = 0; i < countTowers; ++i) {
-        backBone[towerCols[i]]->makePermanent();
-        backBone[towerCols[i]]->stop(currentPlayer);
+    for (int x = 0; x < countTowers; ++x) {
+        backBone[towerCols[x]]->stop(currentPlayer);
     }
     countTowers = 0;
 }
