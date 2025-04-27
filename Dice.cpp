@@ -46,7 +46,7 @@ int *CantStopDice::roll() {
 }
 
 FakeDice::FakeDice() {
-    diceFile.open("C:/Users/Kyle/CLionProjects/CantStop/fakedice.txt");
+    diceFile.open(FAKE_DICE_FILE);
     if (!diceFile) {
         fatal("Could not open fake dice file: " FAKE_DICE_FILE);
     }
